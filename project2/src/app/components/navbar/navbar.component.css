@@ -1,0 +1,59 @@
+body {
+    display: flex;
+    align-items: center;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.left-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Foodie title */
+.left-section > span {
+    font-family: sans-serif;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.left-section > input {
+    margin-left: 20px;
+    height: 25px;
+    border: none;
+    font-family: sans-serif;
+    font-size: 15px;
+    width: 400px;
+}
+
+.left-section > input:focus {
+    outline: 0;
+}
+
+.right-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.right-section span {
+    margin: 0px 5px 0px 5px;
+    font-family: sans-serif;
+    font-size: 20px;
+}
+
+.right-section span:hover {
+    cursor: pointer;
+}
+
+.cart-section {
+    display: flex;
+    flex-direction: row;
+    margin: 0px 5px 0px 5px;
+    align-items: center;
+}
