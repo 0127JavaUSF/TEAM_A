@@ -11,7 +11,7 @@ import { RestaurantComponent } from './components/restaurant/restaurant.componen
 @NgModule({
   declarations: [
     AppComponent,
-    LandingComponent
+    LandingComponent,
     NavbarComponent,
     RestaurantComponent
   ],
