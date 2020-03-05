@@ -1,20 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import { LandingComponent } from './components/landing/landing.component';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LandingComponent } from './components/landing/landing.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { RestaurantComponent } from './components/restaurant/restaurant.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent
+    NavbarComponent,
+    RestaurantComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
