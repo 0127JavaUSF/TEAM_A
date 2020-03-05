@@ -8,6 +8,7 @@ const routes: Routes = [
   {path: 'rest', component: RestaurantComponent}
 ];
 
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
