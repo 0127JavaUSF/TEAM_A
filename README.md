@@ -1,3 +1,7 @@
+<<<<<<< HEAD
++ Team A
+    - Foodie - a platform where you can order food.
+=======
 # Project2
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.2.
@@ -25,3 +29,4 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+>>>>>>> 62a2ce3a099bb937fe0c258775364332cc0683ea
