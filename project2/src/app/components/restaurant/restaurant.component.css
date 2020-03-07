@@ -9,4 +9,9 @@
 
 .cat_red {
     color: red;
+    /* font-size: 1.5rem; */
+}
+
+.title_highlight {
+    font-size: 1.5rem;
 }
