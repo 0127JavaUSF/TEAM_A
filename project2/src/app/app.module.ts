@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
+import { HttpClientModule } from '@angular/common/Http';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { RestaurantComponent } from './components/restaurant/restaurant.componen
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule
 
   ],
   providers: [],
