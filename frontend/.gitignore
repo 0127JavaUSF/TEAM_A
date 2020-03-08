@@ -1,14 +1,30 @@
+<<<<<<< HEAD
+=======
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+>>>>>>> master
 # compiled output
 /dist
 /tmp
 /out-tsc
 # Only exists if Bazel was run
 /bazel-out
+<<<<<<< HEAD
 # dependencies
 /node_modules
 # profiling files
 chrome-profiler-events*.json
 speed-measure-plugin*.json
+=======
+
+# dependencies
+/node_modules
+
+# profiling files
+chrome-profiler-events*.json
+speed-measure-plugin*.json
+
+>>>>>>> master
 # IDEs and editors
 /.idea
 .project
@@ -17,6 +33,10 @@ speed-measure-plugin*.json
 *.launch
 .settings/
 *.sublime-workspace
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json
@@ -24,6 +44,10 @@ speed-measure-plugin*.json
 !.vscode/launch.json
 !.vscode/extensions.json
 .history/*
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 # misc
 /.sass-cache
 /connect.lock
@@ -33,6 +57,13 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+<<<<<<< HEAD
 # System Files
 .DS_Store
 Thumbs.db
+=======
+
+# System Files
+.DS_Store
+Thumbs.db
+>>>>>>> master
