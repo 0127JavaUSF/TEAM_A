@@ -4,19 +4,22 @@
         <div class="row">
             <div class="col" *ngFor="let result of restaurant">
                 <div class="row">
-                    <div class ="col-6 title_highlight">
+                    <div class ="col-8 title_highlight">
                         {{ result.name }}
                     </div>
-                    <div class ="col-4 cat_red">
+                    <div class ="col-6 cat_red">
                     {{ result.foodTypes[0] }}
                     </div>
                 </div>
                 <div>
-                    <img class = rest_img src="{{ result.logoUrl }}" alt="no Img">
+                    <img class = rest_img src="{{ result.logoUrl }}" alt="{{ result.logoUrl }}">
                 </div>
                 <div class="row">
-                    <div class ="col-8">  
+                    <div *ngIf = "result.deliveryPrice != undefined"class ="col-8">  
                     Delivery fee: ${{ result.deliveryPrice }}
+                    </div>
+                    <div *ngIf = "result.deliveryPrice === undefined" class ="col-8">
+                        Delivery fee: Free
                     </div>
                 </div>
                     <div>
