@@ -1,5 +1,5 @@
 .rest_img {
-	width: 30vh !important;
+	width: 15vw !important;
 	height: 30vh !important;
 }
 
@@ -9,4 +9,9 @@
 
 .cat_red {
     color: red;
+    /* font-size: 1.5rem; */
+}
+
+.title_highlight {
+    font-size: 1.5rem;
 }

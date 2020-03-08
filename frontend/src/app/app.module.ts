@@ -5,13 +5,17 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { UserComponent } from './components/user/user.component';
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LandingComponent
+    NavbarComponent,
+    UserComponent,
+    LandingComponent,
     NavbarComponent,
     RestaurantComponent
   ],
@@ -19,7 +23,7 @@ import { RestaurantComponent } from './components/restaurant/restaurant.componen
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
