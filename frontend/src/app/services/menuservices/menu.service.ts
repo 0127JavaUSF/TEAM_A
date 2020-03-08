@@ -19,12 +19,12 @@ export class MenuService {
   currentMenu: String[];
   currentRestKey: string;
 
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'X-Access-Token': '261ad9c0491c92b2'
-    })
-  };
+  // private httpOptions = {
+  //   headers: new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'X-Access-Token': '261ad9c0491c92b2'
+  //   })
+  // };
 
   constructor( private http: HttpClient ) { }
 
@@ -50,8 +50,12 @@ export class MenuService {
    */
 
   getMenu(): Observable<any> {
-    return this.http.get(`https://eatstreet.com/publicapi/v1/restaurant/${this.currentRestKey}/menu`, this.httpOptions);
-    // access-token=261ad9c0491c92b2
+    // https://eatstreet.com/publicapi/v1/restaurant/da4da700123e4b45f15b4f2e73e76180e4e62501343dc052/menu
+    if(this.currentRestKey.length != 0) {
+      return this.http.get(`https://eatstreet.com/publicapi/v1/restaurant/${this.currentRestKey}/menu?access-token=261ad9c0491c92b2`);
+    } else {
+      console.log("Click on the restaurant.");
+    }
   }
 
 }
