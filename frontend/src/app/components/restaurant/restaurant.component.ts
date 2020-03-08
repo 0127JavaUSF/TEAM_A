@@ -35,7 +35,8 @@ export class RestaurantComponent implements OnInit {
     onRestaurantClick(clickedRestaurant: any) {
         this.menuService.currentRestKey = clickedRestaurant.apiKey;
         // this.menuService.currentRestKey
-        this.router.navigate([`/restaurant/${clickedRestaurant.name.split(" ").join("")}`]);
+        // clickedRestaurant.name.split(" ").join("")
+        this.router.navigate([`/restaurant/${this.menuService.currentRestKey}`]);
     }
 
 

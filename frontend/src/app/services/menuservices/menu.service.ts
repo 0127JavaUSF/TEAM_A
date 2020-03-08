@@ -17,7 +17,7 @@ export class MenuService {
    */
 
   currentMenu: String[];
-  currentRestKey: string;
+  currentRestKey = "";
 
   // private httpOptions = {
   //   headers: new HttpHeaders({
@@ -51,7 +51,7 @@ export class MenuService {
 
   getMenu(): Observable<any> {
     // https://eatstreet.com/publicapi/v1/restaurant/da4da700123e4b45f15b4f2e73e76180e4e62501343dc052/menu
-    if(this.currentRestKey.length != 0) {
+    if(this.currentRestKey.length > 0) {
       return this.http.get(`https://eatstreet.com/publicapi/v1/restaurant/${this.currentRestKey}/menu?access-token=261ad9c0491c92b2`);
     } else {
       console.log("Click on the restaurant.");
