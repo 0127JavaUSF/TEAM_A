@@ -13,8 +13,6 @@ export class RestaurantService {
   private testUrl = 'https://eatstreet.com/publicapi/v1/restaurant'
   + '/search?access-token=261ad9c0491c92b2&method=both&pickup-radius=20&street-address=12702+Bruce+B+Downs+Blvd,+Tampa,+FL+33612';
 
-  private imgUrl = 'https://static.eatstreet.com/assets/images/restaurant_logos/bawarchi-biryani-point-38636_1478555896705.png';
-
   // private httpOptions = {
   //   headers: new HttpHeaders({
   //     'Content-Type': 'application/json',
