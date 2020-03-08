@@ -9,6 +9,7 @@ import { Observable, from } from 'rxjs';
 export class RestaurantService {
 
   // private baseUrl = '';
+  newAddress: string;
   private testUrl = 'https://eatstreet.com/publicapi/v1/restaurant'
   + '/search?access-token=261ad9c0491c92b2&method=both&pickup-radius=20&street-address=12702+Bruce+B+Downs+Blvd,+Tampa,+FL+33612';
 
@@ -32,7 +33,7 @@ export class RestaurantService {
   constructor(private http: HttpClient) { }
 
   getRestaurants(): Observable<any> {
-    return this.http.get(this.testUrl);
+    return this.http.get(this.newAddress);
   }
   // result = from(fetch(this.testUrl, {
   //   headers: {

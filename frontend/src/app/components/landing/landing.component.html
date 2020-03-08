@@ -5,8 +5,7 @@
     </div>
     <div class="address">
         <input type="text" [(ngModel)] = "address" placeholder="address">
-        <button (click)= "search()">Near by</button>
-        {{address}}
+        <button (click)= "search()" routerLink = "rest">Near by</button>
     </div>
     <div class = "adds">
           <div class="add1">
