@@ -1,7 +1,23 @@
 .rest_img {
-	width: 10vw !important;
-	height: 30vh !important;
+	width: 300px !important;
+    height: 180px !important;
+    margin-top: 16px;
+    opacity: 0.90;
 }
+
+.rest_img:hover {
+    opacity: 1;
+    /* transition: opacity 0.4s linear; */
+    /* filter: alpha(opacity=50);
+    background-color:black; */
+    /* border: 1px solid black; */
+    /* box-shadow: 2px 2px inset black; */
+}
+
+.banner_img {
+    width: 100vw;
+    height: 30vh;
+} 
 
 .time_green {
     color: green;  
@@ -13,7 +29,7 @@
 }
 
 .title_highlight {
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .selected :hover {

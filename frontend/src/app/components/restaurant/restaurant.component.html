@@ -1,30 +1,33 @@
+<header>
+</header>
 <body>
     <h1> Restaurants</h1>
+    <div>
+        <img class = banner_img src="https://my-project-1-bucket.s3.amazonaws.com/img2.jpg" alt="no img">
+    </div>
     <div class="container">
         <div class="row">
             <div class="col selected" *ngFor="let result of restaurant" (click)="onRestaurantClick(result)" >
+                <div>
+                    <img class = rest_img src="{{ result.logoUrl }}" alt="no img">
+                </div>
                 <div class="row">
                     <div class ="col-8 title_highlight">
                         {{ result.name }}
                     </div>
-                    <div class ="col-6 cat_red">
+                    <!-- <span class ="col-6 cat_red">
                     {{ result.foodTypes[0] }}
-                    </div>
-                </div>
-                <div>
-                    <img class = rest_img src="{{ result.logoUrl }}" alt="{{ result.logoUrl }}">
+                    </span> -->
                 </div>
                 <div class="row">
-                    <div *ngIf = "result.deliveryPrice != undefined"class ="col-8">  
-                    Delivery fee: ${{ result.deliveryPrice }}
-                    </div>
-                    <div *ngIf = "result.deliveryPrice === undefined" class ="col-8">
-                        Delivery fee: Free
-                    </div>
+                    <span *ngIf = "result.deliveryPrice != undefined"class ="col-4">  
+                    ${{ result.deliveryPrice }} Delivery
+                    </span>
+                    <span *ngIf = "result.deliveryPrice === undefined" class ="col-4">
+                        Free Delivery
+                    </span>
+                    <span class= time_green>{{ result.minWaitTime }} - {{ result.maxWaitTime }} min</span>
                 </div>
-                    <div>
-                        <p class= time_green>{{ result.minWaitTime }} - {{ result.maxWaitTime }} min</p>
-                    </div>
             </div>
         </div>
     </div>
