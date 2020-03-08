@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { userInfo } from 'os';
+//import { userInfo } from 'os';
 
 @Component({
   selector: 'app-create-user',
@@ -15,7 +15,7 @@ export class CreateUserComponent implements OnInit {
 
 }
 
-class User {
+export class User {
   firstName = " ";
   lastName = " ";
   email = " ";
