@@ -6,6 +6,7 @@ import { MenuService } from 'src/app/services/menuservices/menu.service';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
+
 export class MenuComponent implements OnInit {
 
   /**
@@ -23,17 +24,10 @@ export class MenuComponent implements OnInit {
     this.menuService.getMenu().subscribe(
       (foodArr) => {
         this.menuService.currentMenu = foodArr
-        this.updateFoods();
+        this.foods = this.menuService.currentMenu;
       },
       error => console.log(error)
     );
   }
-
-  /**
-   * updates foods instance variable of MenuComponent
-   */
-  updateFoods() {
-    this.foods = this.menuService.currentMenu;
-  }  
 
 }
