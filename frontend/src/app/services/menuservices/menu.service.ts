@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-// @Injectable({
-//   providedIn: 'root'
-// })
+@Injectable({
+  providedIn: 'root'
+})
 
-@Injectable()
 export class MenuService {
 
   /**
@@ -52,6 +51,7 @@ export class MenuService {
 
   getMenu(): Observable<any> {
     return this.http.get(`https://eatstreet.com/publicapi/v1/restaurant/${this.currentRestKey}/menu`, this.httpOptions);
+    // access-token=261ad9c0491c92b2
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable} from 'rxjs';
 import { RestaurantService } from 'src/app/services/RestaurantService/RestaurantService.service';
+import { MenuService } from 'src/app/services/menuservices/menu.service';
 
 
 
@@ -13,13 +14,18 @@ export class RestaurantComponent implements OnInit {
 
     restaurant: any [];
 
-  constructor(private restaurantService: RestaurantService) { }
+  constructor(private restaurantService: RestaurantService, private menuService: MenuService) { }
 
     ngOnInit(): void {
     this.restaurantService.getRestaurants().subscribe(
       (data) => this.restaurant = data.restaurants,
       (error) => console.log(error)
     );
+    }
+
+    onRestaurantClick(clickedRestaurant: any) {
+        this.menuService.currentRestKey = clickedRestaurant.apiKey;
+        console.log(clickedRestaurant.apiKey);
     }
 
 
