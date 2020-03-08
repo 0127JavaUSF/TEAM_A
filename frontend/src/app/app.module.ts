@@ -8,12 +8,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserComponent } from './components/user/user.component';
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
 import { HttpClientModule } from '@angular/common/http';
-<<<<<<< HEAD
 import { MenuComponent } from './components/menu/menu.component';
-=======
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
->>>>>>> cf51170070f237560bdd63472ba5c146d77810c2
 
 
 @NgModule({
@@ -24,12 +21,9 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
     LandingComponent,
     NavbarComponent,
     RestaurantComponent,
-<<<<<<< HEAD
-    MenuComponent
-=======
+    MenuComponent,
     SignInComponent,
     CreateUserComponent
->>>>>>> cf51170070f237560bdd63472ba5c146d77810c2
   ],
   imports: [
     BrowserModule,
