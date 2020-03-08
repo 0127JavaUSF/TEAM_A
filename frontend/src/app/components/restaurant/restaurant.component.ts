@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable} from 'rxjs';
-import { RestaurantService } from 'src/app/services/RestaurantService.service';
+import { RestaurantService } from 'src/app/services/RestaurantService/RestaurantService.service';
 
 
 
@@ -11,9 +11,7 @@ import { RestaurantService } from 'src/app/services/RestaurantService.service';
 })
 export class RestaurantComponent implements OnInit {
 
-//  restaurant: Observable<Restaurant[]>;
-    // img: string | null = null;
-    img: any;
+    restaurant: string [];
 
 //   restaurant: [{
 //     id: number,
@@ -61,23 +59,32 @@ export class RestaurantComponent implements OnInit {
  // constructor() {}
 
     ngOnInit(): void {
-    //  this.restaurant = this.restaurantService.getRestaurants();
+    //  this.restaurant = this.getAllRestaurants(this.restaurantService.result);
     this.restaurantService.getRestaurants().subscribe(
-      (data) => this.createImgFromBlob(data),
+      (data) => this.getAllRestaurants(data),
       (error) => console.log(error)
     );
     }
 
-    createImgFromBlob(image: Blob) {
-      const reader = new FileReader();
+    getAllRestaurants(restaurant) {
 
-      reader.addEventListener('load', () => {
-        this.img = reader.result;
-      }, false);
-      if (image) {
-        reader.readAsDataURL(image);
+      for (const rest of restaurant.restaurants) {
+        this.restaurant.push(rest);
       }
+      // console.log(restaurant);
+      // return this.restaurant;
     }
+
+    // createImgFromBlob(image: Blob) {
+    //   const reader = new FileReader();
+
+    //   reader.addEventListener('load', () => {
+    //     this.img = reader.result;
+    //   }, false);
+    //   if (image) {
+    //     reader.readAsDataURL(image);
+    //   }
+    // }
   // ngOnInit(): void {
 
   //   // this.reloadData();
