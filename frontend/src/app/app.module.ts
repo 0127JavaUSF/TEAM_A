@@ -8,6 +8,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserComponent } from './components/user/user.component';
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { CreateUserComponent } from './components/create-user/create-user.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
     UserComponent,
     LandingComponent,
     NavbarComponent,
-    RestaurantComponent
+    RestaurantComponent,
+    SignInComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,

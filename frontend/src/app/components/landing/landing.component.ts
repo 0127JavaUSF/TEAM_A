@@ -13,4 +13,9 @@ export class LandingComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  search() {
+
+    console.log('search works');
+
+  }
 }
