@@ -20,8 +20,8 @@ export class RestaurantComponent implements OnInit {
 
     ngOnInit(): void {
       this.restaurantService.getRestaurants().subscribe(
-        (data) => { 
-          this.restaurant = data.restaurants
+        (data) => {
+          this.restaurant = data.restaurants;
         },
         (error) => console.log(error)
       );
@@ -30,12 +30,12 @@ export class RestaurantComponent implements OnInit {
     /**
      * onRestaurantClick updates the current restaurant variable
      * inside MenuService. MenuService uses that to fetch list of food
-     * related to that restaurant 
+     * related to that restaurant
      */
     onRestaurantClick(clickedRestaurant: any) {
         this.menuService.currentRestKey = clickedRestaurant.apiKey;
         // this.menuService.currentRestKey
-        this.router.navigate([`/restaurant/${clickedRestaurant.name.split(" ").join("")}`]);
+        this.router.navigate([`/restaurant/${clickedRestaurant.name.split(' ').join('')}`]);
     }
 
 
