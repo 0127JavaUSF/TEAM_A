@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from 'src/app/services/menuservices/menu.service';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-menu',
@@ -14,13 +16,15 @@ export class MenuComponent implements OnInit {
    */
   foods: any;
 
-  constructor(private menuService: MenuService) { 
+  constructor(private menuService: MenuService,
+    private router: ActivatedRoute) { 
 
     // this is called first. Then ngOnInit is called.
 
   }
 
   ngOnInit(): void {
+    this.menuService.currentRestKey = this.router.snapshot.params['id'];
     this.menuService.getMenu().subscribe(
       (foodArr) => {
         this.menuService.currentMenu = foodArr

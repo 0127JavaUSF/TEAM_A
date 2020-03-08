@@ -15,7 +15,7 @@
                     <img class = rest_img src="{{ result.logoUrl }}" alt="{{ result.logoUrl }}">
                 </div>
                 <div class="row">
-                    <div *ngIf = "result.deliveryPrice != undefined"class ="col-8">  
+                    <div *ngIf = "result.deliveryPrice != undefined"class ="col-8">
                     Delivery fee: ${{ result.deliveryPrice }}
                     </div>
                     <div *ngIf = "result.deliveryPrice === undefined" class ="col-8">
