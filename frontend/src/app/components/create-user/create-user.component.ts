@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-//import { userInfo } from 'os';
+// import { userInfo } from 'os';
 
 @Component({
   selector: 'app-create-user',
@@ -19,14 +19,14 @@ export class CreateUserComponent implements OnInit {
 }
 
 export class User {
-  firstName = "";
-  lastName = "";
-  email = "";
-  password = "";
-  confirmPassword = "";
-  phoneNumber = "";
-  address = "";
-  city = "";
-  state = "";
-  zipCode = "";
+  firstName = '';
+  lastName = '';
+  email = '';
+  password = '';
+  confirmPassword = '';
+  phoneNumber = '';
+  address = '';
+  city = '';
+  state = '';
+  zipCode = '';
 }
