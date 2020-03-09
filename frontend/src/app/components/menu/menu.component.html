@@ -1,7 +1,35 @@
-<ol>
+<div class="menu-container">
+    <div class="food-category-container" *ngFor="let foodCategory of foods">
+        <div class="category-name">
+            &#9733; {{foodCategory.name}}
+        </div>
+        <!-- "name": "Vegetable Ulavacharu Biryani [Gluten Free]",
+        "description": "Vegetable dum biryani mixed in ulavacharu (black lentil) sauce. Served with raita and salan.",
+        "basePrice": 12.9 -->
+        <div class="all-foods-per-category">
+            <div class="food-item-container" *ngFor="let food of foodCategory.items | slice:0:3">
+                <div class="food-item">
+                    <div class="food-name"> 
+                        {{
+                            food.name
+                            .replace('[Gluten Free]', '')
+                            .replace('[New]', '')
+                            .replace('[Free]', '')
+                            .replace('[Vegan]', '')
+                        }} 
+                    </div>
+                    <div class="food-desc"> {{food.description.slice(0, 78)}} </div>
+                    <div class="food-price"> ${{food.basePrice}} </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <li *ngFor="let food of foods">
-        {{food.name}}
-    </li>
+<!-- 
 
-</ol>
+    [Gluten Free]
+    [Free]
+    [Vegan]
+
+ -->

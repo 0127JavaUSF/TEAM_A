@@ -1,0 +1,67 @@
+/* 
+    .menu-container {
+        display: flex;
+        flex-direction: column;
+    }
+*/
+
+.food-category-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+    width: 1200px;
+}
+
+.all-foods-per-category {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.food-item-container {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+}
+
+.category-name {
+    width: 1020px;
+    border-bottom: 1px solid rgba(217, 219, 224, 0.5);
+    margin-left: 23px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 23px;
+    color: #2D3138;
+}
+
+.food-item {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 494px;
+    height: 128px;
+    padding: 20px 128px 15px 20px;
+    border: 1px solid rgba(217, 219, 224, 0.5);
+}
+
+.food-item:hover {
+    background-color: #F7F7F8;
+    cursor: pointer;
+}
+
+.food-name {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: #2D3138;
+}
+
+.food-desc {
+    font-family: Arial, Helvetica, sans-serif;    
+    font-size: 14px;
+    color: rgba(143, 149, 163, 0.9);
+}
+.food-price {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: #00CC99;
+    font-weight: 500;
+}
