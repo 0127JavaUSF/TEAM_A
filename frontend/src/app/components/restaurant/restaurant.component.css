@@ -35,3 +35,38 @@
 .selected :hover {
     cursor: pointer;
 }
+.title_font {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.delivery_font {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.option_select:hover {
+    cursor: pointer;
+
+}
+
+.option_selected{
+    text-decoration-line: underline;
+    text-underline-position: below;
+    text-underline-offset: 4px;
+    text-decoration-color: blue;
+    text-decoration-thickness: 3px;
+}
+
+.option_notSelected{
+    text-decoration-line: underline;
+}
+
+.norm_font {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+}
+
+.or_font {
+    font-family: Arial, Helvetica, sans-serif;
+    color: gray;
+}

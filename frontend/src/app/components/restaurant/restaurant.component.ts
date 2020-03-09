@@ -15,8 +15,7 @@ export class RestaurantComponent implements OnInit {
 
     restaurant: any [];
 
-  constructor(private restaurantService: RestaurantService, private menuService: MenuService,
-    private router: Router) { }
+  constructor(private restaurantService: RestaurantService, private menuService: MenuService, private router: Router) { }
 
     ngOnInit(): void {
       this.restaurantService.getRestaurants().subscribe(
