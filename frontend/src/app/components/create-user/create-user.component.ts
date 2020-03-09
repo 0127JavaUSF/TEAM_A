@@ -6,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './create-user.component.html',
   styleUrls: ['./create-user.component.css']
 })
+
 export class CreateUserComponent implements OnInit {
+
+  User: User = new User;
 
   constructor() { }
 
@@ -16,14 +19,14 @@ export class CreateUserComponent implements OnInit {
 }
 
 export class User {
-  firstName = " ";
-  lastName = " ";
-  email = " ";
-  password = " ";
-  confirmPassword = " ";
-  phoneNumber = " ";
-  address = " ";
-  city = " ";
-  state = " ";
-  zipCode = " ";
+  firstName = "";
+  lastName = "";
+  email = "";
+  password = "";
+  confirmPassword = "";
+  phoneNumber = "";
+  address = "";
+  city = "";
+  state = "";
+  zipCode = "";
 }
