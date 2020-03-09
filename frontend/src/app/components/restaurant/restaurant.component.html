@@ -2,11 +2,11 @@
 </header>
 <body>
     <h1 class = title_font > Restaurants</h1>
-    <span class = "norm_font option_select option_selected">
+    <span id = "delivery" class = "norm_font option_select option_selected" (click)="onDeliveryClick()">
         Delivery
     </span>
     <span class = or_font> or </span>
-    <span class = "norm_font option_select option_selected">
+    <span id = "pickup" class = "norm_font option_select" (click)= "onPickupClick()">
         Pickup
     </span>
     <div>
@@ -14,7 +14,7 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col selected" *ngFor="let result of restaurant" (click)="onRestaurantClick(result)" >
+            <div class="col selected container_border" *ngFor="let result of allRestaurants" (click)="onRestaurantClick(result)" >
                 <div>
                     <img class = rest_img src="{{ result.logoUrl }}" alt="no img">
                 </div>

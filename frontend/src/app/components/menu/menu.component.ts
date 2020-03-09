@@ -17,7 +17,7 @@ export class MenuComponent implements OnInit {
   foods: any;
 
   constructor(private menuService: MenuService,
-    private router: ActivatedRoute) { 
+    private router: ActivatedRoute) {
 
     // this is called first. Then ngOnInit is called.
 

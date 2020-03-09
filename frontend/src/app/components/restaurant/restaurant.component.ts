@@ -13,18 +13,28 @@ import { Router } from '@angular/router';
 })
 export class RestaurantComponent implements OnInit {
 
-    restaurant: any [];
+    allRestaurants: any [];
+    openRestaurants: any[];
 
   constructor(private restaurantService: RestaurantService, private menuService: MenuService, private router: Router) { }
 
     ngOnInit(): void {
+      if (localStorage.getItem('address') === null) {
+        this.restaurantService.setRestaurantAddress();
+      }
+      if (localStorage.getItem('address') === 'undefined') {
+        localStorage.removeItem('address');
+      }
+      this.restaurantService.loadRestaurantAddress();
       this.restaurantService.getRestaurants().subscribe(
         (data) => {
-          this.restaurant = data.restaurants;
+          this.allRestaurants = data.restaurants;
         },
         (error) => console.log(error)
       );
+    // this.restaurant = this.restaurantService.restaurants;
     }
+
 
     /**
      * onRestaurantClick updates the current restaurant variable
@@ -32,12 +42,25 @@ export class RestaurantComponent implements OnInit {
      * related to that restaurant
      */
     onRestaurantClick(clickedRestaurant: any) {
-      if(this.menuService.currentRestKey.length === 0) {
+      if (this.menuService.currentRestKey.length === 0) {
         this.menuService.currentRestKey = clickedRestaurant.apiKey;
       }
       // this.menuService.currentRestKey
       // clickedRestaurant.name.split(' ').join('')
       this.router.navigate([`/restaurants/${this.menuService.currentRestKey}`]);
+    }
+
+    onDeliveryClick() {
+      const delivery = document.getElementById('delivery');
+      const pickup = document.getElementById('pickup');
+      delivery.className = 'norm_font option_select  option_selected';
+      pickup.className = 'norm_font option_select';
+    }
+    onPickupClick() {
+      const delivery = document.getElementById('delivery');
+      const pickup = document.getElementById('pickup');
+      delivery.className = 'norm_font option_select';
+      pickup.className = 'norm_font option_select option_selected';
     }
 
 
