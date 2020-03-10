@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class LandingComponent implements OnInit {
 
   address = '';
+  distance = 2;
   constructor(private httpClient: HttpClient, private restaurantService: RestaurantService, private router: Router) { }
 
   ngOnInit(): void {
@@ -23,7 +24,7 @@ export class LandingComponent implements OnInit {
     const replace = / /gi;
     const newAddress = this.address.replace(replace, '+');
     const api = 'https://eatstreet.com/publicapi/v1/restaurant'
-    + '/search?access-token=261ad9c0491c92b2&method=both&pickup-radius=20&street-address=' + newAddress;
+    + '/search?access-token=261ad9c0491c92b2&method=both&pickup-radius=' + this.distance + '&street-address=' + newAddress;
     console.log(api);
     this.restaurantService.newAddress = api;
   }
