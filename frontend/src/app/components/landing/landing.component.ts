@@ -29,7 +29,7 @@ export class LandingComponent implements OnInit {
     this.restaurantService.newAddress = api;
   }
 
-  finishTypeEvent() {
+  finishTypingEvent() {
     this.search();
     this.router.navigate(['restaurants']);
   }
