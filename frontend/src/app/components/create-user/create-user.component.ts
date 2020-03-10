@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class CreateUserComponent implements OnInit {
 
-  User: User = new User;
+  User: User = new User();
 
   constructor() { }
 

@@ -4,7 +4,7 @@
        Give us your money, We give you food
     </div>
     <div class="address">
-        <input (keydown.enter)= "finishTypeEvent()" type="text" [(ngModel)] = "address" placeholder="address">
+        <input (keydown.enter)= "finishTypingEvent()" type="text" [(ngModel)] = "address" placeholder="address">
         <button (click)= "search()" routerLink = "restaurants">Near by</button>
     </div>
     <div class = "adds">

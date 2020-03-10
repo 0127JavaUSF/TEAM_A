@@ -24,11 +24,10 @@ export class LandingComponent implements OnInit {
     const newAddress = this.address.replace(replace, '+');
     const api = 'https://eatstreet.com/publicapi/v1/restaurant'
     + '/search?access-token=261ad9c0491c92b2&method=both&pickup-radius=20&street-address=' + newAddress;
-    console.log(api);
     this.restaurantService.newAddress = api;
   }
 
-  finishTypeEvent() {
+  finishTypingEvent() {
     this.search();
     this.router.navigate(['restaurants']);
   }

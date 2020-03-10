@@ -14,7 +14,9 @@ import { Router } from '@angular/router';
 export class RestaurantComponent implements OnInit {
 
     allRestaurants: any [];
-    openRestaurants: any[];
+    deliveryRestaurants: any[];
+    pickupRestaurants: any[];
+    location: string;
 
   constructor(private restaurantService: RestaurantService, private menuService: MenuService, private router: Router) { }
 
@@ -29,6 +31,19 @@ export class RestaurantComponent implements OnInit {
       this.restaurantService.getRestaurants().subscribe(
         (data) => {
           this.allRestaurants = data.restaurants;
+          this.location = data.address.streetAddress;
+
+          // this.allRestaurants.forEach(element => {
+          //   if (this.allRestaurants[element].offersDelivery === true) {
+          //   this.deliveryRestaurants.push(this.allRestaurants[element]);
+          //   }
+          // });
+
+          // this.allRestaurants.forEach(element => {
+          //   if (this.allRestaurants[element].offersPickup === true) {
+          //   this.pickupRestaurants.push(this.allRestaurants[element]);
+          //   }
+          // });
         },
         (error) => console.log(error)
       );
@@ -47,7 +62,7 @@ export class RestaurantComponent implements OnInit {
       // }
       // this.menuService.currentRestKey
       // clickedRestaurant.name.split(' ').join('')
-      this.router.navigate([`/restaurants/${this.menuService.currentRestKey}`]);
+        this.router.navigate([`/restaurants/${this.menuService.currentRestKey}`]);
     }
 
     onDeliveryClick() {
@@ -55,12 +70,15 @@ export class RestaurantComponent implements OnInit {
       const pickup = document.getElementById('pickup');
       delivery.className = 'norm_font option_select  option_selected';
       pickup.className = 'norm_font option_select';
+      // this.allRestaurants = this.deliveryRestaurants;
+
     }
     onPickupClick() {
       const delivery = document.getElementById('delivery');
       const pickup = document.getElementById('pickup');
       delivery.className = 'norm_font option_select';
       pickup.className = 'norm_font option_select option_selected';
+      // this.allRestaurants = this.deliveryRestaurants;
     }
 
 
