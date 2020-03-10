@@ -5,6 +5,10 @@
     }
 */
 
+#lol {
+    color: red;
+}
+
 .food-category-container {
     display: flex;
     flex-direction: column;
@@ -35,7 +39,7 @@
 
 .food-item {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     box-sizing: border-box;
     width: 494px;
     height: 128px;

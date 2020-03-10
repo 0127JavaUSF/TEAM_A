@@ -7,19 +7,26 @@
         "description": "Vegetable dum biryani mixed in ulavacharu (black lentil) sauce. Served with raita and salan.",
         "basePrice": 12.9 -->
         <div class="all-foods-per-category">
-            <div class="food-item-container" *ngFor="let food of foodCategory.items">
+            <div class="food-item-container" (mouseenter)="FoodQuant[food.apiKey][1]=handleHover()" (mouseleave)="FoodQuant[food.apiKey][1]=handleHover()" *ngFor="let food of foodCategory.items">
                 <div class="food-item">
-                    <div class="food-name"> 
-                        {{
-                            food.name
-                            .replace('[Gluten Free]', '')
-                            .replace('[New]', '')
-                            .replace('[Free]', '')
-                            .replace('[Vegan]', '')
-                        }} 
+                    <div>
+                        <div class="food-name"> 
+                            {{
+                                food.name
+                                .replace('[Gluten Free]', '')
+                                .replace('[New]', '')
+                                .replace('[Free]', '')
+                                .replace('[Vegan]', '')
+                            }} 
+                        </div>
+                        <div class="food-desc"> {{food.description}} </div>
+                        <div class="food-price"> ${{food.basePrice}} </div>
                     </div>
-                    <div class="food-desc"> {{food.description}} </div>
-                    <div class="food-price"> ${{food.basePrice}} </div>
+                    <div *ngIf="FoodQuant[food.apiKey][1] || FoodQuant[food.apiKey][0] > 0">
+                        <button (click)="modifyUp(food)">/\</button>
+                        <button (click)="modifyDown(food)" [disabled]="FoodQuant[food.apiKey][0] === 0">\/</button>
+                        <span *ngIf="FoodQuant[food.apiKey][0] > 0">{{FoodQuant[food.apiKey][0]}}</span>
+                    </div>
                 </div>
             </div>
         </div>
