@@ -32,9 +32,9 @@ export class RestaurantComponent implements OnInit {
      * related to that restaurant
      */
     onRestaurantClick(clickedRestaurant: any) {
-      if(this.menuService.currentRestKey.length === 0) {
+      // if(this.menuService.currentRestKey.length === 0) {
         this.menuService.currentRestKey = clickedRestaurant.apiKey;
-      }
+      // }
       // this.menuService.currentRestKey
       // clickedRestaurant.name.split(' ').join('')
       this.router.navigate([`/restaurants/${this.menuService.currentRestKey}`]);
