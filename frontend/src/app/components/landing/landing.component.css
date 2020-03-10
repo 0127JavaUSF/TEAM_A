@@ -11,7 +11,7 @@
   margin-top: 5vh;
   font-size: 20px;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .adds{
@@ -19,4 +19,9 @@
   flex-direction: row;
   font-size: 14px;
   margin-top: 15vh;
+}
+#distance{
+  max-width: 5vw;
+  margin-left: 5px;
+  margin-right: 5px;
 }
