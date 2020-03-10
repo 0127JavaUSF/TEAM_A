@@ -9,6 +9,58 @@
     color: red;
 }
 
+.buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.buttons button{
+    width: 40px;
+    height: 40px;
+}
+
+.buttons {
+    position: relative;
+    left: 120px;
+    top: -20px;
+    background-color: white;
+    height: 40px;
+    width: 120px;
+    /* border: 1px solid lightgreen; */
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.orderButtonLeft {
+    border: none;
+    background-color: white;
+    /* border-left: 1px solid lightgreen; */
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.orderButtonRight {
+    border: none;
+    background-color: white;
+    /* border-right: 1px solid lightgreen; */
+    border-radius: 10px;
+}
+
+.foodQuant {
+    margin: 0px 5px 0px 5px;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .food-category-container {
     display: flex;
     flex-direction: column;

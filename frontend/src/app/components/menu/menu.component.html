@@ -22,10 +22,11 @@
                         <div class="food-desc"> {{food.description}} </div>
                         <div class="food-price"> ${{food.basePrice}} </div>
                     </div>
-                    <div *ngIf="FoodQuant[food.apiKey][1] || FoodQuant[food.apiKey][0] > 0">
-                        <button (click)="modifyUp(food)">/\</button>
-                        <button (click)="modifyDown(food)" [disabled]="FoodQuant[food.apiKey][0] === 0">\/</button>
-                        <span *ngIf="FoodQuant[food.apiKey][0] > 0">{{FoodQuant[food.apiKey][0]}}</span>
+                    <div class="buttons" *ngIf="FoodQuant[food.apiKey][1] || FoodQuant[food.apiKey][0] > 0">
+                        <button class="orderButtonRight" (click)="modifyDown(food)" [disabled]="FoodQuant[food.apiKey][0] === 0">-</button>
+                        <span class="foodQuant">{{FoodQuant[food.apiKey][0]}}</span>
+                        <button class="orderButtonLeft" (click)="modifyUp(food)">+</button>
+                    <!-- *ngIf="FoodQuant[food.apiKey][0] > 0" -->
                     </div>
                 </div>
             </div>
