@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from './components/menu/menu.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
     RestaurantComponent,
     MenuComponent,
     SignInComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

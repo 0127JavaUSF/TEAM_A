@@ -32,18 +32,6 @@ export class RestaurantComponent implements OnInit {
         (data) => {
           this.allRestaurants = data.restaurants;
           this.location = data.address.streetAddress;
-
-          // this.allRestaurants.forEach(element => {
-          //   if (this.allRestaurants[element].offersDelivery === true) {
-          //   this.deliveryRestaurants.push(this.allRestaurants[element]);
-          //   }
-          // });
-
-          // this.allRestaurants.forEach(element => {
-          //   if (this.allRestaurants[element].offersPickup === true) {
-          //   this.pickupRestaurants.push(this.allRestaurants[element]);
-          //   }
-          // });
         },
         (error) => console.log(error)
       );
@@ -70,6 +58,15 @@ export class RestaurantComponent implements OnInit {
       const pickup = document.getElementById('pickup');
       delivery.className = 'norm_font option_select  option_selected';
       pickup.className = 'norm_font option_select';
+      // for (const i of this.allRestaurants){
+      //   console.log(this.allRestaurants[i].offersDelivery);
+      // }
+      // this.allRestaurants.forEach(element => {
+        // if (data.restaurants[element].offersDelivery === true) {
+        // this.deliveryRestaurants.push(data.restaurants[element]);
+        // }
+      //   console.log(this.allRestaurants[element].offersDelivery);
+      // });
       // this.allRestaurants = this.deliveryRestaurants;
 
     }
@@ -78,6 +75,15 @@ export class RestaurantComponent implements OnInit {
       const pickup = document.getElementById('pickup');
       delivery.className = 'norm_font option_select';
       pickup.className = 'norm_font option_select option_selected';
+      // for (const i of this.allRestaurants){
+      //   console.log(this.allRestaurants[i].offersPickup);
+      // }
+      // this.allRestaurants.forEach(element => {
+        // if (data.restaurants[element].offersPickup === true) {
+        // this.pickupRestaurants.push(data.restaurants[element]);
+        // }
+      //   console.log(this.allRestaurants[element].offersPickup);
+      // });
       // this.allRestaurants = this.deliveryRestaurants;
     }
 

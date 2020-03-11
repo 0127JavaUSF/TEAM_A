@@ -58,9 +58,11 @@ public class SessionController {
 						.sign(algo);
 			};
 			
-			Cookie cookie = new Cookie("auth_token", token);
-			// add this to the header
-			response.addCookie(cookie);
+//			Cookie cookie = new Cookie();
+//			// add this to the header
+//			cookie.setName("somethin");
+//			cookie.setComment("another somethin");
+//			response.addCookie();
 			
 		}
 		return new ResponseEntity<String>(token, HttpStatus.OK);
