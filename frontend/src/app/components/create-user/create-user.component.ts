@@ -11,6 +11,7 @@ import { User } from 'src/app/user';
 export class CreateUserComponent implements OnInit {
 
   user = {
+  id: 0,
   firstName: '',
   lastName: '',
   email: '',
@@ -22,7 +23,7 @@ export class CreateUserComponent implements OnInit {
   zipCode: ''
 };
 
-confirmPassword = '';
+  confirmPassword = '';
   notMatch = true;
 
   error = 'Passwords do not match';
@@ -33,14 +34,26 @@ confirmPassword = '';
   }
   submit() {
 
+    // call password confirm method
     this.notMatch = this.confirmPass(this.user.password, this.confirmPassword);
 
+    // if passwords aren't equal then stop
     if (this.notMatch === true) {
       return this.error;
+    } else {
+
+      // send the post to database
+    console.log('some of this works');
+    return this.httpClient.post<User>('http://localhost:9010/user', this.user)
+    .subscribe(
+      data => (console.log('User created')),
+      error => (console.log('Error'))
+    );
+
     }
-    return this.httpClient.post('localhost:9010/user', this.user);
   }
 
+  // confirm that password and confirmed password are the same.
   confirmPass(password, confirmPassword) {
     if (password === password) {
       return false;
@@ -49,4 +62,5 @@ confirmPassword = '';
     }
   }
 }
+
 
