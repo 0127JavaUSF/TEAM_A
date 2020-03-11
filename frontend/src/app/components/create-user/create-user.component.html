@@ -1,4 +1,4 @@
-<form class="createUserForm" action= "" method="POST">
+<form class="createUserForm" action= "/localhost:4200" method="POST">
   <div class="form-group">
     <label for="firstName">First Name</label>
     <input type="text" class="form-control" id="firstName" aria-describedby="emailHelp" placeholder="First Name" [(ngModel)]="user.firstName">
@@ -9,11 +9,11 @@
   </div>
   <div class="form-group">
     <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="password">
+    <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="user.password">
   </div>
   <div class="form-group">
     <label for="confirmPassword">Confirm Password</label>
-    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" [(ngModel)]="confirmPassword">
+    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" [(ngModel)]="user.password">
   </div>
   <div class="form-group">
     <label for="email">Email</label>
