@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-// import { userInfo } from 'os';
+//import { userInfo } from 'os';
+import { User } from 'src/app/user';
 
 @Component({
   selector: 'app-create-user',
@@ -9,7 +10,6 @@ import { Component, OnInit } from '@angular/core';
 
 export class CreateUserComponent implements OnInit {
 
-  User: User = new User();
 
   constructor() { }
 
@@ -18,15 +18,3 @@ export class CreateUserComponent implements OnInit {
 
 }
 
-export class User {
-  firstName = '';
-  lastName = '';
-  email = '';
-  password = '';
-  confirmPassword = '';
-  phoneNumber = '';
-  address = '';
-  city = '';
-  state = '';
-  zipCode = '';
-}
