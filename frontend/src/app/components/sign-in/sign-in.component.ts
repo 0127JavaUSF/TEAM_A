@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
+import { User } from '../../user';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -7,14 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignInComponent implements OnInit {
 
-  constructor() { }
+  email = '';
+  password = '';
+
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
   }
 
   signIn() {
-
-    console.log('User signIn!!!');
+    // potential holder for getUser
+    console.log('wait this doesnt work yet ;D');
+    return this.httpClient.get<User>('localhost:9010/user/' + this.email);
 
   }
 
