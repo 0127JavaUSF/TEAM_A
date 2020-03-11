@@ -11,4 +11,4 @@ export class User {
     city = 'this.city';
     state = 'this.state';
     zipCode = 'this.zipCode';
-  }
+}
