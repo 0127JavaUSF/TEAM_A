@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/user';
-// import { userInfo } from 'os';
 
 @Component({
   selector: 'app-create-user',
@@ -10,13 +10,43 @@ import { User } from 'src/app/user';
 
 export class CreateUserComponent implements OnInit {
 
-  user = User;
+  user = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
+  phoneNumber: '',
+  address: '',
+  city: '',
+  state: '',
+  zipCode: ''
+};
 
-  constructor() { }
+confirmPassword = '';
+  notMatch = true;
+
+  error = 'Passwords do not match';
+
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
   }
+  submit() {
 
+    this.notMatch = this.confirmPass(this.user.password, this.confirmPassword);
+
+    if (this.notMatch === true) {
+      return this.error;
+    }
+    return this.httpClient.post('localhost:9010/user', this.user);
+  }
+
+  confirmPass(password, confirmPassword) {
+    if (password === password) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 }
-
 

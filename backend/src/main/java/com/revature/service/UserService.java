@@ -5,6 +5,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
 import com.revature.model.User;
 import com.revature.repository.UserRepository;
 
@@ -16,23 +18,30 @@ public class UserService {
 	
 	public User createUser(User user)
 	{
+		// user.setPassword = hashPassword(user.getPassword)...
 		return this.userRepo.save(user);
 	}
 	
-	public Optional<User> getUser(String email)
+	public Optional<User> getUserByEmail(String email)
 	{
 		return this.userRepo.findByEmail(email);
 	}
 	
-	public Optional<User> getOrderHistory(User user)
-	{
-		String email = user.getEmail();
-		return this.userRepo.findByEmail(email);
+	/**
+	 * #AAA
+	 * @param id: User id
+	 * @return User object
+	 */
+	public Optional<User> getUserById(long id) {
+		return this.userRepo.findById(id);
 	}
-//	
-//	public User createOrder(User user, OrderHistory orderHist)
-//	{
-//		return this.userRepo.
-//	}
+	
+	/**
+	 * 
+	 * Hashes password
+	 */
+	public void hashPassword(String password) {
+		// BCrypt lib import and work hard
+	}
 
 }

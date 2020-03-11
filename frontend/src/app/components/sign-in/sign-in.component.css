@@ -1,3 +1,9 @@
+h2{
+  margin-left: 10vw;
+}
+a{
+  margin-left: 10vw;
+}
 .container{
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 25px;
@@ -12,9 +18,12 @@
   margin-top: 5vh;
   font-size: 20px;
   flex-direction: row;
-  justify-content: space-between;
 }
 
+#password{
+  margin-left: 5px;
+  margin-right: 5px;
+}
 .userInput{
   align-self: center;
 
