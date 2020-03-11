@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/user';
 // import { userInfo } from 'os';
 
 @Component({
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class CreateUserComponent implements OnInit {
 
-  User: User = new User();
+  user = User;
 
   constructor() { }
 
@@ -18,15 +19,4 @@ export class CreateUserComponent implements OnInit {
 
 }
 
-export class User {
-  firstName = '';
-  lastName = '';
-  email = '';
-  password = '';
-  confirmPassword = '';
-  phoneNumber = '';
-  address = '';
-  city = '';
-  state = '';
-  zipCode = '';
-}
+

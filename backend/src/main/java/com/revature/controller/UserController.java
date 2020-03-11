@@ -32,10 +32,10 @@ public class UserController {
 		return new ResponseEntity<User>(createdUser ,HttpStatus.OK);
 	}
 	
-	@GetMapping("/{id}")
-	public ResponseEntity<User> getUser(@PathVariable(value="id") long id)
+	@GetMapping("/{email}")
+	public ResponseEntity<User> getUser(@PathVariable(value="email") String email)
 	{
-		Optional<User> user = userServ.getUser(id);
+		Optional<User> user = userServ.getUser(email);
 		User foundUser = user.get();
 		return new ResponseEntity<User>(foundUser, HttpStatus.OK);
 	}

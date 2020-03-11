@@ -1,17 +1,25 @@
 package com.revature.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "Users")
 public class User {
 	
 	@Id
+	@Column(name = "user_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
@@ -45,8 +53,22 @@ public class User {
 	@Column(name = "profile_pick_url", unique = true)
 	private String profilePictureUrl;
 	
-	@Column
+	@Column(name = "session_token")
 	private int sessionToken;
+	
+	@Transient
+	private boolean hasProfilePic;
+	
+	@Transient
+	private String presignedUrl;
+	
+//	@OneToMany(mappedBy = "order_history=", fetch = FetchType.LAZY)
+//	@JoinColumn(name = "order_history_id", referencedColumnName = "user_id")
+//	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id")
+//	@OneToMany(targetEntity = OrderHistory.class,cascade = CascadeType.ALL)
+	private List<OrderHistory> orders;
 
 	public long getId() {
 		return id;
@@ -144,6 +166,30 @@ public class User {
 		this.sessionToken = sessionToken;
 	}
 
+	public boolean isHasProfilePic() {
+		return hasProfilePic;
+	}
+
+	public void setHasProfilePic(boolean hasProfilePic) {
+		this.hasProfilePic = hasProfilePic;
+	}
+
+	public String getPresignedUrl() {
+		return presignedUrl;
+	}
+
+	public void setPresignedUrl(String presignedUrl) {
+		this.presignedUrl = presignedUrl;
+	}
+
+	public List<OrderHistory> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<OrderHistory> orders) {
+		this.orders = orders;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -152,10 +198,13 @@ public class User {
 		result = prime * result + ((city == null) ? 0 : city.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + (hasProfilePic ? 1231 : 1237);
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+		result = prime * result + ((orders == null) ? 0 : orders.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
+		result = prime * result + ((presignedUrl == null) ? 0 : presignedUrl.hashCode());
 		result = prime * result + ((profilePictureUrl == null) ? 0 : profilePictureUrl.hashCode());
 		result = prime * result + sessionToken;
 		result = prime * result + ((state == null) ? 0 : state.hashCode());
@@ -192,12 +241,19 @@ public class User {
 				return false;
 		} else if (!firstName.equals(other.firstName))
 			return false;
+		if (hasProfilePic != other.hasProfilePic)
+			return false;
 		if (id != other.id)
 			return false;
 		if (lastName == null) {
 			if (other.lastName != null)
 				return false;
 		} else if (!lastName.equals(other.lastName))
+			return false;
+		if (orders == null) {
+			if (other.orders != null)
+				return false;
+		} else if (!orders.equals(other.orders))
 			return false;
 		if (password == null) {
 			if (other.password != null)
@@ -208,6 +264,11 @@ public class User {
 			if (other.phoneNumber != null)
 				return false;
 		} else if (!phoneNumber.equals(other.phoneNumber))
+			return false;
+		if (presignedUrl == null) {
+			if (other.presignedUrl != null)
+				return false;
+		} else if (!presignedUrl.equals(other.presignedUrl))
 			return false;
 		if (profilePictureUrl == null) {
 			if (other.profilePictureUrl != null)
@@ -229,16 +290,9 @@ public class User {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", password=" + password + ", phoneNumber=" + phoneNumber + ", address=" + address + ", city=" + city
-				+ ", state=" + state + ", zipCode=" + zipCode + ", profilePictureUrl=" + profilePictureUrl
-				+ ", sessionToken=" + sessionToken + "]";
-	}
-
 	public User(long id, String firstName, String lastName, String email, String password, String phoneNumber,
-			String address, String city, String state, String zipCode, String profilePictureUrl, int sessionToken) {
+			String address, String city, String state, String zipCode, String profilePictureUrl, int sessionToken,
+			boolean hasProfilePic, String presignedUrl, List<OrderHistory> orders) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -252,6 +306,9 @@ public class User {
 		this.zipCode = zipCode;
 		this.profilePictureUrl = profilePictureUrl;
 		this.sessionToken = sessionToken;
+		this.hasProfilePic = hasProfilePic;
+		this.presignedUrl = presignedUrl;
+		this.orders = orders;
 	}
 
 	public User() {
@@ -260,6 +317,4 @@ public class User {
 	}
 	
 	
-	
-
 }
