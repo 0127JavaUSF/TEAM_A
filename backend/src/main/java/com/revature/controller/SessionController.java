@@ -46,6 +46,8 @@ public class SessionController {
 			HttpServletRequest request, HttpServletResponse response)
 			throws NotFoundException {
 
+//		System.out.println("We got this");
+		
 		String token = "";
 		
 		// does user have a token?
@@ -58,14 +60,20 @@ public class SessionController {
 			if(sessServ.isAuthenticated(email, userToken)) {
 				// if user has cookie and they are authenticated
 				// then all good.
-				return new ResponseEntity<String>("Success", HttpStatus.OK);
+//				Map<String, String> resp = new HashMap<String, String>();
+//				resp.put("success", "token is good");
+//				return new ResponseEntity<String>("Success: Token is good.", HttpStatus.OK);
+				response.addHeader("custom_error", "");
+				response.addHeader("custom_success", "fine wine");
+				return new ResponseEntity<String>("Success: Token is good.", HttpStatus.OK);
+
 			} else {
-				return new ResponseEntity<String>("Failure", HttpStatus.UNAUTHORIZED);
+				return new ResponseEntity<String>("Failure: Token is bad.", HttpStatus.UNAUTHORIZED);
 			}
 		} else {
 					
 			Optional<User> user = userServ.getUserByEmail(email);
-			
+			System.out.println(user);
 			if(user.isPresent()) {
 					
 				String hashedPwd = user.get().getPassword();
@@ -78,21 +86,21 @@ public class SessionController {
 					 */
 					token = JWT.create()
 							.withClaim("email", email)
-							.withClaim("password", password)
+							.withClaim("password", hashedPwd)
 							.withIssuer("auth0")
 							.sign(algo);
 	
 					Cookie cookie = new Cookie("auth_token", token);
 					response.addCookie(cookie);
-					return new ResponseEntity<String>("Success. Cookie added.", HttpStatus.OK);
+					return new ResponseEntity<String>("Correct details. Cookie added.", HttpStatus.OK);
 
 				}
 				
-				return new ResponseEntity<String>("Failure", HttpStatus.UNAUTHORIZED);
+				return new ResponseEntity<String>("Incorrect password", HttpStatus.UNAUTHORIZED);
 				
 			}
 			
-			return new ResponseEntity<String>("Failure", HttpStatus.NOT_FOUND);
+			return new ResponseEntity<String>("No such email. No token.", HttpStatus.NOT_FOUND);
 						
 		}
 				

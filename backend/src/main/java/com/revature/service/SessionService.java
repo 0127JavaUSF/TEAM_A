@@ -47,8 +47,10 @@ public class SessionService {
 	public boolean isAuthenticated(String email, String token) {
 
 		JWT jwt = new JWT();
+		
 		Optional<User> user = userServ.getUserByEmail(email);
-		System.out.println(user.get().getEmail());
+		
+		System.out.println(user.get());
 		
 		if(user.get() != null) {
 			
@@ -61,7 +63,7 @@ public class SessionService {
 			System.out.println(user.get().getEmail() + "   " + user.get().getPassword());
 
 			if(user.get().getEmail().equals(decodedEmail) 
-					&& BCrypt.checkpw(decodedPassword, user.get().getPassword())) {
+					&& decodedPassword.equals(user.get().getPassword())) {
 				return true;
 			}
 			
