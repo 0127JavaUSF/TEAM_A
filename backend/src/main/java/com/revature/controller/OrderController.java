@@ -1,10 +1,15 @@
 package com.revature.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,11 +40,26 @@ public class OrderController {
 //		return new ResponseEntity<OrderHistory>(itemHistory, HttpStatus.OK);
 //	}
 
-//	@GetMapping("/{id}")
-//	public ResponseEntity<OrderHistory> getOrderHistory(@PathVariable(value="id") User user)
-//	{
-//		Optional<OrderHistory> history = oHistServ.getOrderHistory(user);
-//		OrderHistory foundHistory = history.get();
-//		return new ResponseEntity<OrderHistory>(foundHistory, HttpStatus.OK);
-//	}
+	@GetMapping("/{id}")
+	public ResponseEntity<Order> getOrder(@PathVariable(value="id") Long id)
+	{
+		Optional<Order> history = oServ.getOrder(id);
+		Order foundHistory = history.get();
+		return new ResponseEntity<Order>(foundHistory, HttpStatus.OK);
+	}
+	
+	@GetMapping()
+	public List<Order> getOrder()
+	{
+		List<Order> orders = oServ.getOrders();
+		return orders;
+	}
+	
+	@GetMapping("/user")
+	public ResponseEntity<Order> getUserOrders(@RequestBody User user)
+	{
+		Optional<Order> userOrder = oServ.getOrder(user);
+		Order userOrders = userOrder.get();
+		return new ResponseEntity<Order>(userOrders, HttpStatus.OK);
+	}
 }
