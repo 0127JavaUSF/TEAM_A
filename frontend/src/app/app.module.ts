@@ -11,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from './components/menu/menu.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
-import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { UserService } from './services/user.service';
 
 
 @NgModule({
@@ -24,8 +24,7 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     RestaurantComponent,
     MenuComponent,
     SignInComponent,
-    CreateUserComponent,
-    UserDetailsComponent
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +32,7 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
