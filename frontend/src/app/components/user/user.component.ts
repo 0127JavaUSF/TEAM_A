@@ -13,10 +13,11 @@ export class UserComponent implements OnInit {
   addresses;
   user: any;
 
-  constructor(private userService: UserService, private email: User['email']) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.user = this.userService.getUser(User[this.email]).subscribe(data => {
+    this.user = this.userService.getUser().subscribe(
+      data => {
       this.user.id = data.id;
       this.user.firstName = data.firstName,
       this.user.lastName = data.lastName,
@@ -30,7 +31,8 @@ export class UserComponent implements OnInit {
       this.user.city = data.city,
       this.user.state = data.state,
       this.user.zipCode = data.zipCode;
-    });
+      console.log(data);
+    }, error => (console.log(error))) ;
   }
 }
 
