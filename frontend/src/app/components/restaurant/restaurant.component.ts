@@ -21,7 +21,7 @@ export class RestaurantComponent implements OnInit {
     ngOnInit(): void {
       if (localStorage.getItem('address') === null) {
         this.restaurantService.setRestaurantAddress();
-      }
+            }
       if (localStorage.getItem('address') === 'undefined') {
         localStorage.removeItem('address');
       }

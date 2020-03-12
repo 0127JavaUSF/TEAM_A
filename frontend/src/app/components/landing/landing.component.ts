@@ -17,6 +17,8 @@ export class LandingComponent implements OnInit {
 
   ngOnInit(): void {
     localStorage.removeItem('address');
+    localStorage.removeItem('method');
+    localStorage.removeItem('radius');
   }
 
   search() {

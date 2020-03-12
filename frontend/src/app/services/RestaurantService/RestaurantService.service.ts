@@ -9,8 +9,8 @@ import { Observable, from } from 'rxjs';
 export class RestaurantService {
 
   newAddress: string;
-  pickupRadius: number;
-  method: 'delivery' | 'pickup';
+  pickupRadius: any;
+  method: any;
   url: any;
 
 
@@ -25,10 +25,14 @@ export class RestaurantService {
 
   loadRestaurantAddress() {
     this.newAddress = localStorage.getItem('address');
+    this.method = localStorage.getItem('method');
+    this.pickupRadius = localStorage.getItem('radius');
   }
 
   setRestaurantAddress() {
     localStorage.setItem('address', this.newAddress);
+    localStorage.setItem('method', this.method);
+    localStorage.setItem('radius', this.pickupRadius);
   }
 
   getDeliveryRestaurants(): Observable<any> {
