@@ -17,11 +17,15 @@ export class SignInComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
   signIn() {
     // potential holder for getUser
     console.log('wait this doesnt work yet ;D');
-    this.httpClient.get<User>('http://localhost:9010/user/' + this.email)
+    this.httpClient.post<User>('http://localhost:9010/login', {
+    email: this.email, password: this.password } );
+
+  }
+
+  /*this.httpClient.get<User>('http://localhost:9010/user/' + this.email)
     .subscribe(
       data => {
         this.user.id = data.id;
@@ -40,8 +44,5 @@ export class SignInComponent implements OnInit {
         console.log(this.user);
       },
       error => (console.log('Error'))
-    );
-
-  }
-
+    );*/
 }
