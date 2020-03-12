@@ -65,10 +65,10 @@ public class User {
 //	@OneToMany(mappedBy = "order_history=", fetch = FetchType.LAZY)
 //	@JoinColumn(name = "order_history_id", referencedColumnName = "user_id")
 //	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "order_id")
 //	@OneToMany(targetEntity = OrderHistory.class,cascade = CascadeType.ALL)
-	private List<OrderHistory> orders;
+	private List<Order> orders;
 
 	public long getId() {
 		return id;
@@ -182,11 +182,11 @@ public class User {
 		this.presignedUrl = presignedUrl;
 	}
 
-	public List<OrderHistory> getOrders() {
+	public List<Order> getOrders() {
 		return orders;
 	}
 
-	public void setOrders(List<OrderHistory> orders) {
+	public void setOrders(List<Order> orders) {
 		this.orders = orders;
 	}
 
@@ -290,9 +290,18 @@ public class User {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", password=" + password + ", phoneNumber=" + phoneNumber + ", address=" + address + ", city=" + city
+				+ ", state=" + state + ", zipCode=" + zipCode + ", profilePictureUrl=" + profilePictureUrl
+				+ ", sessionToken=" + sessionToken + ", hasProfilePic=" + hasProfilePic + ", presignedUrl="
+				+ presignedUrl + ", orders=" + orders + "]";
+	}
+
 	public User(long id, String firstName, String lastName, String email, String password, String phoneNumber,
 			String address, String city, String state, String zipCode, String profilePictureUrl, int sessionToken,
-			boolean hasProfilePic, String presignedUrl, List<OrderHistory> orders) {
+			boolean hasProfilePic, String presignedUrl, List<Order> orders) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -315,6 +324,8 @@ public class User {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
+
+
 	
 }
