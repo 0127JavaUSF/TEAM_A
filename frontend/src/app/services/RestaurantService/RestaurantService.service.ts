@@ -8,63 +8,53 @@ import { Observable, from } from 'rxjs';
 })
 export class RestaurantService {
 
-  // private baseUrl = '';
   newAddress: string;
-  restaurants = [];
-
-
-  private testUrl = 'https://eatstreet.com/publicapi/v1/restaurant'
-  + '/search?access-token=261ad9c0491c92b2&method=both&pickup-radius=20&street-address=12702+Bruce+B+Downs+Blvd,+Tampa,+FL+33612';
-
-  // private httpOptions = {
-  //   headers: new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     'x-access-token': '261ad9c0491c92b2'
-      // 'Access-Control-Allow-Origin': 'http://localhost:4200',
-      // 'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Access-Token, content-type',
-
-  //   })
-  // };
-
-  // private httpHeaders = new HttpHeaders().append('X-Access-Token', '261ad9c0491c92b2').set('Content-Type', 'application/json');
-
-  // private options = {headers: this.httpHeaders,
-  //                   withCredentials: true};
+  pickupRadius: any;
+  method: any;
+  url: any;
 
 
   constructor(private http: HttpClient) { }
 
   getRestaurants(): Observable<any> {
-    return this.http.get(this.newAddress);
+    this.url = 'https://eatstreet.com/publicapi/v1/restaurant'
+  + '/search?access-token=261ad9c0491c92b2&method=' + this.method + '&pickup-radius=' + this.pickupRadius +
+    '&street-address=' + this.newAddress;
+    return this.http.get(this.url);
   }
 
   loadRestaurantAddress() {
     this.newAddress = localStorage.getItem('address');
+    this.method = localStorage.getItem('method');
+    this.pickupRadius = localStorage.getItem('radius');
   }
 
   setRestaurantAddress() {
     localStorage.setItem('address', this.newAddress);
+    localStorage.setItem('method', this.method);
+    localStorage.setItem('radius', this.pickupRadius);
   }
-  // setRestaurants(): string [] {
-  //   this.getRestaurants().subscribe(
-  //   (data) => {
-  //     this.restaurants = data.restaurants;
-  //   }, (error) => console.log(error)
-  //   );
-  //   return this.restaurants;
-  // }
-  // result = from(fetch(this.testUrl, {
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     'Access-Control-Allow-Headers': 'X-Access-Token',
-  //     'X-Access-Token': '261ad9c0491c92b2'
-  //   },
-  //   method: 'GET',
-  //   mode: 'no-cors'
-  // }));
 
-  // getRestaurants(): Observable<any> {
-  //   return this.http.get(this.imgUrl, {responseType: 'blob'});
-  // }
+  getDeliveryRestaurants(): Observable<any> {
+    this.url = 'https://eatstreet.com/publicapi/v1/restaurant'
+    + '/search?access-token=261ad9c0491c92b2&method=' + this.method + '&pickup-radius=' + this.pickupRadius +
+      '&street-address=' + this.newAddress;
+    return this.http.get(this.url);
+  }
+
+  getPickupRestaurants(): Observable<any> {
+    this.url = 'https://eatstreet.com/publicapi/v1/restaurant'
+    + '/search?access-token=261ad9c0491c92b2&method=' + this.method + '&pickup-radius=' + this.pickupRadius +
+      '&street-address=' + this.newAddress;
+    return this.http.get(this.url);
+  }
+
+  getNewRestaurants(): Observable<any> {
+    this.url = 'https://eatstreet.com/publicapi/v1/restaurant'
+    + '/search?access-token=261ad9c0491c92b2&method=' + this.method + '&pickup-radius=' + this.pickupRadius +
+      '&street-address=' + this.newAddress;
+    return this.http.get(this.url);
+  }
+
 
 }

@@ -17,16 +17,17 @@ export class LandingComponent implements OnInit {
 
   ngOnInit(): void {
     localStorage.removeItem('address');
+    localStorage.removeItem('method');
+    localStorage.removeItem('radius');
   }
 
   search() {
     // takes user address and fixes it to api standard
     const replace = / /gi;
     const newAddress = this.address.replace(replace, '+');
-    const api = 'https://eatstreet.com/publicapi/v1/restaurant'
-    + '/search?access-token=261ad9c0491c92b2&method=both&pickup-radius=' + this.distance + '&street-address=' + newAddress;
-    console.log(api);
-    this.restaurantService.newAddress = api;
+    this.restaurantService.method = 'delivery';
+    this.restaurantService.pickupRadius = this.distance;
+    this.restaurantService.newAddress = newAddress;
   }
 
   finishTypingEvent() {
