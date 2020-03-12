@@ -8,14 +8,13 @@ import { User } from 'src/app/user';
 })
 export class UserComponent implements OnInit {
 
-  addresses: any []; 
+  addresses;
 
-  user: User;
+  user;
 
   constructor() { }
 
   ngOnInit(): void {
   }
-  
 }
 
