@@ -20,5 +20,11 @@ export class UserComponent implements OnInit {
     this.user = this._userService.getUser();
     console.log(this.user);
   }
+
+  submitProfilePicture(file){
+    this.user.hasProfilePicture = true;
+
+    this._userService.submitPicture(this.user, file);
+  }
 }
 

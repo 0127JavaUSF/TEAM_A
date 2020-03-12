@@ -50,12 +50,19 @@ public class UserController {
 //		return new ResponseEntity<User>(foundUser, HttpStatus.OK);
 //	}
 	
-	@GetMapping("/{id}")
+	@GetMapping(value="/{id}")
 	public ResponseEntity<User> getUser(@PathVariable(value="id") long id)
 	{
 		Optional<User> user = userServ.getUserById(id);
 		User foundUser = user.get();
 		return new ResponseEntity<User>(foundUser, HttpStatus.OK);
 	}
+	
+//	@PostMapping(value="/updatePassword")
+//	public updatePassword(@RequestBody String email, String password) {		
+//		
+//		
+//	}
+
 
 }

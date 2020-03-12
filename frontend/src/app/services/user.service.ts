@@ -9,12 +9,24 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
+  presignedUrlUser;
 
   constructor(private http: HttpClient) { }
 
 
   getUser(): Observable<User>{
     return this.http.get<User>('localhost:9010/user/');
+  }
+
+  submitPicture(user, file){
+   this.http.post('localhost:9010/user/', user).subscribe(
+     (data) => {
+       this.presignedUrlUser = data;
+     },
+     (error) => console.log(error)
+   );
+
+   this.http.put(this.presignedUrlUser.presignedUrl,file);
   }
 
 }

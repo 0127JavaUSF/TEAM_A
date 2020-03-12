@@ -5,7 +5,31 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2020-03-11T21:11:13Z</updated>
+  <updated>2020-03-12T18:05:40Z</updated>
+  <entry>
+    <title>Spring Boot 2.3.0.M3 available now</title>
+    <link rel="alternate" href="https://spring.io/blog/2020/03/12/spring-boot-2-3-0-m3-available-now" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Andy Wilkinson</name>
+    </author>
+    <id>tag:spring.io,2020-03-12:3997</id>
+    <updated>2020-03-12T18:05:40Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team and everyone that contributed, I am pleased to announce that the third milestone of Spring Boot 2.3 has been released and is available from &lt;a href="https://repo.spring.io/milestone/"&gt;our milestone repository&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This release closes &lt;a href="https://github.com/spring-projects/spring-boot/releases/tag/v2.3.0.M3"&gt;89 issues and pull requests&lt;/a&gt;. Thanks to all those who have contributed.&lt;/p&gt;
+&lt;p&gt;Highlights of this milestone include:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Support for gracefully shutting down the embedded web server&lt;/li&gt;
+  &lt;li&gt;Support for customizing the layers when building a layered jar with Maven&lt;/li&gt;
+  &lt;li&gt;Support for R2DBC&lt;/li&gt;
+  &lt;li&gt;Auto-configuration for Spring Integration&amp;rsquo;s RSocket support&lt;/li&gt;
+  &lt;li&gt;Numerous dependency upgrades&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For a complete list of changes and upgrade instructions, please see the &lt;a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.3.0-M3-Release-Notes"&gt;Spring Boot 2.3 Release Notes&lt;/a&gt; on the wiki and the &lt;a href="http://docs.spring.io/spring-boot/docs/2.3.0.M3/reference/html/"&gt;updated reference documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you want to get started with 2.3 and try out the new features, you can bootstrap a new project on &lt;a href="https://start.spring.io"&gt;https://start.spring.io&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/2.3.0.M3/reference/html"&gt;Documentation&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-boot"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;&lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>Spring Integration 5.3 Milestone 3 Available</title>
     <link rel="alternate" href="https://spring.io/blog/2020/03/11/spring-integration-5-3-milestone-3-available" />
@@ -139,10 +163,208 @@ See &lt;code&gt;org.springframework.integration.ws.dsl.Ws&lt;/code&gt; for more 
       <name>Josh Long</name>
     </author>
     <id>tag:spring.io,2020-03-11:3991</id>
-    <updated>2020-03-11T07:04:44Z</updated>
-    <content type="html">&lt;p&gt;Hi, Spring fans! In this installment, we look at some of the new features in Java 14 and their use in a Spring application.&lt;/p&gt;
+    <updated>2020-03-11T07:04:00Z</updated>
+    <content type="html">&lt;p&gt;Hi, Spring fans! Welcome to another installment of Spring Tips! In this installment, we&amp;rsquo;re going to look at the new features in Java 14 and their use in building Spring Boot-based applications. &lt;/p&gt;
 &lt;p&gt;Speaker: &lt;a href="http://twitter.com/starbuxman"&gt;Josh Long (@starbuxman)&lt;/a&gt;&lt;/p&gt;
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/mr-7kGy8Yao" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;p&gt;To get started, we need to use the latest and greatest version of Java, Java 14, which isn&amp;rsquo;t - just yet - released yet. It is due to be shipped in early 2020. You can download early access releases on &lt;a href="https://jdk.java.net/"&gt;Java.net&lt;/a&gt;. You might also consider using &lt;a href="http://sdkman.io"&gt;SDKManager (&lt;code&gt;sdk&lt;/code&gt;)&lt;/a&gt;, which makes installing new JVM editions a trivial matter indeed. &lt;/p&gt;
+&lt;p&gt;Remember, there are new Java releases every 6 months. These new releases are usable in production but are only supported for the six months between one release and the next. Every now and then, the Java project also releases a long-term support (LTS) release. That release is currently Java 11. Java 14 is only a viable target for production until Java 15 comes out. And indeed, we&amp;rsquo;re going to look at a lot of &lt;em&gt;preview features&lt;/em&gt;, which one might argue shouldn&amp;rsquo;t be in production at all. You&amp;rsquo;ve been warned! &lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re using SDKManager, you can run the following incantation to get Java 14 installed.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint shell "&gt;sdk install java 14.ea.36-open 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Go to the &lt;a href="http://start.Spring.io"&gt;Spring Initializr&lt;/a&gt; and generate a new project using Spring Boot 2.3 or later. You&amp;rsquo;ll also need to select &lt;code&gt;JDBC&lt;/code&gt; and &lt;code&gt;PostgreSQL&lt;/code&gt;. &lt;/p&gt;
+&lt;p&gt;Older versions of Spring Boot don&amp;rsquo;t yet support the Java 14 runtime. Naturally, in order to edit this version of Java, you&amp;rsquo;ll need to import it into your IDE. Before you do that, though, let&amp;rsquo;s modify the &lt;code&gt;pom.xml&lt;/code&gt; to configure the build to support Java 14. Normally, when you go to the Spring Initializr, you also specify a version of Java. Java 14 is not supported, yet, so we want to manually configure a few things. &lt;/p&gt;
+&lt;p&gt;Make sure that you specify the version of Java by changing the &lt;code&gt;java.version&lt;/code&gt; property:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint xml"&gt;&amp;lt;properties&amp;gt;&#xD;
+ &amp;lt;java.version&amp;gt;14&amp;lt;/java.version&amp;gt;&#xD;
+&amp;lt;/properties&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This allows our build to use Java 14 and all the released features in that release, but to really experience the novelty of Java 14, we need to turn on the &lt;em&gt;preview features&lt;/em&gt; - features that are shipped in the release but that are not active by default. &lt;/p&gt;
+&lt;p&gt;In the &lt;code&gt;&amp;lt;plugins&amp;gt;...&amp;lt;/plugins&amp;gt;&lt;/code&gt; stanza, add the following plugin configurations to enable Java 14&amp;rsquo;s preview features. &lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint xml "&gt;&amp;lt;plugin&amp;gt;&#xD;
+    &amp;lt;artifactId&amp;gt;maven-compiler-plugin&amp;lt;/artifactId&amp;gt;&#xD;
+    &amp;lt;configuration&amp;gt;&#xD;
+        &amp;lt;release&amp;gt;14&amp;lt;/release&amp;gt;&#xD;
+        &amp;lt;compilerArgs&amp;gt;&#xD;
+            &amp;lt;arg&amp;gt;--enable-preview&amp;lt;/arg&amp;gt;&#xD;
+        &amp;lt;/compilerArgs&amp;gt;&#xD;
+        &amp;lt;forceJavacCompilerUse&amp;gt;true&amp;lt;/forceJavacCompilerUse&amp;gt;&#xD;
+        &amp;lt;parameters&amp;gt;true&amp;lt;/parameters&amp;gt;&#xD;
+    &amp;lt;/configuration&amp;gt;&#xD;
+&amp;lt;/plugin&amp;gt;&#xD;
+&#xD;
+&amp;lt;plugin&amp;gt;&#xD;
+    &amp;lt;artifactId&amp;gt;maven-surefire-plugin&amp;lt;/artifactId&amp;gt;&#xD;
+    &amp;lt;configuration&amp;gt;&#xD;
+        &amp;lt;argLine&amp;gt;--enable-preview&amp;lt;/argLine&amp;gt;&#xD;
+    &amp;lt;/configuration&amp;gt;&#xD;
+&amp;lt;/plugin&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now you&amp;rsquo;re ready to go! Let&amp;rsquo;s look at some Java code. The Spring Initializr was nice enough to give us a project and a skeletal entry point class: &lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;package com.example.fourteen;&#xD;
+&#xD;
+import org.springframework.boot.SpringApplication;&#xD;
+import org.springframework.boot.autoconfigure.SpringBootApplication;&#xD;
+import org.springframework.boot.context.event.ApplicationReadyEvent;&#xD;
+import org.springframework.context.event.EventListener;&#xD;
+import org.springframework.jdbc.core.JdbcTemplate;&#xD;
+import org.springframework.jdbc.core.PreparedStatementCreatorFactory;&#xD;
+import org.springframework.jdbc.core.RowMapper;&#xD;
+import org.springframework.jdbc.core.SqlParameter;&#xD;
+import org.springframework.jdbc.support.GeneratedKeyHolder;&#xD;
+import org.springframework.stereotype.Component;&#xD;
+import org.springframework.stereotype.Service;&#xD;
+&#xD;
+import java.sql.Types;&#xD;
+import java.util.List;&#xD;
+&#xD;
+@SpringBootApplication&#xD;
+public class FourteenApplication {&#xD;
+&#xD;
+	public static void main(String[] args) {&#xD;
+		SpringApplication.run(FourteenApplication.class, args);&#xD;
+	}&#xD;
+}&#xD;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We&amp;rsquo;re going to create a simple JDBC-powered service that writes its data to the database using SQL. We&amp;rsquo;ll need an object that maps to the data in the database table &lt;code&gt;people&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;At this point, I&amp;rsquo;d normally either slog through writing the Javabean object using my IDE&amp;rsquo;s code-generation facilities, or I&amp;rsquo;d use Lombok to annotate my way to a compiler-synthesized object that has getters, setters, &lt;code&gt;toString&lt;/code&gt;, and an implementation of &lt;code&gt;equals&lt;/code&gt;. I might even make some begrudging reference to other languages&amp;rsquo; ability to make this tedious kind of work trivial. Scala supports &lt;em&gt;case classes&lt;/em&gt;. Kotlin supports &lt;em&gt;data classes&lt;/em&gt;. &lt;/p&gt;
+&lt;p&gt;And Java 14 supports _record_s. &lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;record Person(Integer id, String name, int emotionalState) {&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Not bad eh? This syntax packs a wallop! It gives us a new object with a constructor and constructor parameters, properties, implementation of &lt;code&gt;equals&lt;/code&gt; and &lt;code&gt;toString&lt;/code&gt; and more. We can instantiate an instance of this object just as with any other object. Try to dereference properties in the object and you&amp;rsquo;ll that our constructor properties have become &lt;code&gt;id()&lt;/code&gt;/&lt;code&gt;id(int)&lt;/code&gt;, &lt;code&gt;name()&lt;/code&gt;/&lt;code&gt;name(String)&lt;/code&gt;, and &lt;code&gt;emotionalState()&lt;/code&gt;/&lt;code&gt;emotionalState(int)&lt;/code&gt;. Not bad for so little! &lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s look at the implementation of &lt;code&gt;PeopleService&lt;/code&gt;. &lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;PeopleService&lt;/code&gt; uses the &lt;code&gt;JdbcTemplate&lt;/code&gt; to make short work of turning results from a database query into Java objects. This should be fairly straightforward if you&amp;rsquo;ve ever used the &lt;code&gt;JdbcTemplate&lt;/code&gt; (who hasn&amp;rsquo;t)? I&amp;rsquo;ve left some parts unimplemented so we can revisit those directly. &lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;&lt;br/&gt;@Service&#xD;
+class PeopleService {&#xD;
+&#xD;
+	private final JdbcTemplate template;&#xD;
+&#xD;
+	//todo&#xD;
+	private final String findByIdSql = null;&#xD;
+&#xD;
+	private final String insertSql = null; &#xD;
+&#xD;
+	private final RowMapper&amp;lt;Person&amp;gt; personRowMapper =&#xD;
+		(rs, rowNum) -&amp;gt; new Person(rs.getInt(&amp;quot;id&amp;quot;), rs.getString(&amp;quot;name&amp;quot;), rs.getInt(&amp;quot;emotional_state&amp;quot;));&#xD;
+&#xD;
+	PeopleService(JdbcTemplate template) {&#xD;
+		this.template = template;&#xD;
+	}&#xD;
+&#xD;
+	public Person create(String name, EmotionalState state) {&#xD;
+		 //todo&#xD;
+	}&#xD;
+&#xD;
+	public Person findById(Integer id) {&#xD;
+		return this.template.queryForObject(this.findByIdSql, new Object[]{id}, this.personRowMapper);&#xD;
+	}&#xD;
+}&#xD;
+&#xD;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;First and foremost, we&amp;rsquo;re going to use some SQL queries. I&amp;rsquo;ve got to great pains in my life to avoid having to type SQL queries in Java code. My goodness, would people so often have used ORMs if they knew they could eloquently express SQL queries as Java &lt;code&gt;Strings&lt;/code&gt;? For anything even mildly complex, I extract my SQL queries into property files which are then loaded with Spring&amp;rsquo;s configuration property mechanism.&lt;/p&gt;
+&lt;p&gt;But, we can do better in Java 14! Multiline strings have come to Java at long last! It now joins the ranks of Python, Ruby, C++, C#, Rust, PHP, Kotlin, Scala, Groovy, Go, JavaScript, Clojure, and a dozen other languages besides. I&amp;rsquo;m so happy it&amp;rsquo;s finally here! &lt;/p&gt;
+&lt;p&gt;Replace the &lt;code&gt;sql&lt;/code&gt; variables with the following declarations. &lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;private final String findByIdSql =&#xD;
+    &amp;quot;&amp;quot;&amp;quot;&#xD;
+            select * from PEOPLE &#xD;
+            where ID = ? &#xD;
+    &amp;quot;&amp;quot;&amp;quot;;&#xD;
+&#xD;
+	private final String insertSql =&#xD;
+    &amp;quot;&amp;quot;&amp;quot;&#xD;
+        insert into PEOPLE(name, emotional_state)&#xD;
+        values (?,?);&#xD;
+    &amp;quot;&amp;quot;&amp;quot;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So nice, that! There are methods you can use to trim the margin and so on. You can also use the backslash escape sequence (&lt;code&gt;\&lt;/code&gt;) at the end of each line to signal that the next line should start there, otherwise the newlines are interpreted literally. &lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s look at that &lt;code&gt;create&lt;/code&gt; method. &lt;/p&gt;
+&lt;p&gt;The storage of the &lt;code&gt;Person&lt;/code&gt;&amp;rsquo;s &lt;code&gt;emotionalState&lt;/code&gt; in the database as an &lt;code&gt;int&lt;/code&gt; is an implementation detail. I&amp;rsquo;d prefer to not have to bubble that up to the user. Let&amp;rsquo;s use an enum to describe the emotional state for each &lt;code&gt;Person&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;enum EmotionalState {&#xD;
+	SAD, HAPPY, NEUTRAL&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is a start, I suppose. Let&amp;rsquo;s get to the implementation. Straight away we&amp;rsquo;re given an opportunity to use another nice new feature in Java 14: &lt;em&gt;smarter switch expressions&lt;/em&gt;. Switch expressions give us a way to return a value from the branch of a switch case and then assign that to a variable. The syntax is &lt;em&gt;almost&lt;/em&gt; identical to what we&amp;rsquo;ve used before, except that each case is set off from the branch with an arrow, &lt;code&gt;-&amp;gt;&lt;/code&gt;, not &lt;code&gt;:&lt;/code&gt;, and there&amp;rsquo;s no need for a &lt;code&gt;break&lt;/code&gt; statement. &lt;/p&gt;
+&lt;p&gt;In the following example, we assign the &lt;code&gt;int&lt;/code&gt; value to a variable &lt;code&gt;index&lt;/code&gt;, whose type we don&amp;rsquo;t need to specify because of yet another nice feature in recent Java iterations, auto type inference with &lt;code&gt;var&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;	public Person create(String name, EmotionalState state) {&#xD;
+		var index = switch (state) {&#xD;
+			case SAD -&amp;gt; -1;&#xD;
+			case HAPPY -&amp;gt; 1;&#xD;
+			case NEUTRAL -&amp;gt; 0;&#xD;
+        };&#xD;
+        // todo &#xD;
+	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With the &lt;code&gt;index&lt;/code&gt; in hand, we can create the requisite &lt;code&gt;PreparedStatement&lt;/code&gt; required to execute the SQL statement against the database. We can execute that prepared statement and pass in a &lt;code&gt;KeyHolder&lt;/code&gt; which will serve to collect the generated key returned from the newly inserted row. &lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;&lt;br/&gt;	public Person create(String name, EmotionalState state) {&#xD;
+		var index = switch (state) {&#xD;
+			case SAD -&amp;gt; -1;&#xD;
+			case HAPPY -&amp;gt; 1;&#xD;
+			case NEUTRAL -&amp;gt; 0;&#xD;
+		};&#xD;
+        var declaredParameters = List.of(&#xD;
+            new SqlParameter(Types.VARCHAR, &amp;quot;name&amp;quot;), &#xD;
+            new SqlParameter(Types.INTEGER, &amp;quot;emotional_state&amp;quot;));&#xD;
+		var pscf = new PreparedStatementCreatorFactory(this.insertSql, declaredParameters) {&#xD;
+			{&#xD;
+				setReturnGeneratedKeys(true);&#xD;
+				setGeneratedKeysColumnNames(&amp;quot;id&amp;quot;);&#xD;
+			}&#xD;
+		};&#xD;
+		var psc = pscf.newPreparedStatementCreator(List.of(name, index));&#xD;
+		var kh = new GeneratedKeyHolder();&#xD;
+		this.template.update(psc, kh);&#xD;
+		// todo&#xD;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The only trouble is that the key returned is a &lt;code&gt;Number&lt;/code&gt;, not an &lt;code&gt;Integer&lt;/code&gt; or a &lt;code&gt;Double&lt;/code&gt; or anything more concrete. This gives us a chance to use yet another interesting new feature in Java 14, smart casting. Smart casting allows us to avoid a redundant cast after testing for a type in an &lt;code&gt;instanceof&lt;/code&gt; test. It goes even further and gives us a variable name by which we can reference the automatically cast variable in the scope of the test. &lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;&lt;br/&gt;	public Person create(String name, EmotionalState state) {&#xD;
+		var index = switch (state) {&#xD;
+			case SAD -&amp;gt; -1;&#xD;
+			case HAPPY -&amp;gt; 1;&#xD;
+			case NEUTRAL -&amp;gt; 0;&#xD;
+		};&#xD;
+        var declaredParameters = List.of(&#xD;
+            new SqlParameter(Types.VARCHAR, &amp;quot;name&amp;quot;), &#xD;
+            new SqlParameter(Types.INTEGER, &amp;quot;emotional_state&amp;quot;));&#xD;
+		var pscf = new PreparedStatementCreatorFactory(this.insertSql, declaredParameters) {&#xD;
+			{&#xD;
+				setReturnGeneratedKeys(true);&#xD;
+				setGeneratedKeysColumnNames(&amp;quot;id&amp;quot;);&#xD;
+			}&#xD;
+		};&#xD;
+		var psc = pscf.newPreparedStatementCreator(List.of(name, index));&#xD;
+		var kh = new GeneratedKeyHolder();&#xD;
+		this.template.update(psc, kh);&#xD;
+		if (kh.getKey() instanceof Integer id) {&#xD;
+			return findById(id);&#xD;
+		}&#xD;
+		throw new IllegalArgumentException(&amp;quot;we couldn&amp;#39;t create the &amp;quot; + Person.class.getName() + &amp;quot;!&amp;quot;);&#xD;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We needed an &lt;code&gt;int&lt;/code&gt; to be able to pass it to &lt;code&gt;findById(Integer)&lt;/code&gt;, and this method does that work for us. Convenient, eh? &lt;/p&gt;
+&lt;p&gt;Everything&amp;rsquo;s working, so let&amp;rsquo;s exercise the code with a simple &lt;code&gt;ApplicationListener&amp;lt;ApplicationReadyEvent&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;&lt;br/&gt;@Component&#xD;
+class Runner {&#xD;
+&#xD;
+	private final PeopleService peopleService;&#xD;
+&#xD;
+	Runner(PeopleService peopleService) {&#xD;
+		this.peopleService = peopleService;&#xD;
+	}&#xD;
+&#xD;
+	@EventListener(ApplicationReadyEvent.class)&#xD;
+	public void exercise() throws Exception {&#xD;
+		var elizabeth = this.peopleService.create(&amp;quot;Elizabeth&amp;quot;, EmotionalState.SAD);&#xD;
+		System.out.println(elizabeth);&#xD;
+	}&#xD;
+}&#xD;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Run that and you&amp;rsquo;ll see that the object has been written to the database and - best of all - you got a spiffy new &lt;code&gt;toString()&lt;/code&gt; result when printing the resulting &lt;code&gt;Person&lt;/code&gt; object! &lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;ve only begun to scratch the surface of all the new features in Java 14! There are a ton of new features in the language that we&amp;rsquo;ve begun to introduce in this video and considerably more features for security and performance in the runtime itself. I can not more heartily recommend that you find a way off of your older versions of the JDK (looking at you, Java 8 users!) and move to the newest ones. &lt;/p&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
   <entry>
@@ -379,12 +601,13 @@ shell:&amp;gt;
       <name>Olga Maciaszek-Sharma</name>
     </author>
     <id>tag:spring.io,2020-03-05:3986</id>
-    <updated>2020-03-05T17:47:36Z</updated>
+    <updated>2020-03-05T17:47:00Z</updated>
     <content type="html">&lt;p&gt;On behalf of the community, I am pleased to announce that the Service Release 3 (SR3) of the &lt;a href="https://cloud.spring.io"&gt;Spring Cloud Hoxton&lt;/a&gt; Release Train is available today. The release can be found in &lt;a href="https://repo1.maven.org/maven2/org/springframework/cloud/spring-cloud-dependencies/Hoxton.SR3/"&gt;Maven Central&lt;/a&gt;. You can check out the Hoxton &lt;a href="https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Hoxton-Release-Notes"&gt;release notes for more information&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#important-security-advisory" class="anchor" name="important-security-advisory"&gt;&lt;/a&gt;Important Security Advisory&lt;/h2&gt;
 &lt;p&gt;Spring Cloud Config contains fixes for &lt;a href="https://pivotal.io/security/cve-2020-5405"&gt;CVE-2020-5405&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#notable-changes-in-the-hoxton-release-train" class="anchor" name="notable-changes-in-the-hoxton-release-train"&gt;&lt;/a&gt;Notable Changes in the Hoxton Release Train&lt;/h2&gt;
 &lt;p&gt;This milestone was primarily a bugfix release.&lt;/p&gt;
 &lt;p&gt;Please see the Hoxton.SR3 &lt;a href="https://github.com/orgs/spring-cloud/projects/36"&gt;Github Project&lt;/a&gt; for all issues closed.&lt;/p&gt;
 &lt;p&gt;This milestone release is built with Spring Boot 2.2.5.RELEASE.&lt;/p&gt;&lt;h3&gt;&lt;a href="#spring-cloud-config" class="anchor" name="spring-cloud-config"&gt;&lt;/a&gt;Spring Cloud Config&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: &lt;em&gt;The writable &lt;code&gt;env&lt;/code&gt; endpoint has been disabled by default. To re-enable this please set &lt;code&gt;management.endpoint.env.post.enabled=true&lt;/code&gt;. Please make sure this endpoint is not publicly available.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Possibility to override &lt;code&gt;ConfigTokenProvider&lt;/code&gt; was added. Performance issues with &lt;code&gt;KeyStoreTestEncryptorLocator&lt;/code&gt; were fixed.&lt;/p&gt;&lt;h3&gt;&lt;a href="#spring-cloud-contract" class="anchor" name="spring-cloud-contract"&gt;&lt;/a&gt;Spring Cloud Contract&lt;/h3&gt;
 &lt;p&gt;Support added for Spring Cloud LoadBalancer in StubRunner. &lt;/p&gt;&lt;h3&gt;&lt;a href="#spring-cloud-circuitbreaker" class="anchor" name="spring-cloud-circuitbreaker"&gt;&lt;/a&gt;Spring Cloud CircuitBreaker&lt;/h3&gt;
 &lt;p&gt;Support added for creating and customizing circuit breakers in advance.&lt;/p&gt;&lt;h3&gt;&lt;a href="#spring-cloud-commons" class="anchor" name="spring-cloud-commons"&gt;&lt;/a&gt;Spring Cloud Commons&lt;/h3&gt;
@@ -994,24 +1217,6 @@ Data:&#xD;
 &lt;p&gt;This version of Spring Boot includes a dependency upgrade to Reactor Netty 0.8.16. It contains a fix for &lt;a href="https://pivotal.io/security/cve-2020-5404"&gt;CVE-2020-5404&lt;/a&gt;.&lt;/p&gt;&lt;h3&gt;&lt;a href="#how-can-you-help" class="anchor" name="how-can-you-help"&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
 &lt;p&gt;If you&amp;rsquo;re interested in helping out, check out the &lt;a href="https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution"&gt;&amp;ldquo;ideal for contribution&amp;rdquo; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href="http://stackoverflow.com"&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href="http://stackoverflow.com/tags/spring-boot"&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt; or chat with the community on &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://spring.io/projects/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/2.1.13.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-boot"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;&lt;/p&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>CVE Reports Published for Reactor Netty</title>
-    <link rel="alternate" href="https://spring.io/blog/2020/02/27/cve-reports-published-for-reactor-netty" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Rossen Stoyanchev</name>
-    </author>
-    <id>tag:spring.io,2020-02-27:3976</id>
-    <updated>2020-02-27T17:48:11Z</updated>
-    <content type="html">&lt;p&gt;The following CVE reports were published today:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href="https://pivotal.io/security/cve-2020-5403"&gt;CVE-2020-5403&lt;/a&gt; affecting Reactor Netty &lt;code&gt;HttpServer&lt;/code&gt; 0.9.3 and 0.9.4.&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://pivotal.io/security/cve-2020-5404"&gt;CVE-2020-5404&lt;/a&gt; affecting Reactor Netty &lt;code&gt;HttpClient&lt;/code&gt; for all 0.8.x and 0.9.x versions in applications where the automatic following of redirects is explicitly enabled.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The fixes are in Reactor Netty 0.9.5 and 0.8.16. If using the reactor-bom, you can upgrade to Dysprosium-SR5 or Californium-SR16.&lt;/p&gt;
-&lt;p&gt;Reactor Netty is used internally in many frameworks including Spring WebFlux and its &lt;code&gt;WebClient&lt;/code&gt;. If you have a Spring Boot application, you can upgrade to Spring Boot 2.2.5 or 2.1.13. &lt;/p&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
 </feed>

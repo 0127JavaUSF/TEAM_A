@@ -62,12 +62,9 @@ public class User {
 	@Transient
 	private String presignedUrl;
 	
-//	@OneToMany(mappedBy = "order_history=", fetch = FetchType.LAZY)
-//	@JoinColumn(name = "order_history_id", referencedColumnName = "user_id")
-//	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "order_id")
-//	@OneToMany(targetEntity = OrderHistory.class,cascade = CascadeType.ALL)
+	@JoinColumn(name = "order_id")
+
 	private List<Order> orders;
 
 	public long getId() {
