@@ -52,7 +52,7 @@ public class User {
 	
 	@Column(name = "profile_pick_url", unique = true)
 	private String profilePictureUrl;
-	
+
 	@Transient
 	private boolean hasProfilePic;
 	
