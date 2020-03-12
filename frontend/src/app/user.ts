@@ -1,4 +1,5 @@
 export class User {
+    id = 0;
     firstName = 'this.firstName';
     lastName = 'this.lastName';
     email = 'this.email';

@@ -1,40 +1,40 @@
 <form class="createUserForm" action= "/localhost:4200" method="POST">
   <div class="form-group">
     <label for="firstName">First Name</label>
-    <input type="text" class="form-control" id="firstName" aria-describedby="emailHelp" placeholder="First Name" [(ngModel)]="user.firstName">
+    <input type="text" class="form-control" name="user.firstName" id="firstName" aria-describedby="emailHelp" placeholder="First Name" [(ngModel)]="user.firstName">
   </div>
   <div class="form-group">
     <label for="lastName">Last Name</label>
-    <input type="text" class="form-control" id="lastName" placeholder="Last Name" [(ngModel)]="user.lastName">
+    <input type="text" class="form-control" name="user.lastName" id="lastName" placeholder="Last Name" [(ngModel)]="user.lastName">
   </div>
   <div class="form-group">
     <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="user.password">
+    <input type="password" class="form-control" name="password" id="password" placeholder="Password" [(ngModel)]="user.password">
   </div>
   <div class="form-group">
     <label for="confirmPassword">Confirm Password</label>
-    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" [(ngModel)]="user.password">
+    <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" [(ngModel)]="confirmPassword">
   </div>
   <div class="form-group">
     <label for="email">Email</label>
-    <input type="email" class="form-control" id="email" placeholder="Email" [(ngModel)]="user.email">
+    <input type="email" class="form-control" name="user.email" id="email" placeholder="Email" [(ngModel)]="user.email">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
   <div class="form-group">
     <label for="phoneNumber">Phone Number</label>
-    <input type="text" class="form-control" id="phoneNumber" placeholder="123-456-789" [(ngModel)]="user.phoneNumber">
+    <input type="text" class="form-control" name="user.phoneNumber" id="phoneNumber" placeholder="123-456-789" [(ngModel)]="user.phoneNumber">
   </div>
   <div class="form-group">
     <label for="address">Address</label>
-    <input type="text" class="form-control" id="address" placeholder="123 This Road" [(ngModel)]="user.address">
+    <input type="text" class="form-control" name="user.address" id="address" placeholder="123 This Road" [(ngModel)]="user.address">
   </div>
   <div class="form-group">
     <label for="city">City</label>
-    <input type="text" class="form-control" id="city" placeholder="City" [(ngModel)]="user.city">
+    <input type="text" class="form-control" name="user.city" id="city" placeholder="City" [(ngModel)]="user.city">
   </div>
   <div class="form-group">
     <label for="state">State</label>
-      <select type="drop-down" class="form-control" id="state" placeholder="State" [(ngModel)]="user.state">
+      <select type="drop-down" class="form-control" name="user.state" id="state" placeholder="State" [(ngModel)]="user.state">
           <option>AK</option>
           <option>AL</option>
           <option>AR</option>
@@ -93,7 +93,7 @@
   </div> -->
   <div class="form-group">
     <label for="zipCode">Zip Code</label>
-    <input type="text" class="form-control" id="zipCode" placeholder="Zip Code" [(ngModel)]="user.zipCode">
+    <input type="text" class="form-control" name="user.zipCode" id="zipCode" placeholder="Zip Code" [(ngModel)]="user.zipCode">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" (click) = "submit()" class="btn btn-primary">Submit</button>
 </form>

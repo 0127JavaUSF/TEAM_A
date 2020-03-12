@@ -11,7 +11,7 @@ public class TestController {
 	
 	@GetMapping("/hello.app")
 	public @ResponseBody ResponseEntity<String> getWord(){
-		return new ResponseEntity<>("Food", HttpStatus.OK);
+		return new ResponseEntity<String>("Food", HttpStatus.OK);
 	}
 
 }
