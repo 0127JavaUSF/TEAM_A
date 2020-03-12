@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserComponent implements OnInit {
 
-  addresses: any []; 
+  addresses;
 
   user: any;
 
@@ -20,6 +20,5 @@ export class UserComponent implements OnInit {
     this.user = this._userService.getUser();
     console.log(this.user);
   }
-  
 }
 
