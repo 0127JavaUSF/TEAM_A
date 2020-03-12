@@ -1,17 +1,15 @@
 <div>
     <!--div class="accountIcon"></div-->
-    <div class="customerName">{{user.firstName }} + " "+ {{ user.lastName}}</div>
+    <div class="customerName">{{user.firstName }} {{ user.lastName}}</div>
     <button class="changePhoto">
+
         <span>
-            <div>
-                <!-- <div class="">
-                    <svg width="25" height="19">
-                        <path id="plus icon"></path>
-                    </svg>
-                </div> -->
+            <div class= "picIcon">
+                <i class="fa fa-user" aria-hidden="true"></i>
             </div>
             <span>+ CHANGE PHOTO</span>
         </span>
+
         <input type="file" class="photoUpload">
     </button>
 </div>
@@ -23,7 +21,7 @@
 
 <div>
     <div>
-        <a routerLink="/user">Account Details</a>
+        <h4 routerLink="/user">Account Details</h4>
     </div>
     <div>
         <h3 class="firstName">{{user.firstName}}</h3>
@@ -50,7 +48,7 @@
 
     <input class="currentPassword" type="text" placeholder="Current Password"><br><br>
 
-    <input class="newPassword" type="text" placeholder="New Password"><br><br>
+    <input class="newPassword" type="text" placeholder="New Password" action="" method="POST"><br><br>
     <input class="verifyPassword" type="text" placeholder="Verify New Password"><br>
     <button input="click" type="button" class="savePassword">SAVE</button><br>
     <span class="Password Rules" type="text">Your new password must be at least 8 characters & contain at least one special chracter</span>
