@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.model.User;
+import com.revature.service.SessionService;
 import com.revature.service.UserService;
 
 @RestController
@@ -46,6 +47,7 @@ public class UserController {
 //		User foundUser = user.get();
 //		return new ResponseEntity<User>(foundUser, HttpStatus.OK);
 //	}
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<User> getUser(@PathVariable(value="id") long id)
 	{
