@@ -9,6 +9,7 @@
 }
 .address{
   margin-top: 5vh;
+  margin-bottom: 5vh;
   font-size: 20px;
   flex-direction: row;
   justify-content: space-around;
@@ -24,4 +25,14 @@
   max-width: 5vw;
   margin-left: 5px;
   margin-right: 5px;
+}
+
+button{
+  background-color: #9e0a0a;
+  color: #f8cf55;
+  border: none;
+}
+
+button:hover{
+  color: #4b9ac4;
 }
