@@ -20,8 +20,11 @@ export class SignInComponent implements OnInit {
   signIn() {
     // potential holder for getUser
     console.log('wait this doesnt work yet ;D');
-    this.httpClient.post<User>('http://localhost:9010/login', {
-    email: this.email, password: this.password } );
+    this.httpClient.post<string>('http://localhost:9010/login', {
+    email: this.email, password: this.password }).subscribe(
+      data => (console.log(data)),
+      error => (console.log(error))
+    );
 
   }
 
