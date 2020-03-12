@@ -305,6 +305,4 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
-	
 }
