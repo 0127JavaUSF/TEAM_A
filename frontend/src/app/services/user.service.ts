@@ -14,7 +14,7 @@ export class UserService {
   constructor(private http: HttpClient, private email: SignInComponent) { }
 
 
-  getUser(email): Observable<User> {
+  getUser(): Observable<User> {
     return this.http.get<User>('http://localhost:9010/user/' + this.email);
   }
 
