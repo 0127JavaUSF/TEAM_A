@@ -61,6 +61,10 @@ public class User {
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "order_id")
+<<<<<<< HEAD
+
+=======
+>>>>>>> 5e0120c55e20d6d6f4acff8833386b12e755a515
 	private List<Order> orders;
 
 	public long getId() {

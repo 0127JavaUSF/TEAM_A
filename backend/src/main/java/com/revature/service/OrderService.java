@@ -1,5 +1,10 @@
 package com.revature.service;
 
+import java.util.List;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +14,7 @@ import com.revature.model.User;
 import com.revature.repository.OrderRepository;
 
 @Service
+@Transactional
 public class OrderService {
 	
 	@Autowired
@@ -19,13 +25,19 @@ public class OrderService {
 		return this.oRepo.save(order);
 	}
 
-//	public OrderHistory createOrderItems(@Valid OrderHistory history, Order order) {
-//		return this.oHistRepo.save(history);
-//	}
 	
-//	public Optional<OrderHistory> getOrderHistory(long userId)
-//	{
-//		return this.oHistRepo.findOrders(userId);
-//	}
+	public Optional<Order> getOrder(long userId)
+	{
+		return this.oRepo.findById(userId);
+	}
+	
+	public Optional<Order> getOrder(User user)
+	{
+		return this.oRepo.findByUser(user);
+	}
+
+	public List<Order> getOrders() {
+		return this.oRepo.findAll();
+	}
 
 }

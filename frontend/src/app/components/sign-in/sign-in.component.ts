@@ -6,6 +6,8 @@ import { User } from 'src/app/user';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
 })
+
+
 export class SignInComponent implements OnInit {
 
   user = new User();
@@ -17,31 +19,16 @@ export class SignInComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
   signIn() {
-    // potential holder for getUser
+    // potential holder for getting token
     console.log('wait this doesnt work yet ;D');
-    this.httpClient.get<User>('http://localhost:9010/user/' + this.email)
-    .subscribe(
-      data => {
-        this.user.id = data.id;
-        this.user.firstName = data.firstName;
-        this.user.lastName = data.lastName;
-        this.user.email = data.email;
-        this.user.password = data.password;
-        this.user.hasProfilePicture = data.hasProfilePicture;
-        this.user.profilePictureUrl = data.profilePictureUrl;
-        this.user.presignedUrl = data.presignedUrl;
-        this.user.phoneNumber = data.phoneNumber;
-        this.user.address = data.address;
-        this.user.city = data.city;
-        this.user.state = data.state;
-        this.user.zipCode = data.zipCode;
-        console.log(this.user);
-      },
-      error => (console.log('Error'))
+    this.httpClient.post<string>('http://localhost:9010/login', {
+    email: this.email, password: this.password }).subscribe(
+      data => (console.log(data)),
+      error => (console.log(error))
     );
 
   }
 
+  // old get now in user.service.ts
 }
