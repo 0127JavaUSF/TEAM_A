@@ -52,10 +52,7 @@ public class User {
 	
 	@Column(name = "profile_pick_url", unique = true)
 	private String profilePictureUrl;
-	
-	@Column(name = "session_token")
-	private int sessionToken;
-	
+
 	@Transient
 	private boolean hasProfilePic;
 	
@@ -158,14 +155,6 @@ public class User {
 		this.profilePictureUrl = profilePictureUrl;
 	}
 
-	public int getSessionToken() {
-		return sessionToken;
-	}
-
-	public void setSessionToken(int sessionToken) {
-		this.sessionToken = sessionToken;
-	}
-
 	public boolean isHasProfilePic() {
 		return hasProfilePic;
 	}
@@ -206,7 +195,6 @@ public class User {
 		result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
 		result = prime * result + ((presignedUrl == null) ? 0 : presignedUrl.hashCode());
 		result = prime * result + ((profilePictureUrl == null) ? 0 : profilePictureUrl.hashCode());
-		result = prime * result + sessionToken;
 		result = prime * result + ((state == null) ? 0 : state.hashCode());
 		result = prime * result + ((zipCode == null) ? 0 : zipCode.hashCode());
 		return result;
@@ -275,8 +263,6 @@ public class User {
 				return false;
 		} else if (!profilePictureUrl.equals(other.profilePictureUrl))
 			return false;
-		if (sessionToken != other.sessionToken)
-			return false;
 		if (state == null) {
 			if (other.state != null)
 				return false;
@@ -295,12 +281,12 @@ public class User {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", password=" + password + ", phoneNumber=" + phoneNumber + ", address=" + address + ", city=" + city
 				+ ", state=" + state + ", zipCode=" + zipCode + ", profilePictureUrl=" + profilePictureUrl
-				+ ", sessionToken=" + sessionToken + ", hasProfilePic=" + hasProfilePic + ", presignedUrl="
+				+ ", hasProfilePic=" + hasProfilePic + ", presignedUrl="
 				+ presignedUrl + ", orders=" + orders + "]";
 	}
 
 	public User(long id, String firstName, String lastName, String email, String password, String phoneNumber,
-			String address, String city, String state, String zipCode, String profilePictureUrl, int sessionToken,
+			String address, String city, String state, String zipCode, String profilePictureUrl,
 			boolean hasProfilePic, String presignedUrl, List<Order> orders) {
 		super();
 		this.id = id;
@@ -314,7 +300,6 @@ public class User {
 		this.state = state;
 		this.zipCode = zipCode;
 		this.profilePictureUrl = profilePictureUrl;
-		this.sessionToken = sessionToken;
 		this.hasProfilePic = hasProfilePic;
 		this.presignedUrl = presignedUrl;
 		this.orders = orders;
