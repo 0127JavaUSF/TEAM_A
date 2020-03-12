@@ -11,8 +11,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from './components/menu/menu.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
-import { UserDetailsComponent } from './components/user-details/user-details.component';
-
 
 @NgModule({
   declarations: [
@@ -24,8 +22,7 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     RestaurantComponent,
     MenuComponent,
     SignInComponent,
-    CreateUserComponent,
-    UserDetailsComponent
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,
