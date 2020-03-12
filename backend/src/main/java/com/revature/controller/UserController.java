@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.model.User;
@@ -21,7 +22,7 @@ import com.revature.service.SessionService;
 import com.revature.service.UserService;
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins="http://localhost:4200" , allowedHeaders = "*")
 @RequestMapping("/user")
 public class UserController {
 	
@@ -31,11 +32,13 @@ public class UserController {
 	@PostMapping(consumes = "application/json", produces = "application/json")
 	public ResponseEntity<User> createUser(@RequestBody @Valid User user) {
 		
+		user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
+		
 		User createdUser = userServ.createUser(user);
 		/**
 		 * Hash password using BCrypt library
 		 */
-		user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
+		
 		return new ResponseEntity<User>(createdUser ,HttpStatus.OK);
 	}
 	
