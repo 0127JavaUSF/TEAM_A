@@ -34,6 +34,8 @@ import javassist.NotFoundException;
 @CrossOrigin(origins="http://localhost:4200", allowedHeaders = "*")
 @RequestMapping("/login")
 public class SessionController {
+	
+	enum Keys { CUSTOM_SUCCESS, CUSTOM_ERROR };
 
 	@Autowired
 	private UserService userServ;
@@ -45,30 +47,23 @@ public class SessionController {
 	public ResponseEntity<String> createSession(String email, String password, 
 			HttpServletRequest request, HttpServletResponse response)
 			throws NotFoundException {
-
-//		System.out.println("We got this");
 		
 		String token = "";
-		
-		// does user have a token?
-		
+				
 		String userToken = sessServ.extractAuthToken(request);
 		
-		Map<String, String> result = new HashMap<String, String>();
-				
+		// does user have a token?		
 		if(userToken != null) {
 			if(sessServ.isAuthenticated(email, userToken)) {
 				// if user has cookie and they are authenticated
 				// then all good.
-//				Map<String, String> resp = new HashMap<String, String>();
-//				resp.put("success", "token is good");
-//				return new ResponseEntity<String>("Success: Token is good.", HttpStatus.OK);
-				response.addHeader("custom_error", "");
-				response.addHeader("custom_success", "fine wine");
-				return new ResponseEntity<String>("Success: Token is good.", HttpStatus.OK);
+
+				response.addHeader("custom_success", "user is authenticated");
+				return new ResponseEntity<String>("Success. Token is good. Check headers for 'custom_success' key", HttpStatus.OK);
 
 			} else {
-				return new ResponseEntity<String>("Failure: Token is bad.", HttpStatus.UNAUTHORIZED);
+				response.addHeader("custom_error", "authentication failed");
+				return new ResponseEntity<String>("Failure. Details do not match. Check headers for 'custom_error' key", HttpStatus.UNAUTHORIZED);
 			}
 		} else {
 					
@@ -92,15 +87,17 @@ public class SessionController {
 	
 					Cookie cookie = new Cookie("auth_token", token);
 					response.addCookie(cookie);
+					response.addHeader("custom_success", "user is authenticated. Cookie is returned.");
 					return new ResponseEntity<String>("Correct details. Cookie added.", HttpStatus.OK);
 
 				}
-				
-				return new ResponseEntity<String>("Incorrect password", HttpStatus.UNAUTHORIZED);
+				response.addHeader("custom_error", "user entered incorrect password");
+				return new ResponseEntity<String>("Incorrect password. Check headers for 'custom_error' key", HttpStatus.UNAUTHORIZED);
 				
 			}
 			
-			return new ResponseEntity<String>("No such email. No token.", HttpStatus.NOT_FOUND);
+			response.addHeader("custom_error", "User with such email was not found.");
+			return new ResponseEntity<String>("No such user detail. No token was provided. Check 'custom_error' key", HttpStatus.NOT_FOUND);
 						
 		}
 				
