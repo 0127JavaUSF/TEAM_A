@@ -32,11 +32,13 @@ public class UserController {
 	@PostMapping(consumes = "application/json", produces = "application/json")
 	public ResponseEntity<User> createUser(@RequestBody @Valid User user) {
 		
+		user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
+		
 		User createdUser = userServ.createUser(user);
 		/**
 		 * Hash password using BCrypt library
 		 */
-		user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
+		
 		return new ResponseEntity<User>(createdUser ,HttpStatus.OK);
 	}
 	

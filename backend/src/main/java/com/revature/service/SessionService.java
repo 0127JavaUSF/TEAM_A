@@ -21,19 +21,25 @@ public class SessionService {
 	
 	public boolean isPassword(String password, String hashedPassword) {
 		
+		System.out.println(hashedPassword);
 		return BCrypt.checkpw(password, hashedPassword);
 		
 	}
 	
 	public String extractAuthToken(HttpServletRequest request) {
 		
+		
 		Cookie[] cookies = request.getCookies();
+		if(cookies != null)
+		{
+			
+		
 		for(Cookie cookie : cookies) {
 			if(cookie.getName().equals("auth_token")) {
 				return cookie.getValue();
 			}
 		}
-		
+		}
 		return null;
 		
 	}
@@ -42,23 +48,28 @@ public class SessionService {
 
 		JWT jwt = new JWT();
 		Optional<User> user = userServ.getUserByEmail(email);
+		System.out.println(user.get().getEmail());
 		
-		if(user.isPresent()) {
+		if(user.get() != null) {
 			
 			System.out.println("User exists");
 			
 			DecodedJWT myJwt = jwt.decodeJwt(token);
 			String decodedEmail = myJwt.getClaim("email").asString();
 			String decodedPassword = myJwt.getClaim("password").asString();
+			System.out.println(decodedEmail + "  " + decodedPassword);
+			System.out.println(user.get().getEmail() + "   " + user.get().getPassword());
 
 			if(user.get().getEmail().equals(decodedEmail) 
-					&& user.get().getPassword().equals(decodedPassword)) {
+					&& BCrypt.checkpw(decodedPassword, user.get().getPassword())) {
 				return true;
 			}
 			
 			System.out.println("Unable to authenticate");
 			
 		}
+		
+		System.out.println("NOOOOO");
 		
 		return false;
 		
