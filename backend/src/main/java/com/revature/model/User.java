@@ -52,22 +52,15 @@ public class User {
 	
 	@Column(name = "profile_pick_url", unique = true)
 	private String profilePictureUrl;
-	
-	@Column(name = "session_token")
-	private int sessionToken;
-	
+
 	@Transient
 	private boolean hasProfilePic;
 	
 	@Transient
 	private String presignedUrl;
 	
-//	@OneToMany(mappedBy = "order_history=", fetch = FetchType.LAZY)
-//	@JoinColumn(name = "order_history_id", referencedColumnName = "user_id")
-//	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "order_id")
-//	@OneToMany(targetEntity = OrderHistory.class,cascade = CascadeType.ALL)
+	@JoinColumn(name = "order_id")
 	private List<Order> orders;
 
 	public long getId() {
@@ -158,14 +151,6 @@ public class User {
 		this.profilePictureUrl = profilePictureUrl;
 	}
 
-	public int getSessionToken() {
-		return sessionToken;
-	}
-
-	public void setSessionToken(int sessionToken) {
-		this.sessionToken = sessionToken;
-	}
-
 	public boolean isHasProfilePic() {
 		return hasProfilePic;
 	}
@@ -206,7 +191,6 @@ public class User {
 		result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
 		result = prime * result + ((presignedUrl == null) ? 0 : presignedUrl.hashCode());
 		result = prime * result + ((profilePictureUrl == null) ? 0 : profilePictureUrl.hashCode());
-		result = prime * result + sessionToken;
 		result = prime * result + ((state == null) ? 0 : state.hashCode());
 		result = prime * result + ((zipCode == null) ? 0 : zipCode.hashCode());
 		return result;
@@ -275,8 +259,6 @@ public class User {
 				return false;
 		} else if (!profilePictureUrl.equals(other.profilePictureUrl))
 			return false;
-		if (sessionToken != other.sessionToken)
-			return false;
 		if (state == null) {
 			if (other.state != null)
 				return false;
@@ -295,13 +277,12 @@ public class User {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", password=" + password + ", phoneNumber=" + phoneNumber + ", address=" + address + ", city=" + city
 				+ ", state=" + state + ", zipCode=" + zipCode + ", profilePictureUrl=" + profilePictureUrl
-				+ ", sessionToken=" + sessionToken + ", hasProfilePic=" + hasProfilePic + ", presignedUrl="
-				+ presignedUrl + ", orders=" + orders + "]";
+				+ ", hasProfilePic=" + hasProfilePic + ", presignedUrl=" + presignedUrl + ", orders=" + orders + "]";
 	}
 
 	public User(long id, String firstName, String lastName, String email, String password, String phoneNumber,
-			String address, String city, String state, String zipCode, String profilePictureUrl, int sessionToken,
-			boolean hasProfilePic, String presignedUrl, List<Order> orders) {
+			String address, String city, String state, String zipCode, String profilePictureUrl, boolean hasProfilePic,
+			String presignedUrl, List<Order> orders) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -314,7 +295,6 @@ public class User {
 		this.state = state;
 		this.zipCode = zipCode;
 		this.profilePictureUrl = profilePictureUrl;
-		this.sessionToken = sessionToken;
 		this.hasProfilePic = hasProfilePic;
 		this.presignedUrl = presignedUrl;
 		this.orders = orders;
@@ -324,8 +304,5 @@ public class User {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-
-
 	
 }

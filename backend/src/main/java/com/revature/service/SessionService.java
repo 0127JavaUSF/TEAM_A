@@ -21,24 +21,19 @@ public class SessionService {
 	
 	public boolean isPassword(String password, String hashedPassword) {
 		
-		System.out.println(hashedPassword);
 		return BCrypt.checkpw(password, hashedPassword);
 		
 	}
 	
 	public String extractAuthToken(HttpServletRequest request) {
 		
-		
 		Cookie[] cookies = request.getCookies();
-		if(cookies != null)
-		{
-			
-		
-		for(Cookie cookie : cookies) {
-			if(cookie.getName().equals("auth_token")) {
-				return cookie.getValue();
+		if(cookies != null) {
+			for(Cookie cookie : cookies) {
+				if(cookie.getName().equals("auth_token")) {
+					return cookie.getValue();
+				}
 			}
-		}
 		}
 		return null;
 		
@@ -47,30 +42,26 @@ public class SessionService {
 	public boolean isAuthenticated(String email, String token) {
 
 		JWT jwt = new JWT();
+		
 		Optional<User> user = userServ.getUserByEmail(email);
-		System.out.println(user.get().getEmail());
 		
 		if(user.get() != null) {
-			
-			System.out.println("User exists");
 			
 			DecodedJWT myJwt = jwt.decodeJwt(token);
 			String decodedEmail = myJwt.getClaim("email").asString();
 			String decodedPassword = myJwt.getClaim("password").asString();
-			System.out.println(decodedEmail + "  " + decodedPassword);
-			System.out.println(user.get().getEmail() + "   " + user.get().getPassword());
+			// System.out.println(decodedEmail + "  " + decodedPassword);
+			// System.out.println(user.get().getEmail() + "   " + user.get().getPassword());
 
-			if(user.get().getEmail().equals(decodedEmail) 
-					&& BCrypt.checkpw(decodedPassword, user.get().getPassword())) {
+			if(user.get().getEmail().equals(decodedEmail) && 
+					decodedPassword.equals(user.get().getPassword())) {
+				
 				return true;
+			
 			}
-			
-			System.out.println("Unable to authenticate");
-			
+						
 		}
-		
-		System.out.println("NOOOOO");
-		
+				
 		return false;
 		
 	}

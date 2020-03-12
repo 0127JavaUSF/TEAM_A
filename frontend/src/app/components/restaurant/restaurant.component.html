@@ -9,7 +9,7 @@
     <span id = "pickup" class = "norm_font option_select" (click)= "onPickupClick()">
         Pickup
     </span>
-    <input type="search" id="search" name="q" placeholder= "{{ location }}"/>
+    <input type="search" (keydown.enter)= "onNewLocation()" [(ngModel)]="location" placeholder= "{{ location }}"/>
     <div>
         <img class = banner_img src="https://foodie-bucket.s3.amazonaws.com/img2.jpg" alt="no img">
     </div>

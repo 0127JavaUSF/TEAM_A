@@ -14,8 +14,6 @@ import { Router } from '@angular/router';
 export class RestaurantComponent implements OnInit {
 
     allRestaurants: any [];
-    deliveryRestaurants: any[];
-    pickupRestaurants: any[];
     location: string;
 
   constructor(private restaurantService: RestaurantService, private menuService: MenuService, private router: Router) { }
@@ -23,7 +21,7 @@ export class RestaurantComponent implements OnInit {
     ngOnInit(): void {
       if (localStorage.getItem('address') === null) {
         this.restaurantService.setRestaurantAddress();
-      }
+            }
       if (localStorage.getItem('address') === 'undefined') {
         localStorage.removeItem('address');
       }
@@ -34,9 +32,7 @@ export class RestaurantComponent implements OnInit {
           this.location = data.address.streetAddress;
         },
         (error) => console.log(error)
-      );
-    // this.restaurant = this.restaurantService.restaurants;
-    }
+      );    }
 
 
     /**
@@ -45,11 +41,7 @@ export class RestaurantComponent implements OnInit {
      * related to that restaurant
      */
     onRestaurantClick(clickedRestaurant: any) {
-      // if(this.menuService.currentRestKey.length === 0) {
         this.menuService.currentRestKey = clickedRestaurant.apiKey;
-      // }
-      // this.menuService.currentRestKey
-      // clickedRestaurant.name.split(' ').join('')
         this.router.navigate([`/restaurants/${this.menuService.currentRestKey}`]);
     }
 
@@ -58,16 +50,13 @@ export class RestaurantComponent implements OnInit {
       const pickup = document.getElementById('pickup');
       delivery.className = 'norm_font option_select  option_selected';
       pickup.className = 'norm_font option_select';
-      // for (const i of this.allRestaurants){
-      //   console.log(this.allRestaurants[i].offersDelivery);
-      // }
-      // this.allRestaurants.forEach(element => {
-        // if (data.restaurants[element].offersDelivery === true) {
-        // this.deliveryRestaurants.push(data.restaurants[element]);
-        // }
-      //   console.log(this.allRestaurants[element].offersDelivery);
-      // });
-      // this.allRestaurants = this.deliveryRestaurants;
+      this.restaurantService.method = 'delivery';
+      this.restaurantService.getDeliveryRestaurants().subscribe(
+        (data) => {
+          this.allRestaurants = data.restaurants;
+        },
+        (error) => console.log(error)
+      );
 
     }
     onPickupClick() {
@@ -75,25 +64,25 @@ export class RestaurantComponent implements OnInit {
       const pickup = document.getElementById('pickup');
       delivery.className = 'norm_font option_select';
       pickup.className = 'norm_font option_select option_selected';
-      // for (const i of this.allRestaurants){
-      //   console.log(this.allRestaurants[i].offersPickup);
-      // }
-      // this.allRestaurants.forEach(element => {
-        // if (data.restaurants[element].offersPickup === true) {
-        // this.pickupRestaurants.push(data.restaurants[element]);
-        // }
-      //   console.log(this.allRestaurants[element].offersPickup);
-      // });
-      // this.allRestaurants = this.deliveryRestaurants;
+      this.restaurantService.method = 'pickup';
+      this.restaurantService.getPickupRestaurants().subscribe(
+        (data) => {
+          this.allRestaurants = data.restaurants;
+        },
+        (error) => console.log(error)
+      );
     }
 
-
-  // reloadData() {
-  //   this.restaurant = this.restaurantService.getRestaurantList();
-  // }
-
-  // restaurantMenu(id: number){
-  //   this.router.navigate(['menu', id]);
-  // }
+    onNewLocation() {
+      localStorage.removeItem('address');
+      this.restaurantService.newAddress = this.location;
+      this.restaurantService.setRestaurantAddress();
+      this.restaurantService.getNewRestaurants().subscribe(
+        (data) => {
+          this.allRestaurants = data.restaurants;
+        },
+        (error) => console.log(error)
+      );
+    }
 
 }

@@ -19,7 +19,6 @@ import javax.persistence.Table;
 @Table(name = "order_table")
 public class Order {	
 		@Id
-//		@Column(name = "order_id")
 		@GeneratedValue(strategy=GenerationType.IDENTITY)
 		private long id;
 		
