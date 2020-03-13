@@ -18,6 +18,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // this.user = this.userService.getUser().subscribe(
     //   data => {
     //   this.user.id = data.id;
@@ -42,6 +43,8 @@ export class UserComponent implements OnInit {
 
     // this.userService.submitPicture(this.user, file);
 =======
+=======
+>>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
     this.user = this.userService.getUser(String).subscribe(
       data => {
       this.user.id = data.id;

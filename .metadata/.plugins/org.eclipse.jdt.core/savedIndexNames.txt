@@ -1,5 +1,6 @@
 INDEX VERSION 1.131+C:\Revature Bootcamp\Projects\Project 2\TEAM_A\.metadata\.plugins\org.eclipse.jdt.core
 <<<<<<< HEAD
+<<<<<<< HEAD
 2923218292.index
 408771512.index
 1301684271.index
@@ -28,10 +29,20 @@ INDEX VERSION 1.131+C:\Revature Bootcamp\Projects\Project 2\TEAM_A\.metadata\.pl
 2552865290.index
 2120102340.index
 524273550.index
+=======
+2986386919.index
+1665995430.index
+2552865290.index
+2120102340.index
+524273550.index
+>>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
 2985665087.index
 500438436.index
 4227720700.index
 3796986897.index
+<<<<<<< HEAD
+>>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
+=======
 >>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
 1958791831.index
 1830440585.index
@@ -71,6 +82,7 @@ INDEX VERSION 1.131+C:\Revature Bootcamp\Projects\Project 2\TEAM_A\.metadata\.pl
 1965174767.index
 3278960029.index
 <<<<<<< HEAD
+<<<<<<< HEAD
 1096081951.index
 1132214759.index
 2552865290.index
@@ -104,6 +116,13 @@ INDEX VERSION 1.131+C:\Revature Bootcamp\Projects\Project 2\TEAM_A\.metadata\.pl
 4227720700.index
 1558234620.index
 471363635.index
+=======
+2307270000.index
+834867568.index
+125409577.index
+208903109.index
+3713933766.index
+>>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
 =======
 2307270000.index
 834867568.index
