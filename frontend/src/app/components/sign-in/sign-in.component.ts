@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/user';
+import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -15,18 +16,22 @@ export class SignInComponent implements OnInit {
   email = '';
   password = '';
 
-  constructor(private httpClient: HttpClient) { }
+
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
   }
   signIn() {
     // potential holder for getting token
-    this.httpClient.post<User>('http://localhost:9010/login?email=' + this.email + '&password=' + this.password, {
-    email: this.email, password: this.password }).subscribe(
-      data => (console.log(data)),
-      error => (console.log(error))
-    );
+    if (this.userService.checkUser(this.email, this.password) === null) {
+      console.log('broken');
+    } else {
+      this.successfulLogin();
+    }
+  }
 
+  successfulLogin() {
+    this.userService.email = this.email;
   }
 
   // old get now in user.service.ts
