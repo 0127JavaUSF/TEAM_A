@@ -10,12 +10,14 @@ import { Observable } from 'rxjs';
 export class UserService {
 
   email;
+
   user = new User();
+
 
   constructor(private http: HttpClient) { }
 
-  getUser(email): Observable<User> {
-    console.log(email);
+  getUser(): Observable<User> {
+    console.log(this.email);
     return this.http.get<User>('http://localhost:9010/user/' + this.email);
   }
 
