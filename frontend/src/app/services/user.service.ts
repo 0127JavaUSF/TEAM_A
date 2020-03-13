@@ -22,7 +22,11 @@ export class UserService {
   checkUser(email, password) {
     return this.http.post<User>('http://localhost:9010/login?email=' + email + '&password=' + password, {
     email, password}).subscribe(
-      data => this.email = data.email,
+      data => {
+        this.email = data.email
+        // Anvar testing
+        // localStorage.setItem('cart', "");
+      },
       error => console.log(error)
     );
   }

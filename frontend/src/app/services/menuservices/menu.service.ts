@@ -28,24 +28,8 @@ export class MenuService {
 
   constructor( private http: HttpClient ) { }
 
-  // getCurrentRestKey(): String {
-  //   return this.currentRestKey;
-  // }
-
-  // setCurrentRestaurantKey(currentRestKey: string): void {
-  //   this.currentRestKey = currentRestKey;
-  // }
-
-  // getCurrentMenu(): String[] {
-  //   return this.currentMenu;
-  // }
-
-  // setCurrentMenu(currentMenu: String[]): void {
-  //   this.currentMenu = currentMenu;
-  // }
-
   /**
-   * getMenu() returns type Observable that
+   * @getMenu returns type Observable that
    * includes array of food objects
    */
 

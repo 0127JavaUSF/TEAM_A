@@ -1,6 +1,8 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { MenuService } from 'src/app/services/menuservices/menu.service';
 import { ActivatedRoute } from '@angular/router';
+import { CartService } from 'src/app/services/cartservices/cart.service';
+import { Food } from 'src/app/models/item';
 
 
 @Component({
@@ -21,7 +23,7 @@ export class MenuComponent implements OnInit {
   constructor(
     private menuService: MenuService,
     private router: ActivatedRoute,
-    private elementRef: ElementRef,
+    private cartService: CartService,
     ) {
 
       this.showButton = false;
@@ -53,19 +55,22 @@ export class MenuComponent implements OnInit {
     );
   }
 
-  modifyUp(food) {
+  modifyUp(food: Food) {
     console.log(food);
     // $event.stopPropogation;
     // event.stopPropogation();
     
     this.FoodQuant[food.apiKey][0] += 1;
     console.log(this.FoodQuant[food.apiKey]);
+    this.cartService.modifyCart(food, this.FoodQuant[food.apiKey][0]);
+
   }
   modifyDown(food) {
     if(this.FoodQuant[food.apiKey][0] < 1) {
       return;
     }
     this.FoodQuant[food.apiKey][0] -= 1;
+    this.cartService.modifyCart(food, this.FoodQuant[food.apiKey][0]);
   }
 
   handleHover() {
