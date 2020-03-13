@@ -31,9 +31,9 @@ public class OrderService {
 		return this.oRepo.findById(userId);
 	}
 	
-	public Optional<Order> getOrder(User user)
+	public List<Order> getOrder(User user)
 	{
-		return this.oRepo.findByUser(user);
+		return this.oRepo.findAllByUser(user);
 	}
 
 	public List<Order> getOrders() {
