@@ -10,14 +10,14 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserComponent implements OnInit {
 
-  email = '';
+  email;
   addresses;
   user: any;
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.user = this.userService.getUser(String).subscribe(
+    this.user = this.userService.getUser().subscribe(
       data => {
       this.user.id = data.id;
       this.user.firstName = data.firstName,
