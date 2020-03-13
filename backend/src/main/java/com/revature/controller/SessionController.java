@@ -44,7 +44,7 @@ public class SessionController {
 	private SessionService sessServ;
 	
 	@PostMapping(produces = "application/json")
-	public ResponseEntity<String> createSession(String email, String password, 
+	public ResponseEntity<User> createSession(String email, String password, 
 			HttpServletRequest request, HttpServletResponse response)
 			throws NotFoundException {
 		
@@ -57,25 +57,26 @@ public class SessionController {
 			if(sessServ.isAuthenticated(email, userToken)) {
 				// if user has cookie and they are authenticated
 				// then all good.
-
+				Optional<User> authedUser = sessServ.findUser(email);
 				response.addHeader("custom_success", "user is authenticated");
-				return new ResponseEntity<String>("Success. Token is good. Check headers for 'custom_success' key", HttpStatus.OK);
+				return new ResponseEntity<User>(authedUser.get(), HttpStatus.OK);
 
 			} else {
 				response.addHeader("custom_error", "authentication failed");
-				return new ResponseEntity<String>("Failure. Details do not match. Check headers for 'custom_error' key", HttpStatus.UNAUTHORIZED);
-			}
+				return new ResponseEntity<User>(new User(), HttpStatus.I_AM_A_TEAPOT);
+				}
 		} else {
-					
+			System.out.println("email: " + email + "");
 			Optional<User> user = userServ.getUserByEmail(email);
-			System.out.println(user);
+			User returnedUser = user.get();
+			System.out.println(returnedUser);
 			if(user.isPresent()) {
 					
-				String hashedPwd = user.get().getPassword();
+				String hashedPwd = returnedUser.getPassword();
 				
 				if(sessServ.isPassword(password, hashedPwd)) {
 					
-					Algorithm algo = Algorithm.HMAC256(user.get().getFirstName());
+					Algorithm algo = Algorithm.HMAC256(returnedUser.getFirstName());
 					/**
 					 * Need to be returned as part of response header in the cookie
 					 */
@@ -88,16 +89,16 @@ public class SessionController {
 					Cookie cookie = new Cookie("auth_token", token);
 					response.addCookie(cookie);
 					response.addHeader("custom_success", "user is authenticated. Cookie is returned.");
-					return new ResponseEntity<String>("Correct details. Cookie added.", HttpStatus.OK);
+					return new ResponseEntity<User>(returnedUser, HttpStatus.OK);
 
 				}
 				response.addHeader("custom_error", "user entered incorrect password");
-				return new ResponseEntity<String>("Incorrect password. Check headers for 'custom_error' key", HttpStatus.UNAUTHORIZED);
+				return new ResponseEntity<User>(returnedUser, HttpStatus.UNAUTHORIZED);
 				
 			}
 			
 			response.addHeader("custom_error", "User with such email was not found.");
-			return new ResponseEntity<String>("No such user detail. No token was provided. Check 'custom_error' key", HttpStatus.NOT_FOUND);
+			return new ResponseEntity<User>(returnedUser, HttpStatus.NOT_FOUND);
 						
 		}
 				
