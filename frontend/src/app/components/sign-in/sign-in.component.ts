@@ -3,8 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/user';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { Router } from '@angular/router';
 
+=======
+import { UserService } from 'src/app/services/user.service';
+>>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
 =======
 import { UserService } from 'src/app/services/user.service';
 >>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
@@ -27,7 +31,12 @@ export class SignInComponent implements OnInit {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   constructor(private httpClient: HttpClient, private router: Router) { }
+=======
+
+  constructor(private userService: UserService) { }
+>>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
 =======
 
   constructor(private userService: UserService) { }
@@ -43,6 +52,7 @@ export class SignInComponent implements OnInit {
     // potential holder for getting token
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // this.httpClient.post<User>('http://localhost:9010/login?email=' + this.email + '&password=' + this.password, {
     // email: this.email, password: this.password }).subscribe(
     //   data => (console.log(data)),
@@ -52,6 +62,8 @@ export class SignInComponent implements OnInit {
 =======
 =======
 >>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
+=======
+>>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
     if (this.userService.checkUser(this.email, this.password) === null) {
       console.log('broken');
     } else {
@@ -59,6 +71,9 @@ export class SignInComponent implements OnInit {
     }
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
+=======
 >>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
 =======
 >>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
