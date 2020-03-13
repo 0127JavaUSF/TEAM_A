@@ -56,10 +56,9 @@ public class OrderController {
 	}
 	
 	@GetMapping("/user")
-	public ResponseEntity<Order> getUserOrders(@RequestBody User user)
+	public List<Order> getUserOrders(@RequestBody User user)
 	{
-		Optional<Order> userOrder = oServ.getOrder(user);
-		Order userOrders = userOrder.get();
-		return new ResponseEntity<Order>(userOrders, HttpStatus.OK);
+		List<Order> userOrder = oServ.getOrder(user);
+		return userOrder;
 	}
 }

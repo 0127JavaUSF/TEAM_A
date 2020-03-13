@@ -66,4 +66,9 @@ public class SessionService {
 		
 	}
 	
+	public Optional<User> findUser(String email)
+	{
+		return this.userServ.getUserByEmail(email);
+	}
+	
 }
