@@ -21,8 +21,7 @@ export class SignInComponent implements OnInit {
   }
   signIn() {
     // potential holder for getting token
-    console.log('wait this doesnt work yet ;D');
-    this.httpClient.post<string>('http://localhost:9010/login', {
+    this.httpClient.post<User>('http://localhost:9010/login?email=' + this.email + '&password=' + this.password, {
     email: this.email, password: this.password }).subscribe(
       data => (console.log(data)),
       error => (console.log(error))

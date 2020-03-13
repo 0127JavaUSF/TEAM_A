@@ -1,3 +1,6 @@
+body{
+  color: #f8cf55;
+}
 .rest_img {
 	width: 300px;
     height: 180px;
@@ -6,7 +9,7 @@
 }
 
 /* .rest_img:hover {
-    opacity: 1; 
+    opacity: 1;
     transition: opacity 0.4s linear;
     filter: alpha(opacity=50);
     background-color:black;
@@ -18,10 +21,10 @@
     width: 100vw;
     height: 30vh;
     margin-top: 4px;
-} 
+}
 
 .time_green {
-    color: green;  
+    color: green;
 }
 
 .cat_red {
@@ -39,6 +42,15 @@
 .title_font {
     font-family: Arial, Helvetica, sans-serif;
 }
+
+.norm_font:hover{
+  color: #4b9ac4;
+}
+
+.title_highlight:hover{
+  color: #4b9ac4;
+}
+
 
 .delivery_font {
     font-family: Arial, Helvetica, sans-serif;
@@ -65,7 +77,7 @@
     /* text-decoration-line: underline;
     text-underline-position: below;
     text-underline-offset: 4px;
-    text-decoration-color: blue;    
+    text-decoration-color: blue;
     text-decoration-thickness: 3px; */
     border-bottom: 3px solid green;
     padding-bottom: 4px;
