@@ -59,8 +59,9 @@ public class UserController {
 	}
 	
 	@PostMapping("/updatePassword")
-	public User updatePassword(@RequestBody String email, String password) {		
-		return  userServ.setPassword(email, password);
+	public updatePassword(@RequestBody String email, String password) {		
+		
+		
 	}
 
 

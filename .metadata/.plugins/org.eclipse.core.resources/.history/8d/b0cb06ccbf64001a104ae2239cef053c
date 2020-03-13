@@ -50,7 +50,7 @@ public class UserController {
 //		return new ResponseEntity<User>(foundUser, HttpStatus.OK);
 //	}
 	
-	@GetMapping("/{id}")
+	@GetMapping(value="/{id}")
 	public ResponseEntity<User> getUser(@PathVariable(value="id") long id)
 	{
 		Optional<User> user = userServ.getUserById(id);
@@ -59,8 +59,9 @@ public class UserController {
 	}
 	
 	@PostMapping("/updatePassword")
-	public User updatePassword(@RequestBody String email, String password) {		
-		return  userServ.setPassword(email, password);
+	public updatePassword(@RequestBody String email, String password) {		
+		
+		
 	}
 
 
