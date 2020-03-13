@@ -28,11 +28,7 @@
 }
 
 button{
-  background-color: #9e0a0a;
-  color: #f8cf55;
   border: none;
 }
 
-button:hover{
-  color: #4b9ac4;
-}
+

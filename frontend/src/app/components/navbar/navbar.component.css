@@ -7,8 +7,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: #9e0a0a;
-    color: #f8cf55;
+
 }
 
 .left-section {
@@ -51,7 +50,7 @@ body {
 
 .right-section span:hover {
     cursor: pointer;
-    color: #4b9ac4;
+
 }
 
 .cart-section {
