@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/user';
+<<<<<<< HEAD
 import { Router } from '@angular/router';
 
+=======
+import { UserService } from 'src/app/services/user.service';
+>>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -17,19 +21,35 @@ export class SignInComponent implements OnInit {
   email = '';
   password = '';
 
+<<<<<<< HEAD
   constructor(private httpClient: HttpClient, private router: Router) { }
+=======
+
+  constructor(private userService: UserService) { }
+>>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
 
   ngOnInit(): void {
   }
   signIn() {
     // potential holder for getting token
+<<<<<<< HEAD
     // this.httpClient.post<User>('http://localhost:9010/login?email=' + this.email + '&password=' + this.password, {
     // email: this.email, password: this.password }).subscribe(
     //   data => (console.log(data)),
     //   error => (console.log(error))
     // );
     this.router.navigate(['/user']);
+=======
+    if (this.userService.checkUser(this.email, this.password) === null) {
+      console.log('broken');
+    } else {
+      this.successfulLogin();
+    }
+  }
+>>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
 
+  successfulLogin() {
+    this.userService.email = this.email;
   }
 
   // old get now in user.service.ts
