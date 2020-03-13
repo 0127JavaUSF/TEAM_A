@@ -47,15 +47,15 @@ public class UserService {
 	}
 	
 	
-	public User setPassword(String email, String password) {
+	public User setPassword(User clientUser) {
 		//Create user object with Optional type b/c Optional can return the obj or a null
 		//reference the userRepo with this to ensure it refs the variable in service and its inherited methods
-		Optional <User> user = this.userRepo.findByEmail(email);
+		Optional <User> user = this.userRepo.findByEmail(clientUser.getEmail());
 		
 		//assign the hashed password to a variable hashedPass
-		String hashedPass = BCrypt.hashpw(password, BCrypt.gensalt());
+		String hashedPass = BCrypt.hashpw(clientUser.getPassword(), BCrypt.gensalt());
 		
-		//set updated & hashed password into the usr obj
+		//set updated & hashed password into the user obj
 		user.get().setPassword(hashedPass);
 		
 		//save the user object with the new password & assign user obj to resp variable
