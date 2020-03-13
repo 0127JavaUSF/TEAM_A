@@ -15,6 +15,7 @@ export class UserComponent implements OnInit {
   user: any;
 
   constructor(private userService: UserService) { }
+  
 
   ngOnInit() {
     this.user = this.userService.getUser().subscribe(
@@ -35,5 +36,14 @@ export class UserComponent implements OnInit {
       console.log(data);
     }, error => (console.log(error))) ;
   }
+
+  submitProfilePicture(file){
+    this.user.hasProfilePicture = true;
+
+    // this.userService.submitPicture(this.user, file);
+  }
+
+
+
 }
 

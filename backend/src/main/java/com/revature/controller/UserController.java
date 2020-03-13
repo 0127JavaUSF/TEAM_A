@@ -42,14 +42,35 @@ public class UserController {
 		return new ResponseEntity<User>(createdUser ,HttpStatus.OK);
 	}
 	
+<<<<<<< HEAD
+//	@GetMapping("/{email}")
+//	public ResponseEntity<User> getUser(@PathVariable(value="email") String email)
+//	{
+//		Optional<User> user = userServ.getUserByEmail(email);
+//		User foundUser = user.get();
+//		return new ResponseEntity<User>(foundUser, HttpStatus.OK);
+//	}
+	
+	@GetMapping(value= "/{id}")
+	public ResponseEntity<User> getUser(@PathVariable(value="id") long id)
+=======
 	@GetMapping("/{email}")
 	public ResponseEntity<User> getUser(@PathVariable(value="email") String email)
+>>>>>>> 6c88471b8383c39eab0782539a9591cc233cf095
 	{
 		Optional<User> user = userServ.getUserByEmail(email);
 		User foundUser = user.get();
 		return new ResponseEntity<User>(foundUser, HttpStatus.OK);
 	}
 	
+<<<<<<< HEAD
+	@PostMapping(value="/updatePassword", consumes = "application/json", produces = "application/json")
+	public ResponseEntity<User> updatePassword(@RequestBody @Valid User clientUser) {
+		User user = userServ.setPassword(clientUser);
+		return  new ResponseEntity<User>(user, HttpStatus.OK);
+	}
+
+=======
 //	@GetMapping("/{id}")
 //	public ResponseEntity<User> getUser(@PathVariable(value="id") long id)
 //	{
@@ -57,5 +78,6 @@ public class UserController {
 //		User foundUser = user.get();
 //		return new ResponseEntity<User>(foundUser, HttpStatus.OK);
 //	}
+>>>>>>> 6c88471b8383c39eab0782539a9591cc233cf095
 
 }
