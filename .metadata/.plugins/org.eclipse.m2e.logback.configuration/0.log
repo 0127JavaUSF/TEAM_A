@@ -686,6 +686,8 @@
 2020-03-13 13:51:24,442 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2020-03-13 13:51:24,442 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Revature Bootcamp\Projects\Project 2\TEAM_A\backend\src\test\resources
 >>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
+<<<<<<< HEAD
+=======
 2020-03-13 19:55:08,300 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
 2020-03-13 20:01:59,845 [Worker-2: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2020-03-13 20:01:59,876 [Worker-2: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
@@ -742,3 +744,4 @@
 2020-03-13 23:51:48,272 [Worker-40: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
 2020-03-13 23:51:48,712 [Worker-40: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2020-03-13 23:51:48,717 [Worker-40: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+>>>>>>> ee2e5fae3acd6df5142d9777327807084ddb7bd6

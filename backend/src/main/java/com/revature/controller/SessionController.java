@@ -1,7 +1,3 @@
-/**
- * A.A.A (C) All Rights Reserved
- */
-
 package com.revature.controller;
 
 import java.util.HashMap;

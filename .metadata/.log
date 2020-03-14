@@ -8278,6 +8278,8 @@ ThreadId: 1 ThreadName: main ThreadState: RUNNABLE
 >>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
 =======
 >>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
+<<<<<<< HEAD
+=======
 !SESSION 2020-03-13 22:20:15.580 -----------------------------------------------
 eclipse.buildId=3.9.9.201906181741-RELEASE-e412
 java.version=1.8.0_241
@@ -10673,3 +10675,4 @@ ThreadId: 1 ThreadName: main ThreadState: RUNNABLE
     org.eclipse.equinox.launcher.Main.basicRun(Main.java:597)
     org.eclipse.equinox.launcher.Main.run(Main.java:1468)
 	... 34 more
+>>>>>>> ee2e5fae3acd6df5142d9777327807084ddb7bd6

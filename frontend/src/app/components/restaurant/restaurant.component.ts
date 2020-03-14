@@ -3,6 +3,7 @@ import { Observable} from 'rxjs';
 import { RestaurantService } from 'src/app/services/RestaurantService/RestaurantService.service';
 import { MenuService } from 'src/app/services/menuservices/menu.service';
 import { Router } from '@angular/router';
+import { Food } from 'src/app/models/food';
 
 
 
@@ -15,6 +16,7 @@ export class RestaurantComponent implements OnInit {
 
     allRestaurants: any [];
     location: string;
+    food = new Food();
 
   constructor(private restaurantService: RestaurantService, private menuService: MenuService, private router: Router) { }
 
@@ -43,6 +45,21 @@ export class RestaurantComponent implements OnInit {
     onRestaurantClick(clickedRestaurant: any) {
         this.menuService.currentRestKey = clickedRestaurant.apiKey;
         this.router.navigate([`/restaurants/${this.menuService.currentRestKey}`]);
+        
+        let dummyFood = {}
+        
+        this.food.apiKey = "123";
+        this.food.basePrice = 2.99;
+        this.food.description = "This food is awesome";
+        this.food.name = "Le'Food";
+
+        dummyFood["123"] = {
+          "foodItem": this.food,
+          "quantity": 2,
+        }
+
+        localStorage.setItem("cart", JSON.stringify(dummyFood))
+
     }
 
     onDeliveryClick() {
