@@ -1,16 +1,19 @@
 export class User {
-    userId: number = 0;
+    id: number = 0;
     firstName: string = "";
     lastName: string = "";
     email: string = "";
     password: string = "";
     phoneNumber: string = "";
+    
     address: string = "";
     city: string = "";
     state: string = "";
-    zipcode: string = "";
+    zipCode: string = "";
+    
+    hasProfilePicture: boolean = false;
     profilePictureUrl: string = "";
-    hasProfilePic: boolean = false;
-    // TODO
-    orders: object = {}
+    presignedUrl: string = "";
+    
+    orders: object = {};
 }
