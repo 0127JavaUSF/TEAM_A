@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
 
@@ -16,13 +16,35 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUser(): Observable<User> {
-    console.log(this.email);
-    return this.http.get<User>('http://localhost:9010/user/' + this.email);
+    // console.log(this.email);
+    // return this.http.get<User>('http://localhost:9010/user/' + this.email);
+
+
+    return this.http.post<User>('http://localhost:9010/login', { withCredentials: true })
+      // .subscribe(
+      //   // email, password
+      //   data => {
+      //     return data;
+      //     // Anvar testing
+      //     // localStorage.setItem('cart', "");
+      //   },
+      //   error => console.log(error)
+      // );
   }
 
   checkUser(email, password) {
-    return this.http.post<User>('http://localhost:9010/login?email=' + email + '&password=' + password, {
-    email, password}).subscribe(
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Credentials': 'true',
+        // 'Authorization': 'auth_token',
+        'withcredentials': 'true',
+        // 'observe': 'response' as 'response',
+      })
+    };
+    // return this.http.post<User>('http://localhost:9010/login?email=' + email + '&password=' + password, {withcredentials: true})
+    this.http.post<User>('http://localhost:9010/login', {"email": email, "password": password}, {withCredentials: true})
+    .subscribe(
+      // email, password
       data => {
         return data;
         // Anvar testing

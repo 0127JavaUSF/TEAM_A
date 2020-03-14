@@ -19,8 +19,9 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getUser().subscribe(
-      data =>  {
+      data => {
         this.user = data;
+        console.log("data is: " + data);
       }
       // {
       // this.user.id = data.id;

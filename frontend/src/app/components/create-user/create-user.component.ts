@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from 'src/app/models/user';
 
 @Component({
@@ -44,7 +44,8 @@ export class CreateUserComponent implements OnInit {
 
       // send the post to database
     console.log('some of this works');
-    return this.httpClient.post<User>('http://localhost:9010/user', this.user)
+    // previously return there for some reason
+      this.httpClient.post<User>('http://localhost:9010/user', this.user)
     .subscribe(
       data => (console.log('User created')),
       error => (console.log('Error'))
