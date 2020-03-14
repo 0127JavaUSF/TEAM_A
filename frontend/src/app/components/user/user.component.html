@@ -2,8 +2,8 @@
     <div>
         <!--div class="accountIcon"></div-->
         <div class="customerName">
-            <span type="text" class="firstN" [value]="user.firstName"></span>
-            <span type="text" class="lastN" [value]="user.lastName"></span>
+            <span type="text" class="firstN">{{}user.firstName}</span>
+            <span type="text" class="lastN">{{user.lastName}}</span>
         </div>
 
         <button class="changePhoto">
@@ -41,7 +41,7 @@
         </div>
 
         <div class="form-group">
-            <input [value]="user.Email" type="text" class="email" [(ngModel)]= "user.email">
+            <input [value]="user.email" type="text" class="email" [(ngModel)]= "user.email">
             <button input="click" type="button" class="editEmail">Edit</button>
         </div>
 <!-- ESU merge issue start -->
