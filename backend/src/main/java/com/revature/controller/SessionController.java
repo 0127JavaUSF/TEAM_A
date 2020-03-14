@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.auth0.jwt.JWT;
@@ -40,7 +42,7 @@ public class SessionController {
 	@PostMapping(produces = "application/json")
 	public ResponseEntity<User> createSession(String email, String password, 
 			HttpServletRequest request, HttpServletResponse response)
-			throws NotFoundException {
+			throws NotFoundException{
 		
 		String token = "";
 				
@@ -60,6 +62,7 @@ public class SessionController {
 				return new ResponseEntity<User>(new User(), HttpStatus.UNAUTHORIZED);
 				}
 		} else {
+			System.out.println(password);
 			System.out.println("email: " + email + "");
 			Optional<User> user = userServ.getUserByEmail(email);
 			User returnedUser = user.get();
