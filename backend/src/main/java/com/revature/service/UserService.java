@@ -1,14 +1,12 @@
 package com.revature.service;
 
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
 import com.revature.model.User;
 import com.revature.repository.UserRepository;
 
@@ -46,7 +44,7 @@ public class UserService {
 		// BCrypt lib import and work hard
 	}
 	
-	
+	@Transactional
 	public User setPassword(User clientUser) {
 		//Create user object with Optional type b/c Optional can return the obj or a null
 		//reference the userRepo with this to ensure it refs the variable in service and its inherited methods
