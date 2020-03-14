@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +23,7 @@ import com.revature.service.OrderService;
 
 @RestController
 @RequestMapping("/order")
+@CrossOrigin(origins="http://localhost:4200", allowedHeaders = "*", allowCredentials = "true")
 public class OrderController {
 	
 	@Autowired
@@ -29,7 +31,6 @@ public class OrderController {
 	
 	@PostMapping(consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Order> createOrder(@RequestBody @Valid Order order, User user, Item item) {
-		System.out.println(order.toString());
 		Order createdOrder = oServ.createOrder(order, item, user);
 		return new ResponseEntity<Order>(createdOrder ,HttpStatus.OK);
 	}
@@ -40,7 +41,7 @@ public class OrderController {
 //		return new ResponseEntity<OrderHistory>(itemHistory, HttpStatus.OK);
 //	}
 
-	@GetMapping("/{id}")
+	@GetMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Order> getOrder(@PathVariable(value="id") Long id)
 	{
 		Optional<Order> history = oServ.getOrder(id);
@@ -48,14 +49,14 @@ public class OrderController {
 		return new ResponseEntity<Order>(foundHistory, HttpStatus.OK);
 	}
 	
-	@GetMapping()
+	@GetMapping(consumes = "application/json", produces = "application/json")
 	public List<Order> getOrder()
 	{
 		List<Order> orders = oServ.getOrders();
 		return orders;
 	}
 	
-	@GetMapping("/user")
+	@GetMapping(value = "/user", consumes = "application/json", produces = "application/json")
 	public List<Order> getUserOrders(@RequestBody User user)
 	{
 		List<Order> userOrder = oServ.getOrder(user);

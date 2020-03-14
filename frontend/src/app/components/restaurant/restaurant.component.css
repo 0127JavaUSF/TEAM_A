@@ -1,4 +1,9 @@
-
+body{
+  /* color: #f8cf55; */
+  
+    background-image: url('https://foodie-bucket.s3.amazonaws.com/54088690-organic-food-background-studio-photo-of-different-fruits-and-vegetables-on-white-wooden-table-high-r.jpg');
+    background-size: cover;
+}
 .rest_img {
 	width: 300px;
     height: 180px;
@@ -14,6 +19,10 @@
     border: 1px solid black;
     box-shadow: 2px 2px inset black;
 } */
+
+.banner_background{
+    background-image: url('https://foodie-bucket.s3.amazonaws.com/54088690-organic-food-background-studio-photo-of-different-fruits-and-vegetables-on-white-wooden-table-high-r.jpg');
+}
 
 .banner_img {
     width: 100vw;

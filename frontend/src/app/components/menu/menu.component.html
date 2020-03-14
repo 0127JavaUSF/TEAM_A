@@ -24,6 +24,8 @@
                     </div>
                     <div class="buttons" *ngIf="FoodQuant[food.apiKey][1] || FoodQuant[food.apiKey][0] > 0">
                         <button class="orderButtonRight" (click)="modifyDown(food)" [disabled]="FoodQuant[food.apiKey][0] === 0">-</button>
+                        <!-- <span class="foodQuant">{{myCart[food.apiKey].quantity}}</span> -->
+                        
                         <span class="foodQuant">{{FoodQuant[food.apiKey][0]}}</span>
                         <button class="orderButtonLeft" (click)="modifyUp(food)">+</button>
                     <!-- *ngIf="FoodQuant[food.apiKey][0] > 0" -->

@@ -22,7 +22,7 @@ import com.revature.service.SessionService;
 import com.revature.service.UserService;
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200" , allowedHeaders = "*")
+@CrossOrigin(origins="http://localhost:4200/*" , allowedHeaders = "*", allowCredentials = "true")
 @RequestMapping("/user")
 public class UserController {
 	
@@ -42,6 +42,17 @@ public class UserController {
 		return new ResponseEntity<User>(createdUser ,HttpStatus.OK);
 	}
 	
+//	@GetMapping("/{email}")
+//	public ResponseEntity<User> getUser(@PathVariable(value="email") String email)
+//	{
+//		Optional<User> user = userServ.getUserByEmail(email);
+//		User foundUser = user.get();
+//		return new ResponseEntity<User>(foundUser, HttpStatus.OK);
+//	}
+	
+//	@GetMapping(value= "/{id}")
+//	public ResponseEntity<User> getUser(@PathVariable(value="id") long id)
+
 	@GetMapping("/{email}")
 	public ResponseEntity<User> getUser(@PathVariable(value="email") String email)
 	{
@@ -50,6 +61,12 @@ public class UserController {
 		return new ResponseEntity<User>(foundUser, HttpStatus.OK);
 	}
 	
+	@PostMapping(value="/updatePassword", consumes = "application/json", produces = "application/json")
+	public ResponseEntity<User> updatePassword(@RequestBody @Valid User clientUser) {
+		User user = userServ.setPassword(clientUser);
+		return  new ResponseEntity<User>(user, HttpStatus.OK);
+	}
+
 //	@GetMapping("/{id}")
 //	public ResponseEntity<User> getUser(@PathVariable(value="id") long id)
 //	{

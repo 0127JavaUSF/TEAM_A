@@ -1,0 +1,5 @@
+<ol>
+    <li *ngFor="let key of objectKeys(cart)">
+        {{cart[key]["foodItem"].name}} and {{cart[key].quantity}}
+    </li>
+</ol>
