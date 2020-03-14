@@ -1,7 +1,5 @@
 package com.revature.controller;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 
 import javax.servlet.http.Cookie;
@@ -27,7 +25,7 @@ import com.revature.service.UserService;
 import javassist.NotFoundException;
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200", allowedHeaders = "*")
+@CrossOrigin(origins="http://localhost:4200", allowedHeaders = "*", allowCredentials = "true")
 @RequestMapping("/login")
 public class SessionController {
 	
@@ -59,7 +57,7 @@ public class SessionController {
 
 			} else {
 				response.addHeader("custom_error", "authentication failed");
-				return new ResponseEntity<User>(new User(), HttpStatus.I_AM_A_TEAPOT);
+				return new ResponseEntity<User>(new User(), HttpStatus.UNAUTHORIZED);
 				}
 		} else {
 			System.out.println("email: " + email + "");

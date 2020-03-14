@@ -15,13 +15,12 @@ export class UserComponent implements OnInit {
   user: User;
 
   constructor(private userService: UserService) { }
-  
+
 
   ngOnInit() {
     this.userService.getUser().subscribe(
       data =>  {
         this.user = data;
-        console.log(this.user);
       }
       // {
       // this.user.id = data.id;
@@ -30,11 +29,9 @@ export class UserComponent implements OnInit {
       // this.user.email = data.email,
       // this.user.password = data.password,
       // this.user.phoneNumber = data.phoneNumber,
-      
       // this.user.hasProfilePicture = data.hasProfilePicture,
       // this.user.profilePictureUrl = data.profilePictureUrl,
       // this.user.presignedUrl = data.presignedUrl,
-      
       // this.user.address = data.address,
       // this.user.city = data.city,
       // this.user.state = data.state,
