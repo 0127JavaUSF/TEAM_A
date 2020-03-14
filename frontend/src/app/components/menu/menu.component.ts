@@ -1,6 +1,8 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { MenuService } from 'src/app/services/menuservices/menu.service';
 import { ActivatedRoute } from '@angular/router';
+import { CartService } from 'src/app/services/cartservices/cart.service';
+import { Food } from 'src/app/models/food';
 
 
 @Component({
@@ -17,11 +19,12 @@ export class MenuComponent implements OnInit {
   foods: any;
   showButton: boolean;
   FoodQuant = {};
+  myCart = JSON.parse(localStorage.getItem("cart"));
 
   constructor(
     private menuService: MenuService,
     private router: ActivatedRoute,
-    private elementRef: ElementRef,
+    private cartService: CartService,
     ) {
 
       this.showButton = false;
@@ -31,41 +34,71 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // get current restaurant api key
     this.menuService.currentRestKey = this.router.snapshot.params['id'];
+    // fetch its manu (food items)
     this.menuService.getMenu().subscribe(
       (foodArr) => {
+        // this is list of food we are looking at
         this.menuService.currentMenu = foodArr;
+        // update list of foods of this component
         this.foods = this.menuService.currentMenu;
-        // populate FoodQuant with apiKey key and value 0;
-        // console.log(foodArr.items[1]);
-        // foods
-        for(let i = 0; i < foodArr.length; i++) {
-          for(let j = 0; j < foodArr[i].items.length; j++ ) {
-            this.FoodQuant[foodArr[i].items[j].apiKey] = [
-              this.FoodQuant[foodArr[i].items[j].apiKey] = 0,
-              this.FoodQuant[foodArr[i].items[j].display] = false,
-            ]
+
+        for(let i = 0; i < this.foods.length; i++) {
+          
+          // represents category. It has apiKey, name and items keys.
+          let foodCategory = this.foods[i];
+          
+          // represents array of objs (each obj = food obj)
+          let arrayOfFood = foodCategory.items;
+          
+          for(let j = 0; j < arrayOfFood.length; j++ ) {
+
+            let myCart = JSON.parse(localStorage.getItem("cart"));
+            
+            let food = arrayOfFood[j];
+            let q = 0;
+
+            let currFoodFromStorage = myCart[food.apiKey];
+            let qFromStorage = 0;
+
+            // logical flaw: Previously I was calling quantity without checking
+            // if storage has this food or not.
+            if(currFoodFromStorage != undefined) {
+              qFromStorage = currFoodFromStorage.quantity;
+            }
+                        
+            // customer has already selected this food item
+            if(qFromStorage > 0) {
+              q = qFromStorage;
+            }
+            
+            this.FoodQuant[food.apiKey] = [q, false];
+            
           }
         }
-        // each restaurant has items
       },
       error => console.log(error)
     );
+
   }
 
-  modifyUp(food) {
+  modifyUp(food: Food) {
     console.log(food);
     // $event.stopPropogation;
     // event.stopPropogation();
     
     this.FoodQuant[food.apiKey][0] += 1;
     console.log(this.FoodQuant[food.apiKey]);
+    this.cartService.modifyCart(food, this.FoodQuant[food.apiKey][0]);
+
   }
   modifyDown(food) {
     if(this.FoodQuant[food.apiKey][0] < 1) {
       return;
     }
     this.FoodQuant[food.apiKey][0] -= 1;
+    this.cartService.modifyCart(food, this.FoodQuant[food.apiKey][0]);
   }
 
   handleHover() {

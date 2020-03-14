@@ -50,15 +50,6 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.norm_font:hover{
-  color: #4b9ac4;
-}
-
-.title_highlight:hover{
-  color: #4b9ac4;
-}
-
-
 .delivery_font {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;

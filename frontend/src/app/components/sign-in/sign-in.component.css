@@ -3,11 +3,8 @@ h2{
 }
 a{
   margin-left: 10vw;
-  color: #f8cf55;
 }
-a:hover{
-  color: #4b9ac4;
-}
+
 .container{
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 25px;
@@ -19,13 +16,7 @@ a:hover{
 
 }
 button{
-  background-color: #9e0a0a;
-  color: #f8cf55;
   border: none;
-}
-
-button:hover{
-  color: #4b9ac4;
 }
 
 .signIn-container{
