@@ -37,11 +37,11 @@ export class UserComponent implements OnInit {
     }, error => (console.log(error))) ;
   }
 
-  submitProfilePicture(file){
-    this.user.hasProfilePicture = true;
+  // submitProfilePicture(file){
+  //   this.user.hasProfilePicture = true;
 
     // this.userService.submitPicture(this.user, file);
-  }
+  // }
 
 
 
