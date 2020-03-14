@@ -21,18 +21,17 @@ export class SignInComponent implements OnInit {
   id;
 
 
-  constructor(private userService: UserService,
-    private router: Router) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
   signIn() {
     // potential holder for getting token
     if (this.userService.checkUser(this.email, this.password) === null) {
-      console.log('broken');
+      console.log('invalid password');
     } else {
       this.successfulLogin();
-      this.router.navigate(['user'])
+      this.router.navigate(['user']);
     }
   }
 

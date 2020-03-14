@@ -46,7 +46,8 @@ export class UserService {
     .subscribe(
       // email, password
       data => {
-        return data;
+        console.log(data);
+        return data.email;
         // Anvar testing
         // localStorage.setItem('cart', "");
       },

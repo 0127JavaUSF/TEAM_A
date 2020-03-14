@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.auth0.jwt.JWT;
@@ -41,6 +43,7 @@ public class SessionController {
 	private SessionService sessServ;
 	
 	@PostMapping(produces = "application/json")
+<<<<<<< HEAD
 
 	@RequestMapping("/login")
 	public ResponseEntity<User> createSession(@RequestBody LoginCredentials loginCreds,
@@ -48,11 +51,18 @@ public class SessionController {
 	throws NotFoundException {
 	
 		System.out.println("WTF DUDE: " + jwt);
+=======
+	public ResponseEntity<User> createSession(String email, String password, 
+			HttpServletRequest request, HttpServletResponse response)
+			throws NotFoundException{
+		
+>>>>>>> 5bfa79789391c79737c686413f9df9538f5cc0f8
 		String token = "";
 		
 //		String userToken = jwt;
 		
 		// does user have a token?		
+<<<<<<< HEAD
 //		if(userToken != null) {
 //			System.out.println("Bruuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuh\n");
 //			if(sessServ.isAuthenticated(loginCreds.email, userToken)) {
@@ -74,6 +84,24 @@ public class SessionController {
 //		} else {
 			System.out.println("email: " + loginCreds.email + "");
 			Optional<User> user = userServ.getUserByEmail(loginCreds.email);
+=======
+		if(userToken != null) {
+			if(sessServ.isAuthenticated(email, userToken)) {
+				// if user has cookie and they are authenticated
+				// then all good.
+				Optional<User> authedUser = sessServ.findUser(email);
+				response.addHeader("custom_success", "user is authenticated");
+				return new ResponseEntity<User>(authedUser.get(), HttpStatus.OK);
+
+			} else {
+				response.addHeader("custom_error", "authentication failed");
+				return new ResponseEntity<User>(new User(), HttpStatus.UNAUTHORIZED);
+				}
+		} else {
+			System.out.println(password);
+			System.out.println("email: " + email + "");
+			Optional<User> user = userServ.getUserByEmail(email);
+>>>>>>> 5bfa79789391c79737c686413f9df9538f5cc0f8
 			User returnedUser = user.get();
 			if(user.isPresent()) {
 					
