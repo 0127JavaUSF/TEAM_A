@@ -46,8 +46,8 @@ export class CreateUserComponent implements OnInit {
     console.log('some of this works');
     return this.httpClient.post<User>('http://localhost:9010/user', this.user)
     .subscribe(
-      data => (console.log('User created')),
-      error => (console.log('Error'))
+      data => (console.log(data)),
+      error => (console.log(error))
     );
 
     }
