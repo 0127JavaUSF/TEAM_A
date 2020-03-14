@@ -1,12 +1,15 @@
 body {
     display: flex;
     align-items: center;
+
 }
 
 .navbar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    background-color: #9e0a0a;
+    color: #f8cf55;
 }
 
 .left-section {
