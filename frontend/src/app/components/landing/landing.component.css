@@ -37,4 +37,8 @@ button{
   color: #f8cf55;
 }
 
+button:hover{
+  color: #4b9ac4;
+}
+
 

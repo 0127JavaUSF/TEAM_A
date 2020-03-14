@@ -52,7 +52,6 @@ body {
 
 .right-section span:hover {
     cursor: pointer;
-
 }
 
 .cart-section {
@@ -62,3 +61,14 @@ body {
     align-items: center;
 }
 
+.hovers:hover{
+  color: #4b9ac4;
+}
+
+.cart-section:hover{
+  color:#4b9ac4;
+}
+
+#userIcon:hover{
+  color:#4b9ac4;
+}
