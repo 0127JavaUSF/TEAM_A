@@ -45,11 +45,6 @@ public class UserService {
 		// BCrypt lib import and work hard
 	}
 	
-<<<<<<< HEAD
-	
-=======
-	@Transactional
->>>>>>> ee2e5fae3acd6df5142d9777327807084ddb7bd6
 	public User setPassword(User clientUser) {
 		//Create user object with Optional type b/c Optional can return the obj or a null
 		//reference the userRepo with this to ensure it refs the variable in service and its inherited methods
