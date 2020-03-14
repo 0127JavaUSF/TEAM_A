@@ -10,9 +10,9 @@
         Pickup
     </span>
     <input type="search" (keydown.enter)= "onNewLocation()" [(ngModel)]="location" placeholder= "{{ location }}"/>
-    <div>
+    <!-- <div>
         <img class = banner_img src="https://foodie-bucket.s3.amazonaws.com/img2.jpg" alt="no img">
-    </div>
+    </div> -->
     <div class="container">
         <div class="row">
             <div class="col selected container_border" *ngFor="let result of allRestaurants" (click)="onRestaurantClick(result)" >
@@ -38,6 +38,9 @@
                 </div>
             </div>
         </div>
+        <div *ngIf = "allRestaurants[0] === undefined " class="alert alert-warning" role="alert">
+            There are currently no restaurants available for your location <a href="#" class="alert-link">Try another address</a>.
+          </div>
     </div>
 </body>
 <router-outlet></router-outlet>

@@ -69,7 +69,6 @@ public class SessionController {
 			System.out.println("email: " + email + "");
 			Optional<User> user = userServ.getUserByEmail(email);
 			User returnedUser = user.get();
-			System.out.println(returnedUser);
 			if(user.isPresent()) {
 					
 				String hashedPwd = returnedUser.getPassword();
@@ -93,12 +92,12 @@ public class SessionController {
 
 				}
 				response.addHeader("custom_error", "user entered incorrect password");
-				return new ResponseEntity<User>(returnedUser, HttpStatus.UNAUTHORIZED);
+				return new ResponseEntity<User>(new User(), HttpStatus.UNAUTHORIZED);
 				
 			}
 			
 			response.addHeader("custom_error", "User with such email was not found.");
-			return new ResponseEntity<User>(returnedUser, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<User>(new User(), HttpStatus.NOT_FOUND);
 						
 		}
 				

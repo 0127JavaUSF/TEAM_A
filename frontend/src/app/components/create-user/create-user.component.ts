@@ -55,7 +55,7 @@ export class CreateUserComponent implements OnInit {
 
   // confirm that password and confirmed password are the same.
   confirmPass(password, confirmPassword) {
-    if (password === password) {
+    if (password === confirmPassword) {
       return false;
     } else {
       return true;

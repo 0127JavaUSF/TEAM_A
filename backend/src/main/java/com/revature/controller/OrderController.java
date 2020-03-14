@@ -40,7 +40,7 @@ public class OrderController {
 //		return new ResponseEntity<OrderHistory>(itemHistory, HttpStatus.OK);
 //	}
 
-	@GetMapping("/{id}")
+	@GetMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Order> getOrder(@PathVariable(value="id") Long id)
 	{
 		Optional<Order> history = oServ.getOrder(id);
@@ -48,14 +48,14 @@ public class OrderController {
 		return new ResponseEntity<Order>(foundHistory, HttpStatus.OK);
 	}
 	
-	@GetMapping()
+	@GetMapping(consumes = "application/json", produces = "application/json")
 	public List<Order> getOrder()
 	{
 		List<Order> orders = oServ.getOrders();
 		return orders;
 	}
 	
-	@GetMapping("/user")
+	@GetMapping(value = "/user", consumes = "application/json", produces = "application/json")
 	public List<Order> getUserOrders(@RequestBody User user)
 	{
 		List<Order> userOrder = oServ.getOrder(user);

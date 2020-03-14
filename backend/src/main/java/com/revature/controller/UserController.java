@@ -50,7 +50,7 @@ public class UserController {
 //		return new ResponseEntity<User>(foundUser, HttpStatus.OK);
 //	}
 	
-	@GetMapping("/{id}")
+	@GetMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<User> getUser(@PathVariable(value="id") long id)
 	{
 		Optional<User> user = userServ.getUserById(id);
