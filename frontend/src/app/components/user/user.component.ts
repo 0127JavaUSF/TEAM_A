@@ -12,6 +12,7 @@ export class UserComponent implements OnInit {
 
   email;
   addresses;
+  phoneNumber;
   user: any;
 
   constructor(private userService: UserService) { }
