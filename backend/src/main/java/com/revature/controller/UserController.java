@@ -22,7 +22,7 @@ import com.revature.service.SessionService;
 import com.revature.service.UserService;
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200/*" , allowedHeaders = "*", allowCredentials = "true")
+@CrossOrigin(origins="http://localhost:4200" , allowedHeaders = "*", allowCredentials = "true")
 @RequestMapping("/user")
 public class UserController {
 	

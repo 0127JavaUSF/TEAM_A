@@ -70,5 +70,30 @@ public class SessionService {
 	{
 		return this.userServ.getUserByEmail(email);
 	}
+
+	public boolean isRight(String token) {
+
+		JWT jwt = new JWT();
+		System.out.println("sup");
+		System.out.println(token);
+		DecodedJWT myJwt = jwt.decodeJwt(token);
+	
+		String decodedEmail = myJwt.getClaim("email").asString();
+		String decodedPassword = myJwt.getClaim("password").asString();
+	
+		Optional<User> user = userServ.getUserByEmail(decodedEmail);
+		
+		if(user.get() != null) {
+			
+			if(user.get().getEmail().equals(decodedEmail) && 
+					decodedPassword.equals(user.get().getPassword())) {
+				
+				return true;
+			
+			}
+						
+		}
+		return false;
+	}
 	
 }
