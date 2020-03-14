@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from 'src/app/user';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-create-user',
