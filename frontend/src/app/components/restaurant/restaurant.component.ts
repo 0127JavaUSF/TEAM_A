@@ -3,7 +3,7 @@ import { Observable} from 'rxjs';
 import { RestaurantService } from 'src/app/services/RestaurantService/RestaurantService.service';
 import { MenuService } from 'src/app/services/menuservices/menu.service';
 import { Router } from '@angular/router';
-import { Food } from 'src/app/models/item';
+import { Food } from 'src/app/models/food';
 
 
 

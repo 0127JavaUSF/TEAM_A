@@ -7,6 +7,7 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { UserComponent} from './components/user/user.component';
+import { CartComponent } from './components/cart/cart.component';
 
 const routes: Routes = [
   {path: '', component: LandingComponent},
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'sign-in', component: SignInComponent},
   {path: 'create-account', component: CreateUserComponent},
   {path: 'restaurants/:id', component: MenuComponent},
-  {path: 'user', component: UserComponent}
+  {path: 'user', component: UserComponent},
+  {path: 'cart', component: CartComponent}
 ];
 
 
@@ -24,4 +26,4 @@ const routes: Routes = [
 })
 
 export class AppRoutingModule { }
-export const routingComponents = [ RestaurantComponent, LandingComponent ];
+// export const routingComponents = [ RestaurantComponent, LandingComponent ];
