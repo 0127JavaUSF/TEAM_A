@@ -2,8 +2,8 @@
   <div class="signIn-container">
     <h2>Please SignIn</h2>
     <div class="userInput">
-    <input type="email" [(ngModel)] = "email" placeholder="email@example.com">
-    <input (keydown.enter)= "signIn()" type="password" [(ngModel)] = "password" id="password" placeholder="password">
+    <input type="email" [(ngModel)] = "loginCreds.email" placeholder="email@example.com">
+    <input (keydown.enter)= "signIn()" type="password" [(ngModel)] = "loginCreds.password" id="password" placeholder="password">
     <button (click) = signIn()>Sign In</button>
   </div>
     <a routerLink="/create-account">Create Account</a>
