@@ -57,17 +57,18 @@ export class UserComponent implements OnInit {
           data => {
             console.log(data);
             this.user = data;
+            this.userService.setUserId(this.user.id);
             console.log(this.user.firstName);
           },
           error => console.log(error),
         );
     }
-    // this.userService.getUser().subscribe(
-    //   data =>  {
-    //     this.user = data; //assigns input from user to each attribute of the user object
-    //   }
-    // ,
-    // error => (console.log(error))) ;
+    this.userService.getUser().subscribe(
+      data =>  {
+        this.user = data; //assigns input from user to each attribute of the user object
+      }
+    ,
+    error => (console.log(error))) ;
   }
 
   updateUserPassword() {
@@ -106,12 +107,12 @@ export class UserComponent implements OnInit {
   //   error => (console.log(error))) ;
   // }
 
-  // onPictureSelect(picture) {
-  //   if (picture.target.file > 0)
-  //   {
-  //     this.file = picture.target.file;
-  //   }
-  // }
+  onPictureSelect(picture) {
+    if (picture.target.file > 0)
+    {
+      this.file = picture.target.file;
+    }
+  }
 
 }
 
