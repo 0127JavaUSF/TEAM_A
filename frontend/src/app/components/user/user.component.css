@@ -1,6 +1,10 @@
 .completed {
     color: chartreuse;
 }
+
+.error {
+    color: red;
+}
 .userAccntDiv{
     display: flex;
     margin-top: 15vh;

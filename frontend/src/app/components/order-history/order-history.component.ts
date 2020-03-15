@@ -18,7 +18,6 @@ export class OrderHistoryComponent implements OnInit {
     this.userService.getOrderHistory().subscribe(
       data => {
         this.orders = data;
-        console.log(this.orders);
       },
       error => (console.log(error)));
   }

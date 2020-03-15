@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UserService } from 'src/app/services/UserService/user.service';
 import { User } from 'src/app/models/user';
 import { Router } from '@angular/router';
@@ -11,8 +11,11 @@ import { LocationService } from 'src/app/services/locationservice/location.servi
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
+
+@ViewChild('myInput')
 export class UserComponent implements OnInit {
 
+  myInputVariable: ElementRef;
 
   user: User;
 
@@ -21,6 +24,9 @@ export class UserComponent implements OnInit {
   newPass = '';
   verifyPass = '';
   toggle = 0;
+  toggleShort = 0;
+  toggleSpecial = 0;
+  toggleMatch = 0;
 
   //for picture upload
   file;
@@ -48,16 +54,15 @@ export class UserComponent implements OnInit {
 
     this.locationService.currentUserLocation();
 
-    if(this.sessionService.currrentUser.email.length > 0) {
+    if (this.sessionService.currrentUser.email.length > 0) {
       this.user = this.sessionService.currrentUser;
     } else {
       // make request to fetch data
       this.sessionService.fetchCurrentUser()
         .subscribe(
           data => {
-            console.log(data)
             this.user = data;
-            console.log(this.user.firstName);
+            this.userService.setUserId(this.user.id);
           },
           error => console.log(error),
         );
@@ -71,13 +76,30 @@ export class UserComponent implements OnInit {
   }
 
   updateUserPassword() {
+    const specialChar = /[!@#$%^&*(),.?":{}|<>]/g;
+    if (this.newPass.length > 8) {
+    if (this.newPass.match(specialChar) != null) {
     if (this.newPass === this.verifyPass) {
       this.userService.updatePassword(this.user.email, this.newPass);
       this.currentPass = '';
       this.newPass = '';
       this.verifyPass = '';
       this.toggle = 1;
+      this.toggleShort = 0;
+      this.toggleSpecial = 0;
+      this.toggleMatch = 0;
+        } else {
+          this.toggleMatch = 1;
+          this.toggleSpecial = 0;
+          this.toggleShort = 0;
+        }
+    } else {
+      this.toggleSpecial = 1;
+      this.toggleShort = 0;
     }
+  } else {
+    this.toggleShort = 1;
+  }
   }
 
   fetchOrderHistory() {
@@ -87,7 +109,8 @@ export class UserComponent implements OnInit {
   submitProfilePicture() {
     this.user.hasProfilePicture = true;
     this.userService.submitPicture(this.user.id, this.user.hasProfilePicture, this.file);
-    this.reloadUser();
+    this.myInputVariable.nativeElement.value = '';
+    // this.reloadUser();
   }
 
   onFileUpload(event) {
@@ -97,14 +120,14 @@ export class UserComponent implements OnInit {
     }
   }
 
-  reloadUser() {
-    this.userService.getUser().subscribe(
-      data =>  {
-        this.user = data; //assigns input from user to each attribute of the user object
-      }
-    ,
-    error => (console.log(error))) ;
-  }
+  // reloadUser() {
+  //   this.userService.getUser().subscribe(
+  //     data =>  {
+  //       this.user = data; //assigns input from user to each attribute of the user object
+  //     }
+  //   ,
+  //   error => (console.log(error))) ;
+  // }
 
   // onPictureSelect(picture) {
   //   if (picture.target.file > 0)

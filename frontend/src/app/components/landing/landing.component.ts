@@ -16,7 +16,7 @@ export class LandingComponent implements OnInit {
   address = '';
   distance = 2;
   constructor(private httpClient: HttpClient, private restaurantService: RestaurantService, private router: Router,
-    private sessionService: SessionService) { }
+              private sessionService: SessionService) { }
 
   ngOnInit(): void {
 
@@ -26,7 +26,7 @@ export class LandingComponent implements OnInit {
         this.sessionService.currrentUser = this.user;
       },
       error => console.log(error),
-    )
+    );
 
     localStorage.removeItem('address');
     localStorage.removeItem('method');
