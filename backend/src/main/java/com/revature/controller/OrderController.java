@@ -56,9 +56,11 @@ public class OrderController {
 		return orders;
 	}
 	
-	@GetMapping(value = "/user", consumes = "application/json", produces = "application/json")
-	public List<Order> getUserOrders(@RequestBody User user)
+	@GetMapping(value = "/user/{id}", produces = "application/json")
+	public List<Order> getUserOrders(@PathVariable(value="id") Long id)
 	{
+		User user = new User();
+		user.setId(id);
 		List<Order> userOrder = oServ.getOrder(user);
 		return userOrder;
 	}

@@ -62,7 +62,7 @@ public class UserController {
 	}
 	
 	@PostMapping(value="/updatePassword", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<User> updatePassword(@RequestBody @Valid User clientUser) {
+	public ResponseEntity<User> updatePassword(@RequestBody User clientUser) {
 		User user = userServ.setPassword(clientUser);
 		return  new ResponseEntity<User>(user, HttpStatus.OK);
 	}

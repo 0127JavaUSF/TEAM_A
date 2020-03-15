@@ -15,7 +15,7 @@
                 <span>+ CHANGE PHOTO</span>
             </span>
 
-            <input type="file" class="photoUpload">
+            <input type="file" accept="image/*" class="photoUpload">
         </button>
     </div>
 
@@ -56,14 +56,16 @@
         <div class="form-group">
                 <div>
                     <h2 class="changePassword">Change Password</h2>
-                    <input class="currentPassword" type="text"><br><br>
-                    <input class="newPassword" type="password" placeholder="New Password"><br><br>
-                    <input class="verifyPassword" type="password" placeholder="Verify New Password"><br>
+                    <input id = "currentPassword" class="currentPassword" type="text" [(ngModel)]= currentPass><br><br>
+                    <input id = "newPassword" class="newPassword" type="password" placeholder="New Password" [(ngModel)]=newPass><br><br>
+                    <input id = "verifyPassword" class="verifyPassword" type="password" placeholder="Verify New Password"[(ngModel)]=verifyPass><br>
                     <span class="Password Rules" type="text">Your new password must be at least 8 characters & contain at least one special chracter</span>
                 </div>
 
                 <div class="saveNewPassword">
-                    <button input="click" type="button" class="savePassword">SAVE</button><br>
+                    <!-- <button input="click" type="button" class="savePassword">SAVE</button><br> -->
+                    <button (click) = updateUserPassword() currentPassword.value = ''>Update Password</button>
+                    <span class = "completed" *ngIf = "toggle === 1">Success!</span>
                 </div>
         </div>
     </div>
@@ -74,9 +76,14 @@
     <span>
       {{ user.address }}, {{ user.city }}, {{user.state}} {{user.zipCode}}
     </span>
+</div>
 
-
-
+<div> 
+    <h3>
+        Order History
+    </h3>
+    <button (click) = fetchOrderHistory()>display</button>
+</div>
 </div>
 
 

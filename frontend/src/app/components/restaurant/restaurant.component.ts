@@ -45,9 +45,7 @@ export class RestaurantComponent implements OnInit {
     onRestaurantClick(clickedRestaurant: any) {
         this.menuService.currentRestKey = clickedRestaurant.apiKey;
         this.router.navigate([`/restaurants/${this.menuService.currentRestKey}`]);
-        
-        let dummyFood = {}
-        
+        let dummyFood = {};
         this.food.apiKey = "123";
         this.food.basePrice = 2.99;
         this.food.description = "This food is awesome";

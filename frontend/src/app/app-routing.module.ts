@@ -8,6 +8,7 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { MenuComponent } from './components/menu/menu.component';
 import { UserComponent} from './components/user/user.component';
 import { CartComponent } from './components/cart/cart.component';
+import { OrderHistoryComponent } from './components/order-history/order-history.component';
 
 const routes: Routes = [
   {path: '', component: LandingComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'create-account', component: CreateUserComponent},
   {path: 'restaurants/:id', component: MenuComponent},
   {path: 'user', component: UserComponent},
-  {path: 'cart', component: CartComponent}
+  {path: 'cart', component: CartComponent},
+  {path: 'order-history', component: OrderHistoryComponent}
 ];
 
 
