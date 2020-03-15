@@ -1,3 +1,30 @@
-.pickup-option-container :nth-child(1n) {
-  margin: 5px;
+* {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        color: #2D3138;
+}
+
+.pickup-option-container {
+        display: flex;
+        flex-direction: column;
+}
+
+.header {        
+        margin-top: 15px;
+        font-weight: 600;
+        margin-bottom: 10px;
+}
+
+.container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: left;
+        border: 1px solid rgb(182, 186, 196);
+        height: 40px;
+}
+
+.address {
+        color: rgb(87, 92, 104); 
+        word-wrap: break-word;
 }
