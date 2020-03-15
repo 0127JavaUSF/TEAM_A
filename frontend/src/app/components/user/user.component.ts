@@ -39,36 +39,31 @@ export class UserComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     private sessionService: SessionService,
-    // Anvar test
     private locationService: LocationService,
 
-    ) {}
+    ) {
+      this.user = this.sessionService.getCurrentUser();
+      // this.user.firstName  = "Alex";
+    }
 
   ngOnInit() {
 
     this.locationService.currentUserLocation();
 
-    if (this.sessionService.currrentUser.email.length > 0) {
-      this.user = this.sessionService.currrentUser;
-    } else {
-      // make request to fetch data
-      this.sessionService.fetchCurrentUser()
-        .subscribe(
-          data => {
-            console.log(data);
-            this.user = data;
-            this.userService.setUserId(this.user.id);
-            console.log(this.user.firstName);
-          },
-          error => console.log(error),
-        );
+    if (!this.sessionService.isLoggedIn()) {
+      this.sessionService.fetchCurrentUser().subscribe(
+        (data) => {
+          this.sessionService.receiveUserData(data);
+          this.user = this.sessionService.getCurrentUser();
+          console.log("hey: " + this.user.password);
+        },
+        (error) => {
+          console.log(error);
+          this.sessionService.ensureLoggedIn();
+        }
+      )
     }
-    this.userService.getUser().subscribe(
-      data =>  {
-        this.user = data; //assigns input from user to each attribute of the user object
-      }
-    ,
-    error => (console.log(error))) ;
+
   }
 
   updateUserPassword() {

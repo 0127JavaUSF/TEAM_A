@@ -11,37 +11,51 @@ import { HttpClient } from '@angular/common/http';
 })
 export class NavbarComponent implements OnInit {
 
-  user = new User();
   userOrLogin = "sign-in";
+  user: User = new User();
+  sessionText: string = "Login";
+  loggedin = false;
 
-  constructor(private router: Router,
-    private sessionService: SessionService,
-    private http: HttpClient,
-    ) { }
+  constructor(private router: Router, private sessionService: SessionService) {
+    this.user = this.sessionService.getCurrentUser();
+  }
 
   ngOnInit(): void {
-    this.sessionService.fetchCurrentUser().subscribe(
-      data => this.user = data,
-      error => console.log(error),
-    )
-  }
 
-  ensureLoggedIn() {
-    if(this.user.email.length > 0) {
-      this.userOrLogin = "user";
+    if(!this.sessionService.isLoggedIn()) { 
+      this.sessionService.fetchCurrentUser().subscribe(
+        (data) => {
+          this.sessionService.receiveUserData(data);
+          this.user = this.sessionService.getCurrentUser();
+          if(this.sessionService.isLoggedIn()) {
+            this.sessionText = "Logout";
+            this.loggedin = true;
+          }
+        },
+        (error) => {
+          console.log(error);
+          this.sessionService.ensureLoggedIn();
+        }
+      )
     }
-    this.router.navigate([`${this.userOrLogin}`])
+    
   }
 
-  logout() {
-    const url = "http://localhost:9010/logout";
-    this.http.get(url, {withCredentials: true}).subscribe(
-      () => {
-        console.log("Logged out")
-        this.router.navigate(['/'])
-      },
-      (error) => console.log("ERROR: " + error)
-    );
+  handleProfile() {
+    
+    this.sessionService.ensureLoggedIn();
+    this.router.navigate([`user-details/${this.user.id}`]);
+
+  }
+
+  handleSession() {
+    // this.sessionService.ensureLoggedIn();
+    if(this.sessionService.isLoggedIn()) {
+      this.sessionService.logout();
+      this.sessionText = "Login";
+    } else {
+     this.sessionService.ensureLoggedIn(); 
+    }
   }
 
 }

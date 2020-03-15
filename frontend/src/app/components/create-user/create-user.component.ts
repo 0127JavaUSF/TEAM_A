@@ -11,17 +11,17 @@ import { User } from 'src/app/models/user';
 export class CreateUserComponent implements OnInit {
 
   user = {
-  id: 0,
-  firstName: '',
-  lastName: '',
-  email: '',
-  password: '',
-  phoneNumber: '',
-  address: '',
-  city: '',
-  state: '',
-  zipCode: ''
-};
+    id: 0,
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    phoneNumber: '',
+    address: '',
+    city: '',
+    state: '',
+    zipCode: ''
+  };
 
   confirmPassword = '';
   notMatch = true;
@@ -30,8 +30,7 @@ export class CreateUserComponent implements OnInit {
 
   constructor(private httpClient: HttpClient) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   submit() {
 
     // call password confirm method
