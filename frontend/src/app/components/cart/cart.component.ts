@@ -4,6 +4,8 @@ import { User } from 'src/app/models/user';
 import { Restraurant } from 'src/app/models/restaurant';
 import { AgmCoreModule } from '@agm/core';
 import { styles } from '../../models/googleMapStyle';
+import { LocationService } from 'src/app/services/locationservice/location.service';
+import { async } from '@angular/core/testing';
 /**
  * The Cart component relies on: 
  * 
@@ -56,7 +58,13 @@ export class CartComponent implements OnInit {
   lat = 28.054940;
   long = -82.440440;
 
-  constructor(private cartService: CartService) {
+  userLat;
+  userLong;
+
+  constructor(
+    private cartService: CartService,
+    private locationService: LocationService,
+    ) {
 
     this.user['firstName'] = "Abby";
     this.user['lastName'] = "Adams";
@@ -83,6 +91,11 @@ export class CartComponent implements OnInit {
       },
       (error) => console.log(error),
     );
+
+    this.userLat = this.locationService.getUserLocation().latitude;
+    this.userLong = this.locationService.getUserLocation().longitude;
+      console.log("lat: " + this.userLat);
+      console.log("long:" + this.userLong);
   }
 
   deliveryChosen() {

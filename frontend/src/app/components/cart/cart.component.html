@@ -65,13 +65,20 @@
       <agm-map class="google-map"
           [latitude]="lat" 
           [longitude]="long"
-          [zoom]="15"
+          [zoom]="2"
           >
           <!-- [styles]="mapStyles" -->
 
               <agm-marker 
                 [latitude]="lat" 
-                [longitude]="long">
+                [longitude]="long"
+                >
+              </agm-marker>
+              
+              <agm-marker
+                [latitude]="userLat"
+                [longitude]="userLong"
+                >
               </agm-marker>
             
       </agm-map>
