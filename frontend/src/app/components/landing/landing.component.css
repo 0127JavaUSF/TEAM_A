@@ -10,7 +10,19 @@
   color: #f8cf55;
   background-color: #9e0a0a;
   border-color: #f8cf55;
+
+  /* TODO Why is this happening */
+  /* Anvar test */
+  width: 1000px;
+  height: 500px;
 }
+
+/* Anvar test */
+
+.motto {
+  margin-top: 15px;
+}
+
 .address{
   margin-top: 5vh;
   margin-bottom: 5vh;
