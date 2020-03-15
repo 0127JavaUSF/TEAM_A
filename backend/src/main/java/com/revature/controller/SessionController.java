@@ -43,26 +43,25 @@ public class SessionController {
 	private SessionService sessServ;
 	
 	@PostMapping(produces = "application/json")
-<<<<<<< HEAD
+
 
 	@RequestMapping("/login")
 	public ResponseEntity<User> createSession(@RequestBody LoginCredentials loginCreds,
 	HttpServletRequest request, HttpServletResponse response, @CookieValue(value = "auth_token", defaultValue = "") String jwt)
 	throws NotFoundException {
 	
-		System.out.println("WTF DUDE: " + jwt);
-=======
-	public ResponseEntity<User> createSession(String email, String password, 
-			HttpServletRequest request, HttpServletResponse response)
-			throws NotFoundException{
+//		System.out.println("WTF DUDE: " + jwt);
+//
+//	public ResponseEntity<User> createSession(String email, String password, 
+//			HttpServletRequest request, HttpServletResponse response)
+//			throws NotFoundException {
 		
->>>>>>> 5bfa79789391c79737c686413f9df9538f5cc0f8
+		
 		String token = "";
 		
-//		String userToken = jwt;
+		String userToken = jwt;
 		
-		// does user have a token?		
-<<<<<<< HEAD
+		// does user have a token
 //		if(userToken != null) {
 //			System.out.println("Bruuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuh\n");
 //			if(sessServ.isAuthenticated(loginCreds.email, userToken)) {
@@ -84,7 +83,7 @@ public class SessionController {
 //		} else {
 			System.out.println("email: " + loginCreds.email + "");
 			Optional<User> user = userServ.getUserByEmail(loginCreds.email);
-=======
+
 		if(userToken != null) {
 			if(sessServ.isAuthenticated(email, userToken)) {
 				// if user has cookie and they are authenticated
@@ -101,7 +100,6 @@ public class SessionController {
 			System.out.println(password);
 			System.out.println("email: " + email + "");
 			Optional<User> user = userServ.getUserByEmail(email);
->>>>>>> 5bfa79789391c79737c686413f9df9538f5cc0f8
 			User returnedUser = user.get();
 			if(user.isPresent()) {
 					
