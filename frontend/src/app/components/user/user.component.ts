@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/UserService/user.service';
 import { User } from 'src/app/models/user';
-import { orderHistory } from 'src/app/models/orderHistory';
 import { Router } from '@angular/router';
 import { SessionService } from 'src/app/services/sessionservices/session.service';
 
@@ -16,7 +15,7 @@ export class UserComponent implements OnInit {
   email;
   addresses;
   phoneNumber;
-  user: User;
+  user = new User();
   currentPass = '';
   newPass = '';
   verifyPass = '';
@@ -41,6 +40,7 @@ export class UserComponent implements OnInit {
           data => {
             console.log(data)
             this.user = data;
+            console.log(this.user.firstName);
           },
           error => console.log(error),
         );
