@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: 'sign-in', component: SignInComponent},
   {path: 'create-account', component: CreateUserComponent},
   {path: 'restaurants/:id', component: MenuComponent},
-  {path: 'user-details', component: UserComponent},
+  {path: 'user-details/:id', component: UserComponent},
   {path: 'cart', component: CartComponent},
   {path: 'order-history', component: OrderHistoryComponent}
 ];

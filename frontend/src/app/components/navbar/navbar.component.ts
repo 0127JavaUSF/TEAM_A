@@ -38,7 +38,7 @@ export class NavbarComponent implements OnInit {
   handleProfile() {
     
     this.sessionService.ensureLoggedIn();
-    this.router.navigate(['user-details']);
+    this.router.navigate([`user-details/${this.user.id}`]);
 
   }
 
