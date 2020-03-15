@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cartservices/cart.service';
-
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -10,6 +9,7 @@ export class CartComponent implements OnInit {
 
   cart = {};
   objectKeys = Object.keys;
+  restaurant;
 
   constructor(private cartService: CartService) { }
 
