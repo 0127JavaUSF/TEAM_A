@@ -41,7 +41,10 @@ export class UserComponent implements OnInit {
     private sessionService: SessionService,
     private locationService: LocationService,
 
-    ) {}
+    ) {
+      this.user = this.sessionService.getCurrentUser();
+      // this.user.firstName  = "Alex";
+    }
 
   ngOnInit() {
 
@@ -52,6 +55,7 @@ export class UserComponent implements OnInit {
         (data) => {
           this.sessionService.receiveUserData(data);
           this.user = this.sessionService.getCurrentUser();
+          console.log("hey: " + this.user);
         },
         (error) => {
           console.log(error);
