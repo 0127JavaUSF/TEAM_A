@@ -60,7 +60,7 @@ export class SignInComponent implements OnInit {
           console.log(this.user);
           if (this.user.email != null) {
             // this.successfulLogin();
-            this.router.navigate(['user']);
+            this.router.navigate([`user-details/${this.user.id}`]);
           }
         },
         error => this.wrongpass = true

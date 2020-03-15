@@ -55,7 +55,7 @@ export class UserComponent implements OnInit {
         (data) => {
           this.sessionService.receiveUserData(data);
           this.user = this.sessionService.getCurrentUser();
-          console.log("hey: " + this.user);
+          console.log("hey: " + this.user.password);
         },
         (error) => {
           console.log(error);

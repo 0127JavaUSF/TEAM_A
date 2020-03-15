@@ -13,6 +13,8 @@ export class NavbarComponent implements OnInit {
 
   userOrLogin = "sign-in";
   user: User = new User();
+  sessionText: string = "Login";
+  loggedin = false;
 
   constructor(private router: Router, private sessionService: SessionService) {
     this.user = this.sessionService.getCurrentUser();
@@ -25,6 +27,10 @@ export class NavbarComponent implements OnInit {
         (data) => {
           this.sessionService.receiveUserData(data);
           this.user = this.sessionService.getCurrentUser();
+          if(this.sessionService.isLoggedIn()) {
+            this.sessionText = "Logout";
+            this.loggedin = true;
+          }
         },
         (error) => {
           console.log(error);
@@ -43,11 +49,13 @@ export class NavbarComponent implements OnInit {
   }
 
   handleSession() {
-    this.sessionService.ensureLoggedIn();
-  }
-
-  handleLogout() {
-    this.sessionService.logout();
+    // this.sessionService.ensureLoggedIn();
+    if(this.sessionService.isLoggedIn()) {
+      this.sessionService.logout();
+      this.sessionText = "Login";
+    } else {
+     this.sessionService.ensureLoggedIn(); 
+    }
   }
 
 }

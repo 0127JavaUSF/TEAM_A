@@ -44,7 +44,7 @@ export class OrderHistoryComponent implements OnInit {
   }
 
   returnToUser() {
-    this.router.navigate(['user']);
+    this.router.navigate(['user-details']);
   }
 
 }
