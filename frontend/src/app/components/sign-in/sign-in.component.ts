@@ -18,6 +18,8 @@ export class SignInComponent implements OnInit {
    */
   user: User;
 
+  wrongpass = false;
+
   /**
    * holds login credentials: email and password
    */
@@ -25,14 +27,14 @@ export class SignInComponent implements OnInit {
 
   constructor(
 
-    private userService: UserService, 
+    private userService: UserService,
     private router: Router,
     private sessionService: SessionService,
-    
-    ){}
+
+    ) {}
 
   ngOnInit(): void {}
-  
+
   signIn() {
     /**
      * logs in user given user email and password
@@ -48,8 +50,8 @@ export class SignInComponent implements OnInit {
             this.router.navigate(['user']);
           }
         },
-        error => console.log(error)
-      )
+        error => this.wrongpass = true
+      );
   }
 
   // successfulLogin() {

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cartservices/cart.service';
-<<<<<<< HEAD
-=======
 import { User } from 'src/app/models/user';
 import { Restraurant } from 'src/app/models/restaurant';
 import { AgmCoreModule } from '@agm/core';
@@ -10,15 +8,14 @@ import { LocationService } from 'src/app/services/locationservice/location.servi
 import { async } from '@angular/core/testing';
 import { UserLocation } from 'src/app/models/UserLocation';
 /**
- * The Cart component relies on: 
- * 
+ * The Cart component relies on:
+ *
  * 1. User Information (Full Address, First and Last Name)
  * 2. Restaurant Name
  * 3. Food Items (Item name, Quantity)
- * 
+ *
  */
 
->>>>>>> fabc5ecdac7844c60758eb164681339df76aaa65
 @Component({
   selector: 'cart',
   templateUrl: './cart.component.html',
@@ -32,7 +29,7 @@ export class CartComponent implements OnInit {
    */
 
   mapStyles = styles;
-  
+
   user = {};
   rest = {};
 
@@ -56,7 +53,7 @@ export class CartComponent implements OnInit {
 
   pickupDefaultClass = "option-container";
   pickupActiveClass = "option-container delivery-active";
-  
+
   deliveryDefaultClass = "delivery-option-container option-container";
   deliveryActiveClass = "delivery-option-container option-container delivery-active";
 
@@ -106,7 +103,7 @@ export class CartComponent implements OnInit {
         // console.log(this.userLocation.longitude);
       },
       (error) => console.log(error)
-    );  
+    );
 
   }
 
@@ -123,11 +120,11 @@ export class CartComponent implements OnInit {
   }
 
   displayDeliveryOption(selection: string) {
-    if(selection === 'delivery') {
+    if (selection === 'delivery') {
       this.deliveryChosen();
     }
 
-    if(selection === 'pickup') {
+    if (selection === 'pickup') {
       this.pickupChosen();
     }
   }
