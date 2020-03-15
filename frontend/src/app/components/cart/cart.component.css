@@ -62,8 +62,9 @@ li{
   flex-direction: row;
   justify-content: space-between;
   height: 50px;
-  width: 400px;
-  border: 1px solid rgb(182, 186, 196);
+  width: 100%;
+  /* border: 1px solid rgb(182, 186, 196); */
+  border: 1px solid rgb(236, 237, 239);
   cursor: pointer;
 
 }
@@ -90,12 +91,15 @@ li{
 }
 
 .delivery-option-container {
-  border-right: 1px solid rgb(182, 186, 196);
+  /* border-right: 1px solid rgb(182, 186, 196); */
+  border-right: 1px solid rgb(236, 237, 239);
+
 }
 
 .delivery-active {
   height: 50px;
-  border-bottom: 3px solid rgb(0, 204, 153);
+  /* border-bottom: 3px solid rgb(0, 204, 153); */
+  border-bottom: 3px solid #9E0A0A;
 }
 
 
@@ -107,18 +111,29 @@ li{
   box-sizing: border-box;
   width: 50%;
   /* padding: 25px; */
-  margin: 25px;
+  margin: 78px 25px 25px 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: left;
-  border: 1px solid rgb(182, 186, 196);
+  border-color: rgb(241, 242, 243);
+  /* 
+  horizontal
+  vertical
+  blur
+  spread
+  color
+  inset  
+  */
+  /* box-shadow: 10px 10px 8px 10px #888888; */
+  /* box-shadow: 12px 0 15px -4px #888888, -12px 0 8px -4px #888888;  */
+  box-shadow: rgba(0, 0, 0, 0.13) 0px 8px 15px 0px;
 
 }
 
 .google-map > img {
-  width: 388px;
-  height: 140px;
+  width: 100%;
+  height: 190px;
 }
 
 .header {        
@@ -132,7 +147,8 @@ li{
         flex-direction: column;
         justify-content: center;
         align-items: left;
-        border: 1px solid rgb(182, 186, 196);
+        /* border: 1px solid rgb(182, 186, 196); */
+        border: 1px solid rgb(236, 237, 239);
         height: 40px;
 }
 
@@ -141,4 +157,76 @@ li{
   padding: 20px;
 }
 
+.rest-name-menu-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* margin: 5px 0px 5px 5px; */
+  border-bottom: 1px solid #9E0A0A;
+}
 
+.rest-menu {
+  color: #9E0A0A;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.food-item-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.food-item-name-price {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.food-item-name {
+  font-size: 14px;
+  font-weight: 550;
+}
+
+.food-item-description {
+  font-size: 10px;
+  color: #8F95A3;
+  margin-left: 10px;
+}
+
+.fee-info-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 20px 20px 20px;
+}
+
+.fee-info-subcontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 16px;
+  color: #8F95A3;
+}
+
+.total-container {
+  border-top: 1px solid;
+  padding-top: 15px;
+  border-color: rgb(241, 242, 243);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* align-content: center; */
+  align-items: center;
+  margin-top: 15px;
+}
+
+.total-header {
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+}
+
+.total-price {
+  font-weight: 600;
+  font-size: 18px;
+}

@@ -70,25 +70,68 @@
           {{rest['name']}}
         </div>
         <div class="rest-menu">
-          View Menu
+          VIEW MENU
         </div>
       </div>
 
       <div class="food-item" *ngFor="let key of objectKeys(cart)">
         
-        <div class="food-item-name-price">
-          <div class="food-item-name">
-            {{cart[key]["quantity"]}} x {{cart[key]["foodItem"].name}}
+        <div class="food-item-container">
+          <div class="food-item-name-price">
+            <div class="food-item-name">
+              {{cart[key]["quantity"]}} x {{cart[key]["foodItem"].name}}.
+            </div>
+            <div class="price">
+              ${{cart[key]["foodItem"].basePrice}}
+            </div>
           </div>
-          <div>
-            ${{cart[key]["foodItem"].basePrice}}
+          <div class="food-item-description">
+            {{cart[key]["foodItem"].description.slice(0, 50)}}...
           </div>
         </div>
 
-        <div class="food-item-description">
-          {{cart[key]["foodItem"].description}}
-        </div>
+      </div>
 
+    </div>
+
+    <div class="fee-info-container">
+
+      <div class="fee-info-subcontainer">
+        <div class="fee-header">
+          Subtotal
+        </div>
+        <div class="price">
+          ${{subtotal}}
+        </div>
+      </div>
+
+      <div class="fee-info-subcontainer">
+        <div class="fee-header">
+          Tax & Fees
+        </div>
+        <div class="price">
+          ${{taxAndFees}}
+        </div>
+      </div>
+
+      <div class="fee-info-subcontainer">
+        <div class="fee-header">
+          Delivery
+        </div>
+        <div class="price">
+          ${{deliveryFee}}
+        </div>
+      </div>
+
+      <div class="total-container">
+
+        <div class="total-header">
+          Total
+        </div>
+        <div class="total-price">
+          ${{totalAmount}}
+        </div>
+        
       </div>
 
     </div>

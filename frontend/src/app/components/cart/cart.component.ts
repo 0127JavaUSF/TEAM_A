@@ -34,6 +34,11 @@ export class CartComponent implements OnInit {
 
   objectKeys = Object.keys;
 
+  deliveryFee = 3.99;
+  subtotal = parseFloat((100 + this.deliveryFee).toFixed(2));
+  taxAndFees = parseFloat((0.08 * this.subtotal).toFixed(2));
+  totalAmount = this.taxAndFees + this.subtotal + this.deliveryFee;
+
   deliverySelected = true;
 
   pickupClass;
@@ -73,17 +78,25 @@ export class CartComponent implements OnInit {
     );
   }
 
+  deliveryChosen() {
+    this.deliverySelected = true;
+    this.deliveryClass = this.deliveryActiveClass;
+    this.pickupClass = this.pickupDefaultClass;
+  }
+
+  pickupChosen() {
+    this.deliverySelected = false;
+    this.pickupClass = this.pickupActiveClass;
+    this.deliveryClass = this.deliveryDefaultClass;
+  }
+
   displayDeliveryOption(selection: string) {
     if(selection === 'delivery') {
-      this.deliverySelected = true;
-      this.deliveryClass = this.deliveryActiveClass;
-      this.pickupClass = this.pickupDefaultClass;
+      this.deliveryChosen();
     }
 
     if(selection === 'pickup') {
-      this.deliverySelected = false;
-      this.pickupClass = this.pickupActiveClass;
-      this.deliveryClass = this.deliveryDefaultClass;
+      this.pickupChosen();
     }
   }
 
