@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
-
 import { UserService } from 'src/app/services/UserService/user.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
-import { RestaurantService } from 'src/app/services/RestaurantService/RestaurantService.service';
+import { LoginCreds } from 'src/app/models/LoginCreds';
+import { SessionService } from 'src/app/services/sessionservices/session.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -12,46 +11,50 @@ import { RestaurantService } from 'src/app/services/RestaurantService/Restaurant
   styleUrls: ['./sign-in.component.css']
 })
 
-
 export class SignInComponent implements OnInit {
 
+  /**
+   * holds entire user object
+   */
   user: User;
 
-  email = '';
-  password = '';
-  id;
+  /**
+   * holds login credentials: email and password
+   */
+  loginCreds = new LoginCreds();
 
+  constructor(
 
-  constructor(private userService: UserService, private router: Router) { }
+    private userService: UserService, 
+    private router: Router,
+    private sessionService: SessionService,
+    
+    ){}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
+  
   signIn() {
-    // potential holder for getting token
-    this.userService.checkUser(this.email, this.password).subscribe(
-      data => {
-        this.user = data;
-        if (this.user.email != null)
-        {
-          this.successfulLogin();
-          this.router.navigate(['user']);
-        }
-
-      },
-      error => console.log(error)
-    )
-    // if (this.userService.checkUser(this.email, this.password) === null) {
-    //   console.log('invalid password');
-    // } else {
-    //   this.successfulLogin();
-    //   this.router.navigate(['user']);
-    // }
+    /**
+     * logs in user given user email and password
+     */
+    this.userService.checkUser(this.loginCreds.email, this.loginCreds.password)
+      .subscribe(
+        data => {
+          this.user = data;
+          this.sessionService.currrentUser = data;
+          console.log(this.user);
+          if (this.user.email != null) {
+            // this.successfulLogin();
+            this.router.navigate(['user']);
+          }
+        },
+        error => console.log(error)
+      )
   }
 
-  successfulLogin() {
-    this.userService.email = this.email;
-    this.userService.id = this.user.id;
-  }
+  // successfulLogin() {
+  //   this.userService.email = this.loginCreds.email;
+  //   this.userService.id = this.user.id;
+  // }
 
-  // old get now in user.service.ts
 }

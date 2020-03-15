@@ -6,6 +6,7 @@ import { User } from '../../models/user';
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
   email;
   user = new User();
@@ -21,24 +22,28 @@ export class UserService {
     return this.http.get<User>('http://localhost:9010/user/' + this.email);
   }
 
-  checkUser(email, password): Observable<User> {
-    return this.http.post<User>('http://localhost:9010/login?email=' + email + '&password=' + password, {withCredentials: true});
-    // .subscribe(
-      // data => {
-      //   this.id = data.id;
-      //   console.log(data);
-      //   return data.email;
-      //   // Anvar testing
-        // localStorage.setItem('cart', "");
-    //   },
-    //   error => console.log(error)
-    // );
+  checkUser(email: string, password: string): Observable < User > {
+
+    let url = 'http://localhost:9010/login';
+    let userData = { "email": email, "password": password };
+
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     'Access-Control-Allow-Credentials': 'true',
+    //     'withcredentials': 'true',
+    //   })
+    // };
+
+    return this.http.post<User>(url, userData, { withCredentials: true })
+
   }
 
   setUser(email) {
     this.email = email;
   }
+
   setUserId(id)
+
   {
     this.id = id;
     console.log(id);

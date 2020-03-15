@@ -22,8 +22,8 @@
                         <!-- <div *ngIf="user.profilePictureUrl.length > 0">
                             <span>Nothing</span>
                             <img src = "user.ppurl" alt="User profilepic"/>
-                        </div>
-                        <i id="personIcon"class="fa fa-user" aria-hidden="true"></i>
+                        </div> -->
+                        <i id="personIcon" class="fa fa-user" aria-hidden="true"></i>
                     </div>
                     <div id="photoInput">
                         <span id="changePhoto"> CHANGE PHOTO</span>
@@ -84,9 +84,9 @@
         <div class="form-group">
                 <div>
                     <h2 class="changePassword">Change Password</h2>
-                    <input id = "currentPassword" class="currentPassword" type="text" [(ngModel)]= currentPass><br><br>
-                    <input id = "newPassword" class="newPassword" type="password" placeholder="New Password" [(ngModel)]=newPass><br><br>
-                    <input id = "verifyPassword" class="verifyPassword" type="password" placeholder="Verify New Password"[(ngModel)]=verifyPass><br>
+                    <input id = "currentPassword" class="currentPassword" type="text" [(ngModel)]= currentPass name="currentPass"><br><br>
+                    <input id = "newPassword" class="newPassword" type="password" placeholder="New Password" [(ngModel)]="newPass" name="newPass"><br><br>
+                    <input id = "verifyPassword" class="verifyPassword" type="password" placeholder="Verify New Password" [(ngModel)] = "verifyPass" name="verifyPass"><br>
                     <span class="Password Rules" type="text">Your new password must be at least 8 characters & contain at least one special chracter</span>
                 </div>
 
