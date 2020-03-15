@@ -7,6 +7,7 @@ import { styles } from '../../models/googleMapStyle';
 import { LocationService } from 'src/app/services/locationservice/location.service';
 import { async } from '@angular/core/testing';
 import { UserLocation } from 'src/app/models/UserLocation';
+import { SessionService } from 'src/app/services/sessionservices/session.service';
 /**
  * The Cart component relies on: 
  * 
@@ -64,6 +65,7 @@ export class CartComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private locationService: LocationService,
+    private sessionService: SessionService,
     ) {
 
     this.user['firstName'] = "Abby";
@@ -81,6 +83,20 @@ export class CartComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+    if (!this.sessionService.isLoggedIn()) {
+      this.sessionService.fetchCurrentUser().subscribe(
+        (data) => {
+          this.sessionService.receiveUserData(data);
+          this.user = this.sessionService.getCurrentUser();
+        },
+        (error) => {
+          console.log(error);
+          this.sessionService.ensureLoggedIn();
+        }
+      )
+    }
+
     this.cartService.loadCart().subscribe(
       (cart) => {
         cart = Object.values(cart);
@@ -98,8 +114,6 @@ export class CartComponent implements OnInit {
       (res) => {
         this.userLocation.latitude = res.coords.latitude;
         this.userLocation.longitude = res.coords.longitude;
-        // console.log(this.userLocation.latitude);
-        // console.log(this.userLocation.longitude);
       },
       (error) => console.log(error)
     );  

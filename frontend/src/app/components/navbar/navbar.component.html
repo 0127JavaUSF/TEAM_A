@@ -7,7 +7,7 @@
         <span routerLink="restaurants" class = "hovers">Food</span>
         
         <span>
-            <i class="fa fa-user" aria-hidden="true" id="userIcon" (click)="ensureLoggedIn()"></i>            
+            <i class="fa fa-user" aria-hidden="true" id="userIcon" (click)="handleSession()"></i>            
             <!-- <i class="fa fa-user" aria-hidden="true" id="userIcon" routerLink="sign-in" routerLinkActive="active"></i> -->
         </span>
         <span> | </span>
@@ -16,7 +16,7 @@
             <span routerLink="cart">Cart</span>
         </div>
         <span> | </span>
-        <div class="logout-button" (click)="logout()">Logout</div>
+        <div class="logout-button" (click)="handleLogout()">Logout</div>
     </div>
     <!-- <app-landing></app-landing> -->
 </div>
