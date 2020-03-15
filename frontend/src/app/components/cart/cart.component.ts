@@ -17,12 +17,12 @@ export class CartComponent implements OnInit {
     this.cartService.loadCart().subscribe(
       (cart) => {
         cart = Object.values(cart);
-        // localStorage will have food with quantity 0 when 
+        // localStorage will have food with quantity 0 when
         // customer removes it
         this.cart = cart.filter(ele => ele.quantity > 0);
       },
       (error) => console.log(error),
-    )
+    );
   }
 
 }

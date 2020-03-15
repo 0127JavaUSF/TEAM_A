@@ -15,12 +15,12 @@ export class CartService {
   constructor() { }
 
   /**
-   * 
-   * @method addItem adds item to cart 
+   *
+   * @method addItem adds item to cart
    */
 
   /**
-   * @method loadCart returns TS Object Cart 
+   * @method loadCart returns TS Object Cart
    * that has itemApiKey pointing to object that contains
    * itemApiKey and quantity
    */
@@ -30,38 +30,36 @@ export class CartService {
 
   /**
    * @method modifyCart adds or removes from cart given Item object and quantity
-   * @param item 
-   * @param quantity 
+   * @param item
+   * @param quantity
    */
   modifyCart(food: Food, quantity: number): void {
 
-    let myCart = JSON.parse(localStorage.getItem('cart'));
-  
+    const myCart = JSON.parse(localStorage.getItem('cart'));
+
     const apiKey = food.apiKey;
 
-    if(myCart[apiKey] === undefined) {
+    if (myCart[apiKey] === undefined) {
 
-      if(quantity > 0) {
+      if (quantity > 0) {
         myCart[apiKey] = {
-          "foodItem": food,
-          "quantity": quantity
-        }
+          'foodItem': food,
+          'quantity': quantity
+        };
       }
 
     } else {
 
-      myCart[`${food.apiKey}`].quantity = quantity; 
-    
+      myCart[`${food.apiKey}`].quantity = quantity;
     }
 
     localStorage.setItem('cart', JSON.stringify(myCart));
-    //this.loadCart();
-  
+    // this.loadCart();
   }
 
   emptyCart(): void {
     localStorage.removeItem('cart');
-    //this.loadCart();
+    // this.loadCart();
   }
 
 }
