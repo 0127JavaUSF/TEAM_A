@@ -89,14 +89,14 @@ public class SessionController {
 							.sign(algo);
 	
 					Cookie cookie = new Cookie("auth_token", token);
-					//	response.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict");
+//						response.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict");
 					cookie.setMaxAge(10*60*200);
-					cookie.setPath("/user");
+					cookie.setPath("/");
 					response.addCookie(cookie);
 					// Cookie cook = new Cookie("hey", "lol");
 					//	response.addCookie(cook);
 					response.addHeader("custom_success", "user is authenticated. Cookie is returned.");
-					System.out.println("Success. Authenticated. Cookie Returned.");
+//					System.out.println("Success. Authenticated. Cookie Returned.");
 					return new ResponseEntity<User>(userObj, HttpStatus.OK);
 
 				}
@@ -153,29 +153,29 @@ public class SessionController {
 
 	}
 	
+	@PostMapping(produces = "application/json")
+	@CrossOrigin(origins="http://localhost:4200", allowedHeaders = "*", allowCredentials = "true")
 	@RequestMapping("/logout")
-	public ResponseEntity<User> logoutCurrentUser(
+	public void logoutCurrentUser(
 			@CookieValue(name = "auth_token", defaultValue = "") String authToken, 
 			HttpServletResponse response,
 			HttpServletRequest request
 			) {
 		
 		if(authToken.length() > 0) {
-			
-			// we can erase the cookie
+
 			Cookie cookie = new Cookie("auth_token", "");
 			cookie.setSecure(false);
-			cookie.setHttpOnly(false);
+			cookie.setHttpOnly(true);
 			cookie.setMaxAge(0);
 			cookie.setPath("/");
 			response.addCookie(cookie);
+			response.setStatus(201);
 			
 		} else {
-			// no cookie was sent
-			
+			System.out.println("Did not get cookie man");
+			response.setStatus(422);
 		}
-		
-		return null;
 		
 	}
 

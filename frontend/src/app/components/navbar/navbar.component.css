@@ -73,3 +73,7 @@ body {
 #userIcon:hover{
   color:#4b9ac4;
 }
+
+.logout-button:hover {
+    cursor: pointer;
+}
