@@ -8,12 +8,12 @@ import { User } from '../../models/user';
 })
 
 export class UserService {
-
-  presignedUrlUser;
   email;
   user = new User();
   id;
   newUser = new NewUser();
+  picUser = new PicUser();
+  presignedUrlUser = new User();
 
 
   constructor(private http: HttpClient) { }
@@ -24,8 +24,8 @@ export class UserService {
 
   checkUser(email: string, password: string): Observable < User > {
 
-    let url = 'http://localhost:9010/login';
-    let userData = { "email": email, "password": password };
+    const url = 'http://localhost:9010/login';
+    const userData = {email, password };
 
     // const httpOptions = {
     //   headers: new HttpHeaders({
@@ -34,7 +34,7 @@ export class UserService {
     //   })
     // };
 
-    return this.http.post<User>(url, userData, { withCredentials: true })
+    return this.http.post<User>(url, userData, { withCredentials: true });
 
   }
 
@@ -42,9 +42,7 @@ export class UserService {
     this.email = email;
   }
 
-  setUserId(id)
-
-  {
+  setUserId(id) {
     this.id = id;
     console.log(id);
   }
@@ -66,21 +64,36 @@ export class UserService {
   }
 
 
-  //   submitPicture(user, file){
-  //  this.http.post('localhost:9010/user/', user).subscribe(
-  //    (data) => {
-  //      this.presignedUrlUser = data;
-  //    },
-  //    (error) => console.log(error)
-  //  );
+    submitPicture(id, hasFile, file) {
+      this.picUser.hasProfilePic = hasFile;
+      this.picUser.id = id;
 
-  //  this.http.put(this.presignedUrlUser.presignedUrl,file);
-  // }
+      this.http.post<User>('http://localhost:9010/user/uploadProfilePic', this.picUser).subscribe(
+        (data) => {
+          this.presignedUrlUser = data;
+          this.uploadPicture(this.presignedUrlUser.presignedUrl, file);
+        },
+        (error) => console.log(error)
+      );
+  }
 
-
+  uploadPicture(presignedUrl, file) {
+    console.log(presignedUrl);
+    this.http.put(presignedUrl, file).subscribe(
+      data => {
+      },
+      error => console.log(error)
+    );
+  }
 }
 
 class NewUser {
   email: '';
   password: '';
+}
+
+class PicUser {
+  id: '';
+  hasProfilePic: boolean;
+  presignedUrl: '';
 }

@@ -6,6 +6,7 @@
     <input (keydown.enter)= "signIn()" type="password" [(ngModel)] = "loginCreds.password" id="password" placeholder="password">
     <button (click) = signIn()>Sign In</button>
   </div>
+    <div *ngIf = wrongpass id="userValidation"> Incorrect user please try again</div>
     <a routerLink="/create-account">Create Account</a>
   </div>
 

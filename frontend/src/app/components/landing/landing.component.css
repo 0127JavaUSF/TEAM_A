@@ -13,11 +13,10 @@
 
   /* TODO Why is this happening */
   /* Anvar test */
-  width: 2000px;
-  height: 500px;
+  /* width: 2000px;
+  height: 500px; */
+  width: 100vw;
 }
-
-/* Anvar test */
 
 .motto {
   margin-top: 15px;
@@ -39,8 +38,15 @@
 }
 #distance{
   max-width: 5vw;
-  margin-left: 5px;
+  margin-left: 15px;
   margin-right: 5px;
+  border-radius: 10px;
+  padding-left: 15px;
+}
+
+#address{
+  border-radius: 10px;
+  padding-left: 15px;
 }
 
 button{
