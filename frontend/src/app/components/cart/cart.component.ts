@@ -9,6 +9,8 @@ import { CartService } from 'src/app/services/cartservices/cart.service';
 export class CartComponent implements OnInit {
 
   cart = {};
+  userAddress;
+  restaurant;
   objectKeys = Object.keys;
 
   constructor(private cartService: CartService) { }

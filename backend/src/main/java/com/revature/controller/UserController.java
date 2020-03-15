@@ -66,6 +66,12 @@ public class UserController {
 		User user = userServ.setPassword(clientUser);
 		return  new ResponseEntity<User>(user, HttpStatus.OK);
 	}
+	
+	@PostMapping(value="/uploadProfilePic", consumes = "application/json", produces = "application/json")
+	public ResponseEntity<User> uploadProfilePic(@RequestBody User clientUser) {
+		User user = userServ.uploadPicture(clientUser);
+		return new ResponseEntity<User>(user, HttpStatus.OK);
+	}
 
 //	@GetMapping("/{id}")
 //	public ResponseEntity<User> getUser(@PathVariable(value="id") long id)
