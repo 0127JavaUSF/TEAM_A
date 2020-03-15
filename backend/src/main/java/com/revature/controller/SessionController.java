@@ -44,129 +44,115 @@ public class SessionController {
 	
 	@PostMapping(produces = "application/json")
 
-
+	/**
+	 * 
+	 * Accepts object that contains email and password. Logs in user if such user exists
+	 * 
+	 * @param loginCreds
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws NotFoundException
+	 */
 	@RequestMapping("/login")
-	public ResponseEntity<User> createSession(@RequestBody LoginCredentials loginCreds,
-	HttpServletRequest request, HttpServletResponse response, @CookieValue(value = "auth_token", defaultValue = "") String jwt)
-	throws NotFoundException {
-	
-//		System.out.println("WTF DUDE: " + jwt);
-//
-//	public ResponseEntity<User> createSession(String email, String password, 
-//			HttpServletRequest request, HttpServletResponse response)
-//			throws NotFoundException {
+	public ResponseEntity<User> createSession(
+			@RequestBody LoginCredentials loginCreds,
+			HttpServletRequest request, 
+			HttpServletResponse response)
+				throws NotFoundException {
 		
+		//TODO
+		System.out.println("email: " + loginCreds.email + "password: " + loginCreds.password);
 		
-		String token = "";
-		
-		String userToken = jwt;
-		
-		// does user have a token
-//		if(userToken != null) {
-//			System.out.println("Bruuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuh\n");
-//			if(sessServ.isAuthenticated(loginCreds.email, userToken)) {
-//				System.out.println("Auth lol");
-//				// if user has cookie and they are authenticated
-//				// then all good.
-//				
-////				loginCreds.email
-//				Optional<User> authedUser = sessServ.findUser("Chris@gmail.com");
-//				
-//				response.addHeader("custom_success", "user is authenticated");
-//				return new ResponseEntity<User>(authedUser.get(), HttpStatus.OK);
-//
-//			} else {
-//				System.out.println("Wtf lol");
-//				response.addHeader("custom_error", "authentication failed");
-//				return new ResponseEntity<User>(new User(), HttpStatus.UNAUTHORIZED);
-//				}
-//		} else {
-			System.out.println("email: " + loginCreds.email + "");
-			Optional<User> user = userServ.getUserByEmail(loginCreds.email);
+		Optional<User> user = userServ.getUserByEmail(loginCreds.email);
 
-		if(userToken != null) {
-			if(sessServ.isAuthenticated(email, userToken)) {
-				// if user has cookie and they are authenticated
-				// then all good.
-				Optional<User> authedUser = sessServ.findUser(email);
-				response.addHeader("custom_success", "user is authenticated");
-				return new ResponseEntity<User>(authedUser.get(), HttpStatus.OK);
-
-			} else {
-				response.addHeader("custom_error", "authentication failed");
-				return new ResponseEntity<User>(new User(), HttpStatus.UNAUTHORIZED);
-				}
-		} else {
-			System.out.println(password);
-			System.out.println("email: " + email + "");
-			Optional<User> user = userServ.getUserByEmail(email);
-			User returnedUser = user.get();
-			if(user.isPresent()) {
+		System.out.println(user.isPresent());
+		System.out.println(user.toString());
+		if(user.isPresent()) {
 					
-				String hashedPwd = returnedUser.getPassword();
+			User userObj = user.get();
+			String hashedPwd = userObj.getPassword();
 				
-				if(sessServ.isPassword(loginCreds.password, hashedPwd)) {
+			// if password matches, then return JWT token through cookie
+			if(sessServ.isPassword(loginCreds.password, hashedPwd)) {
 					
-					Algorithm algo = Algorithm.HMAC256(returnedUser.getFirstName());
+				// secret ingredient
+				Algorithm algo = Algorithm.HMAC256(userObj.getFirstName());
+					
 					/**
 					 * Need to be returned as part of response header in the cookie
 					 */
-					token = JWT.create()
-							.withClaim("email", loginCreds.email)
-							.withClaim("password", hashedPwd)
+					String token = JWT.create()
+							.withClaim("email", userObj.getEmail())
+							.withClaim("password", userObj.getPassword())
 							.withIssuer("auth0")
 							.sign(algo);
 	
 					Cookie cookie = new Cookie("auth_token", token);
-//					response.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict");
+					//	response.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict");
 					cookie.setMaxAge(10*60*200);
-					cookie.setPath("/");
+					cookie.setPath("/user");
 					response.addCookie(cookie);
-//					Cookie cook = new Cookie("hey", "lol");
-//					response.addCookie(cook);
+					// Cookie cook = new Cookie("hey", "lol");
+					//	response.addCookie(cook);
 					response.addHeader("custom_success", "user is authenticated. Cookie is returned.");
-					return new ResponseEntity<User>(returnedUser, HttpStatus.OK);
+					System.out.println("Success. Authenticated. Cookie Returned.");
+					return new ResponseEntity<User>(userObj, HttpStatus.OK);
 
 				}
 				response.addHeader("custom_error", "user entered incorrect password");
+				System.out.println("User Incorrect Password");
 				return new ResponseEntity<User>(new User(), HttpStatus.UNAUTHORIZED);
 				
 			}
 			
 			response.addHeader("custom_error", "User with such email was not found.");
+			System.out.println("Such Email Not Found");
 			return new ResponseEntity<User>(new User(), HttpStatus.NOT_FOUND);
-
 		}
 
 	@PostMapping(produces = "application/json")
 	@RequestMapping("/fetchCurrentUser")
-	public ResponseEntity<User> fetchCurrentUser(@CookieValue(value = "auth_token", defaultValue = "wtfdude") String jwt, HttpServletResponse response) {
-		
-		System.out.println("JWT*******: " + jwt);
-		if(jwt != null) {
-			
-			if(sessServ.isRight(jwt)) {
-				System.out.println("Auth lol");
-				// if user has cookie and they are authenticated
-				// then all good.
+	public ResponseEntity<User> fetchCurrentUser(
+			@CookieValue(name = "auth_token", defaultValue = "") String authToken, 
+			HttpServletResponse response,
+			HttpServletRequest request
+			) {
+
+//		System.out.println("token: " + authToken);
+//		System.out.println(request.getCookies());
+
+		// if proper token is received
+		if(authToken.length() > 0) {
+			// it extracts email and password and check if such things exist in DB
+			if(sessServ.isRight(authToken)) {
 				
-//				loginCreds.email
-				Optional<User> authedUser = sessServ.findUser("Chris@gmail.com");
+				String email = sessServ.extractEmail(authToken);
 				
+				Optional<User> user = userServ.getUserByEmail(email);
+
 				response.addHeader("custom_success", "user is authenticated");
-				return new ResponseEntity<User>(authedUser.get(), HttpStatus.OK);
+				
+				System.out.println("User Is Authenticated");
+				return new ResponseEntity<User>(user.get(), HttpStatus.OK);
 
 			} else {
-				System.out.println("Wtf lol");
+				
+				System.out.println("Unauthorized");
 				response.addHeader("custom_error", "authentication failed");
 				return new ResponseEntity<User>(new User(), HttpStatus.UNAUTHORIZED);
-				}
+			}
+			
 		} else {
-			return null;
-		}
+			
+			System.out.println("Not Found");
+			response.addHeader("custom_error", "user not found");
+			return new ResponseEntity<User>(new User(), HttpStatus.NOT_FOUND);
 		
+		}
+
 	}
-	
+
 	@GetMapping("/{id}")
 	public ResponseEntity<User> getUser(@PathVariable(value="id") long id)
 	{

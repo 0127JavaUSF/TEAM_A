@@ -66,10 +66,9 @@ public class SessionService {
 		
 	}
 	
-	public Optional<User> findUser(String email)
-	{
-		return this.userServ.getUserByEmail(email);
-	}
+//	public Optional<User> findUserByEmail(String email) {
+//		return this.userServ.getUserByEmail(email);
+//	}
 
 	public boolean isRight(String token) {
 
@@ -94,6 +93,17 @@ public class SessionService {
 						
 		}
 		return false;
+	}
+
+	public String extractEmail(String authToken) {
+		
+		JWT jwt = new JWT();
+		DecodedJWT myJwt = jwt.decodeJwt(authToken);
+	
+		String decodedEmail = myJwt.getClaim("email").asString();
+		
+		return decodedEmail;
+
 	}
 	
 }
