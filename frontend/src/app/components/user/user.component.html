@@ -1,5 +1,4 @@
-<div class="userAccntDiv">
-    <div id="userAccount">  
+    <div id="userAccount">
         <div >
             <div class="customerName">{{ user?.firstName }} {{ user?.lastName }}</div>
             <div class="card" style="width: 18rem">
@@ -14,28 +13,6 @@
                 </div>
                 <input type="file" id="photoUpload" (change)="onFileUpload($event)" accept = "image/*" name = "fileInput">
               </div>
-            <!-- <button class="changePhoto">
-
-                <span class= "picIconSpan">
-                    <div > -->
-                        <!-- if user has no ProfilePicture. Then that variable will be empty string (user.profilepicurl = "")
-                        -->
-                        <!-- <div *ngIf="user.profilePictureUrl.length > 0">
-                            <span>Nothing</span>
-                            <img src = "user.ppurl" alt="User profilepic"/>
-                        </div> -->
-                        <i id="personIcon" class="fa fa-user" aria-hidden="true"></i>
-                    </div>
-                    <div id="photoInput">
-                        <span id="changePhoto"> CHANGE PHOTO</span>
-                        <input type="file" id="photoUpload" accept = "image/*" name = "fileInput">
-                        
-                    </div>                                    
-                    
-                </span>      
-                         
-            </button> -->
-            
         </div>
         <button (click) = "submitProfilePicture()">Upload profile picture</button>
 
@@ -94,11 +71,10 @@
     </span>
 </div>
 
-<div> 
+<div>
     <h3>
         Order History
     </h3>
     <button (click) = fetchOrderHistory()>display</button>
-</div>
 </div>
 

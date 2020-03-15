@@ -35,6 +35,13 @@
   max-width: 5vw;
   margin-left: 15px;
   margin-right: 5px;
+  border-radius: 10px;
+  padding-left: 15px;
+}
+
+#address{
+  border-radius: 10px;
+  padding-left: 15px;
 }
 
 button{
