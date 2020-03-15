@@ -1,4 +1,7 @@
-/* .userAccntDiv{
+.completed {
+    color: chartreuse;
+}
+.userAccntDiv{
     display: flex;
     margin-top: 15vh;
     margin-left: 30px; 

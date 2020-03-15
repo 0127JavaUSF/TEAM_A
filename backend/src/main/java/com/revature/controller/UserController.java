@@ -22,6 +22,7 @@ import com.revature.service.SessionService;
 import com.revature.service.UserService;
 
 @RestController
+
 @CrossOrigin(origins="http://localhost:4200", allowedHeaders = "*", allowCredentials = "true")
 @RequestMapping("/user")
 public class UserController {
@@ -65,6 +66,12 @@ public class UserController {
 	public ResponseEntity<User> updatePassword(@RequestBody User clientUser) {
 		User user = userServ.setPassword(clientUser);
 		return  new ResponseEntity<User>(user, HttpStatus.OK);
+	}
+	
+	@PostMapping(value="/uploadProfilePic", consumes = "application/json", produces = "application/json")
+	public ResponseEntity<User> uploadProfilePic(@RequestBody User clientUser) {
+		User user = userServ.uploadPicture(clientUser);
+		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 
 //	@GetMapping("/{id}")

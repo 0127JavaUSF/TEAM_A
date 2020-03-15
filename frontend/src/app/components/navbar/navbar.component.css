@@ -1,10 +1,11 @@
 body {
     display: flex;
     align-items: center;
-
 }
 
 .navbar {
+    /* TODO: Responsive */
+    min-width: 1200px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -71,4 +72,8 @@ body {
 
 #userIcon:hover{
   color:#4b9ac4;
+}
+
+.logout-button:hover {
+    cursor: pointer;
 }

@@ -1,0 +1,42 @@
+<div>
+    <div class = "container">
+        <div class = "row"> 
+            <h2 class = "col -6">
+                Order History
+                
+            </h2>
+            <div class = "returnButton">
+                <button (click) = returnToUser() >back</button>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    <table class = "table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Method</th>
+            <th>restaurant</th>
+            <th>Item</th>
+        </tr>
+    </thead>
+    <tr *ngFor = "let orderHistory of orders">
+        <td > 
+            {{ orderHistory.timestamp }}
+        </td>
+        <td> 
+            {{ orderHistory.method }}
+        </td>
+        <td> 
+            {{ orderHistory.restApiKey }}
+        </td>
+        <td>
+            <p *ngFor = "let items of orderHistory.orderItems">
+                {{ items.itemQuantity}} {{ items.name}}
+            </p> 
+        </td>
+        
+    </tr>
+</table>
