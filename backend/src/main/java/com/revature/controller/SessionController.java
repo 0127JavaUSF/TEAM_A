@@ -152,6 +152,33 @@ public class SessionController {
 		}
 
 	}
+	
+	@RequestMapping("/logout")
+	public ResponseEntity<User> logoutCurrentUser(
+			@CookieValue(name = "auth_token", defaultValue = "") String authToken, 
+			HttpServletResponse response,
+			HttpServletRequest request
+			) {
+		
+		if(authToken.length() > 0) {
+			
+			// we can erase the cookie
+			Cookie cookie = new Cookie("auth_token", "");
+			cookie.setSecure(false);
+			cookie.setHttpOnly(false);
+			cookie.setMaxAge(0);
+			cookie.setPath("/");
+			response.addCookie(cookie);
+			
+		} else {
+			// no cookie was sent
+			
+		}
+		
+		return null;
+		
+	}
+
 
 	@GetMapping("/{id}")
 	public ResponseEntity<User> getUser(@PathVariable(value="id") long id)
