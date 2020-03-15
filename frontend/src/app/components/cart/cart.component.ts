@@ -73,6 +73,7 @@ export class CartComponent implements OnInit {
         // localStorage will have food with quantity 0 when
         // customer removes it
         this.cart = cart.filter(ele => ele.quantity > 0);
+        console.log(this.cart);
       },
       (error) => console.log(error),
     );

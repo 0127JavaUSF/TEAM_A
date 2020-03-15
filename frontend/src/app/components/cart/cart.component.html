@@ -79,14 +79,14 @@
         <div class="food-item-container">
           <div class="food-item-name-price">
             <div class="food-item-name">
-              {{cart[key]["quantity"]}} x {{cart[key]["foodItem"].name}}.
+              {{cart[key]["quantity"]}} × {{cart[key]["foodItem"].name}}.
             </div>
             <div class="price">
               ${{cart[key]["foodItem"].basePrice}}
             </div>
           </div>
           <div class="food-item-description">
-            {{cart[key]["foodItem"].description.slice(0, 50)}}...
+            {{cart[key]["foodItem"].description}}
           </div>
         </div>
 
@@ -131,7 +131,7 @@
         <div class="total-price">
           ${{totalAmount}}
         </div>
-        
+
       </div>
 
     </div>
