@@ -1,4 +1,4 @@
-.order{
+/* .order{
   display: flex;
   flex-direction: column;
   width: 25%;
@@ -21,4 +21,9 @@ ol{
 
 li{
   border: solid;
+} */
+
+.shopping-cart-container {
+  display: flex;
+  flex-direction: row;
 }

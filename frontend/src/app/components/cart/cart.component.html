@@ -1,13 +1,91 @@
-<div class="cart">
+<!-- <div class="cart">
 <div class="userInfo">
-  <!-- <p class="address">{{userAddress}} this is the page and the userInfo</p> -->
+  <p class="address">{{userAddress}} this is the page and the userInfo</p>
 </div>
 <div class="order">
 <ol>
-  <!-- <h2>{{restaurant.name}}</h2> -->
+  <h2>{{restaurant.name}}</h2>
     <li *ngFor="let key of objectKeys(cart)">
         {{cart[key]["foodItem"].name}} and {{cart[key].quantity}}
     </li>
 </ol>
 </div>
+</div> 
+-->
+
+<div class="shopping-cart-container">
+
+  <div class="left-child-container">
+    
+    <div class="checkout-container">
+      <div class="checkout-header">Checkout</div>
+      <div class="options-container">
+        <div class="delivery-option-container">
+          <div class="delivery-option"  (click)="displayDeliveryOption('delivery')">Delivery</div>
+          <div class="delivery-option-price">{{rest['delivery']}}</div>
+        </div>
+        <div class="pickup-option-container">
+          <span class="pickup-option"  (click)="displayDeliveryOption('pickup')">Pickup</span>
+          <span class="pickup-option-price">Free</span>
+        </div>
+      </div>
+
+
+    </div>
+
+    <delivery-option *ngIf="delivery"
+      
+      [address]="user['address']"
+      [estimatedArrTime]="time"
+      [paymentType]="payment"
+
+      ></delivery-option>
+
+    <pickup-option *ngIf="!delivery"
+
+      [pickupAddress]="rest['address']"
+      [estimatedTimePickup]="time"
+      [paymentType]="payment"
+
+    >
+    </pickup-option>
+
+  </div>
+
+  <div class="right-child-container">
+
+    <div class="google-map">
+      MAP GOES HERE
+    </div>
+
+    <div class="items-container">
+      <div class="rest-name-menu-container">
+        <div class="rest-name">
+          {{rest['name']}}
+        </div>
+        <div class="rest-menu">
+          View Menu
+        </div>
+      </div>
+
+      <div class="food-item" *ngFor="let key of objectKeys(cart)">
+        
+        <div class="food-item-name-price">
+          <div class="food-item-name">
+            {{cart[key]["quantity"]}} x {{cart[key]["foodItem"].name}}
+          </div>
+          <div>
+            ${{cart[key]["foodItem"].basePrice}}
+          </div>
+        </div>
+
+        <div class="food-item-description">
+          {{cart[key]["foodItem"].description}}
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
 </div>
