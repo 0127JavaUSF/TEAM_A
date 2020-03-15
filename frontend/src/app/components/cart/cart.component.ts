@@ -37,7 +37,6 @@ export class CartComponent implements OnInit {
   payment = "PayPal";
 
   cart = {};
-
   objectKeys = Object.keys;
 
   deliveryFee = 3.99;

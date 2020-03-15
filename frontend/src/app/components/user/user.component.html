@@ -1,10 +1,22 @@
 <div class="userAccntDiv">
     <div id="userAccount">  
         <div >
-            <div class="customerName">{{user.firstName }} {{ user.lastName}}</div>
-            <button class="changePhoto">
+            <div class="customerName">{{ user?.firstName }} {{ user?.lastName }}</div>
+            <div class="card" style="width: 18rem">
+                <div class="card-body">
+                  <h5 class="card-title">Profile Picture</h5>
+                </div>
+                <div *ngIf="user?.profilePictureUrl === null">
+                    <span>you may upload a profile picture</span>
+                </div>
+                <div *ngIf= "user?.profilePictureUrl != null">
+                    <img [src]= "user?.profilePictureUrl" class="card-img-top" alt="no profile picture uploaded">
+                </div>
+                <input type="file" id="photoUpload" (change)="onFileUpload($event)" accept = "image/*" name = "fileInput">
+              </div>
+            <!-- <button class="changePhoto">
                 <span class= "picIconSpan">
-                    <div >
+                    <div > -->
                         <!-- if user has no ProfilePicture. Then that variable will be empty string (user.profilepicurl = "")
                         -->
                         <!-- <div *ngIf="user.profilePictureUrl.length > 0">
@@ -15,41 +27,57 @@
                     </div>
                     <div id="photoInput">
                         <span id="changePhoto"> CHANGE PHOTO</span>
-                        <input type="file" id="photoUpload">
+                        <input type="file" id="photoUpload" accept = "image/*" name = "fileInput">
+                        
                     </div>                                    
-                </span>               
-            </button>
+                    
+                </span>      
+                         
+            </button> -->
+            
         </div>
+        <button (click) = "submitProfilePicture()">Upload profile picture</button>
 
-    <form class="editUserAccount">
+    <!-- <form class="editUserAccount"> -->
         <div class="form-group">
             <h2 class="AccountDetails">Account </h2>
         </div>
-
+        <!-- <div>
+            {{ user.firstName}}
+        </div>
+        <div>
+            {{ user.lastName }}
+        </div>
+        <div>
+            {{ user.phoneNumber}}
+        </div>
+        <div>
+            {{ user.email }}
+        </div> -->
         <div class="form-group">
-            <input [value]="user.firstName" type="text" class="firstName" [(ngModel)]="user.firstName" name="firstName">
+            <input [value]="user?.firstName" type="text" class="firstName" [(ngModel)]="firstName">
             <button input="click" type="button" id="editFirstN">Edit</button>
         </div>
 
         <div class="form-group">
-            <input [value]="user.lastName" type="text" class="lastName" [(ngModel)]="user.lastName" name="lastName">
+            <input [value]="user?.lastName" type="text" class="lastName" [(ngModel)]="lastName">
             <button input="click" type="button" id="editLastN">Edit</button>
         </div>
 
         <div class="form-group">
-            <input [value]="user.phoneNumber" class="telephone" type="text" [(ngModel)]="user.phoneNumber" name="phoneNumber">
+            <input [value]="user?.phoneNumber" class="telephone" type="text" [(ngModel)]="phoneNumber">
             <button input="click" type="button" id="editPhone">Edit</button>
         </div>
 
         <div class="form-group">
-            <input [value]="user.email" type="text" class="email" [(ngModel)]= "user.email" name="email">
+            <input [value]="user?.email" type="text" class="email" [(ngModel)]= "email">
             <button input="click" type="button" id="editEmail">Edit</button>
         </div>
         <div class="form-group">
             <h5 class="Addresses">Address</h5>
-            <input [value]="user.address" type="text" class="address" [(ngModel)]= "user.address" name="address"><br>
-            <input [value]="user.city" type="text" class="city" [(ngModel)]= "user.city" name="city"><br>
-            <input [value]="user.zipCode" type="text" class="zipCode" [(ngModel)]= "user.zipCode" name="zipcode"><br>
+            <input [value]="user?.address" type="text" class="address" [(ngModel)]= "address"><br>
+            <input [value]="user?.city" type="text" class="city" [(ngModel)]= "city"><br>
+            <input [value]="user?.zipCode" type="text" class="zipCode" [(ngModel)]= "zipCode"><br>
             <button input="click" type="button" id="editAddress">Edit</button>
         </div>
 
@@ -64,15 +92,15 @@
 
                 <div class="saveNewPassword">
                     <!-- <button input="click" type="button" class="savePassword">SAVE</button><br> -->
-                    <button (click) = updateUserPassword() currentPassword.value = ''>Update Password</button>
+                    <button (click) = updateUserPassword()>Update Password</button>
                     <span class = "completed" *ngIf = "toggle === 1">Success!</span>
                 </div>
         </div>
-    </form>
+    <!-- </form> -->
 <div>
     <h2 class="Addresses">Address</h2>
     <span>
-      {{ user.address }}, {{ user.city }}, {{user.state}} {{user.zipCode}}
+      {{ user?.address }}, {{ user?.city }}, {{user?.state}} {{user?.zipCode}}
     </span>
 </div>
 
