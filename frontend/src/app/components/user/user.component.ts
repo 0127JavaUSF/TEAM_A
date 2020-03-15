@@ -32,7 +32,6 @@ export class UserComponent implements OnInit {
 
     ) {}
 
-
   ngOnInit() {
 
     this.locationService.getUserLocation();

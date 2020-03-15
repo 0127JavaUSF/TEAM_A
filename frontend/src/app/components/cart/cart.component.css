@@ -31,12 +31,15 @@ li{
 .shopping-cart-container {
   display: flex;
   flex-direction: row;
+
   /* TODO: Responsive */
-  /* flex-wrap: wrap; */
+
   justify-content: space-between;
   margin-left: 50px;
   margin-top: 30px;
-  width: 1000px;
+  /* TODO: Responsive */
+  min-width: 1000px;
+  /* width: 100%; */
 }
 
 /* .shopping-cart-container div {
@@ -45,7 +48,7 @@ li{
 
 .left-child-container {
   box-sizing: border-box;
-  width: 50%;
+  width: 49%;
   padding: 25px;
 }
 
@@ -109,7 +112,7 @@ li{
 .right-child-container {
   
   box-sizing: border-box;
-  width: 50%;
+  width: 45%;
   /* padding: 25px; */
   margin: 78px 25px 25px 25px;
   display: flex;
