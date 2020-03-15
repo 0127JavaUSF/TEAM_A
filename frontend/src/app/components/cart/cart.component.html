@@ -1,5 +1,146 @@
-<ol>
-    <li *ngFor="let key of objectKeys(cart)">
-        {{cart[key]["foodItem"].name}} and {{cart[key].quantity}}
-    </li>
-</ol>
+<div class="shopping-cart-container">
+
+  <div class="left-child-container">
+
+    <div class="checkout-container">
+      <div class="checkout-header">
+        Checkout
+      </div>
+
+      <div class="options-container">
+
+        <div [ngClass]="deliveryClass" (click)="displayDeliveryOption('delivery')">
+          <div class="option-selected">DELIVERY</div>
+          <div class="option-price">{{rest['delivery']}}</div>
+        </div>
+
+        <div [ngClass]="pickupClass" (click)="displayDeliveryOption('pickup')" >
+          <div class="option-selected">PICKUP</div>
+          <div class="option-price">Free</div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <delivery-option *ngIf="deliverySelected"
+
+      [address]="user['address']"
+      [estimatedArrTime]="time"
+      [paymentType]="payment"
+
+      ></delivery-option>
+
+    <pickup-option *ngIf="!deliverySelected"
+
+      [pickupAddress]="rest['address']"
+      [estimatedTimePickup]="time"
+      [paymentType]="payment"
+
+    >
+    </pickup-option>
+
+  </div>
+
+  <div class="right-child-container">
+
+    <div class="google-map">
+      <!-- <img src="https://i.stack.imgur.com/JwzK7.jpg" alt=""> -->
+      <agm-map class="google-map"
+          [latitude]="lat"
+          [longitude]="long"
+          [zoom]="14"
+          >
+          <!-- [styles]="mapStyles" -->
+
+              <agm-marker
+                [latitude]="lat"
+                [longitude]="long"
+                >
+              </agm-marker>
+
+              <agm-marker
+                [latitude]="userLocation.latitude"
+                [longitude]="userLocation.longitude"
+                >
+              </agm-marker>
+
+      </agm-map>
+    </div>
+
+    <div class="items-container">
+      <div class="rest-name-menu-container">
+        <div class="rest-name header">
+          {{rest['name']}}
+        </div>
+        <div class="rest-menu">
+          VIEW MENU
+        </div>
+      </div>
+
+      <div class="food-item" *ngFor="let key of objectKeys(cart)">
+
+        <div class="food-item-container">
+          <div class="food-item-name-price">
+            <div class="food-item-name">
+              {{cart[key]["quantity"]}} × {{cart[key]["foodItem"].name}}.
+            </div>
+            <div class="price">
+              ${{cart[key]["foodItem"].basePrice}}
+            </div>
+          </div>
+          <div class="food-item-description">
+            {{cart[key]["foodItem"].description}}
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="fee-info-container">
+
+      <div class="fee-info-subcontainer">
+        <div class="fee-header">
+          Subtotal
+        </div>
+        <div class="price">
+          ${{subtotal}}
+        </div>
+      </div>
+
+      <div class="fee-info-subcontainer">
+        <div class="fee-header">
+          Tax & Fees
+        </div>
+        <div class="price">
+          ${{taxAndFees}}
+        </div>
+      </div>
+
+      <div class="fee-info-subcontainer">
+        <div class="fee-header">
+          Delivery
+        </div>
+        <div class="price">
+          ${{deliveryFee}}
+        </div>
+      </div>
+
+      <div class="total-container">
+
+        <div class="total-header">
+          Total
+        </div>
+        <div class="total-price">
+          ${{totalAmount}}
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+>>>>>>> fabc5ecdac7844c60758eb164681339df76aaa65

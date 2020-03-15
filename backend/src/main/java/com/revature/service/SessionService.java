@@ -66,9 +66,44 @@ public class SessionService {
 		
 	}
 	
-	public Optional<User> findUser(String email)
-	{
-		return this.userServ.getUserByEmail(email);
+//	public Optional<User> findUserByEmail(String email) {
+//		return this.userServ.getUserByEmail(email);
+//	}
+
+	public boolean isRight(String token) {
+
+		JWT jwt = new JWT();
+		System.out.println("sup");
+		System.out.println(token);
+		DecodedJWT myJwt = jwt.decodeJwt(token);
+	
+		String decodedEmail = myJwt.getClaim("email").asString();
+		String decodedPassword = myJwt.getClaim("password").asString();
+	
+		Optional<User> user = userServ.getUserByEmail(decodedEmail);
+		
+		if(user.get() != null) {
+			
+			if(user.get().getEmail().equals(decodedEmail) && 
+					decodedPassword.equals(user.get().getPassword())) {
+				
+				return true;
+			
+			}
+						
+		}
+		return false;
+	}
+
+	public String extractEmail(String authToken) {
+		
+		JWT jwt = new JWT();
+		DecodedJWT myJwt = jwt.decodeJwt(authToken);
+	
+		String decodedEmail = myJwt.getClaim("email").asString();
+		
+		return decodedEmail;
+
 	}
 	
 }
