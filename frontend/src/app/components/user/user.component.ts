@@ -34,7 +34,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
 
-    this.locationService.getUserLocation();
+    this.locationService.currentUserLocation();
 
     if(this.sessionService.currrentUser.email.length > 0) {
       this.user = this.sessionService.currrentUser;

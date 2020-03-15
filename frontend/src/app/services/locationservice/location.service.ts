@@ -7,22 +7,18 @@ import { of, Observable } from 'rxjs';
 })
 export class LocationService {
 
-  private userLocation = new UserLocation();
+  userLocation = new UserLocation();
 
   constructor() {}
 
-  userCurrentLocation(): Observable<any> {
-    return of(navigator.geolocation.getCurrentPosition(
-      (result) => {
-        this.userLocation.latitude = result.coords.latitude;
-        this.userLocation.longitude = result.coords.longitude;
+  currentUserLocation() {
+    navigator.geolocation.getCurrentPosition(
+      (res) => {
+        this.userLocation.latitude = res.coords.latitude;
+        this.userLocation.longitude = res.coords.longitude;
       },
-      (error) => console.log(error))
-      )
-  }
-
-  getUserLocation(): Observable<any> {
-    return this.userCurrentLocation();
+      (error) => console.log(error)
+    );  
   }
 
   getUserLongitude() {
