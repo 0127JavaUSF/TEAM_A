@@ -1,70 +1,6 @@
 INDEX VERSION 1.131+C:\Revature Bootcamp\Projects\Project 2\TEAM_A\.metadata\.plugins\org.eclipse.jdt.core
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 2923218292.index
 408771512.index
-1301684271.index
-4084810087.index
-2985665087.index
-4181532770.index
-847436639.index
-911398812.index
-2718351213.index
-3579184550.index
-3949652735.index
-3159424663.index
-3713933766.index
-807416428.index
-208903109.index
-2411020282.index
-3929848548.index
-524273550.index
-2307270000.index
-1172843391.index
-1635469340.index
-1402342358.index
-=======
-2986386919.index
-1665995430.index
-2552865290.index
-2120102340.index
-524273550.index
-=======
-2986386919.index
-1665995430.index
-2552865290.index
-2120102340.index
-524273550.index
->>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
-=======
-2986386919.index
-1665995430.index
-2552865290.index
-2120102340.index
-524273550.index
->>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
-2985665087.index
-500438436.index
-4227720700.index
-3796986897.index
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
-=======
->>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
-=======
->>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
-1958791831.index
-1830440585.index
-287984282.index
-847436639.index
-2210288099.index
-=======
-2923218292.index
-408771512.index
->>>>>>> ee2e5fae3acd6df5142d9777327807084ddb7bd6
 1301684271.index
 4084810087.index
 2985665087.index
@@ -121,77 +57,14 @@ INDEX VERSION 1.131+C:\Revature Bootcamp\Projects\Project 2\TEAM_A\.metadata\.pl
 4071832543.index
 623341705.index
 2135282745.index
-1965174767.index
 3278960029.index
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ee2e5fae3acd6df5142d9777327807084ddb7bd6
 1096081951.index
 1132214759.index
 2552865290.index
 2120162970.index
 253290700.index
-<<<<<<< HEAD
 834867568.index
 3086614216.index
-1523204920.index
-3796986897.index
-3671352295.index
-1151900823.index
-741416789.index
-982691101.index
-2458036738.index
-3582463789.index
-1665995430.index
-874831487.index
-2158205419.index
-3844153111.index
-917187523.index
-948020595.index
-1763914305.index
-3160236587.index
-778434460.index
-971378871.index
-500438436.index
-3770277135.index
-3799848464.index
-59396035.index
-2831726757.index
-4227720700.index
-1558234620.index
-471363635.index
-=======
-2307270000.index
-834867568.index
-125409577.index
-208903109.index
-3713933766.index
->>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
-=======
-2307270000.index
-834867568.index
-125409577.index
-208903109.index
-3713933766.index
->>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
-=======
-2307270000.index
-834867568.index
-125409577.index
-208903109.index
-3713933766.index
->>>>>>> 15429913acd36aea974c7ac4ff48c6dc8bd8ef69
-2225370650.index
-3949652735.index
-1696419222.index
-2254571451.index
-=======
-834867568.index
-3086614216.index
->>>>>>> ee2e5fae3acd6df5142d9777327807084ddb7bd6
 1523204920.index
 3796986897.index
 3671352295.index

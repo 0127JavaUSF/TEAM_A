@@ -1,8 +1,8 @@
-<div class="userAccntDiv">
-    <div id="userAccount">  
-        <div >
-            <div class="customerName">{{user.firstName }} {{ user.lastName}}</div>
-            <button class="changePhoto">
+<!--div class="userAccntDiv"-->
+    <!--div id="userAccount"-->  
+        <div id="userProfile">
+            <label class="customerName">{{user.firstName }} {{ user.lastName}}</label>
+            <button id="changePhoto">
                 <span class= "picIconSpan">
                     <div >
                         <!-- if user has no ProfilePicture. Then that variable will be empty string (user.profilepicurl = "")
@@ -27,44 +27,44 @@
         </div>
 
         <div class="form-group">
-            <input [value]="user.firstName" type="text" class="firstName" [(ngModel)]="user.firstName">
-            <button input="click" type="button" id="editFirstN">Edit</button>
+            <input [value]="user.firstName" type="text" class="userDetails" [(ngModel)]="user.firstName">
+            <button input="click" type="button" id="edit">Edit</button>
         </div>
 
         <div class="form-group">
-            <input [value]="user.lastName" type="text" class="lastName" [(ngModel)]="user.lastName">
-            <button input="click" type="button" id="editLastN">Edit</button>
+            <input [value]="user.lastName" type="text" class="userDetails" [(ngModel)]="user.lastName">
+            <button input="click" type="button" id="edit">Edit</button>
         </div>
 
         <div class="form-group">
-            <input [value]="user.phoneNumber" class="telephone" type="text" [(ngModel)]="user.phoneNumber">
-            <button input="click" type="button" id="editPhone">Edit</button>
+            <input [value]="user.phoneNumber" class="userDetails" type="text" [(ngModel)]="user.phoneNumber">
+            <button input="click" type="button" id="edit">Edit</button>
         </div>
 
         <div class="form-group">
-            <input [value]="user.email" type="text" class="email" [(ngModel)]= "user.email">
-            <button input="click" type="button" id="editEmail">Edit</button>
+            <input [value]="user.email" type="text" class="userDetails" [(ngModel)]= "user.email">
+            <button input="click" type="button" id="edit">Edit</button>
         </div>
     <!--merge issue start -->
         <div class="form-group">
             <h5 class="Addresses">Address</h5>
-            <input [value]="user.address" type="text" class="address" [(ngModel)]= "user.address"><br>
-            <input [value]="user.city" type="text" class="city" [(ngModel)]= "user.city"><br>
-            <input [value]="user.zipCode" type="text" class="zipCode" [(ngModel)]= "user.zipCode"><br>
-            <button input="click" type="button" id="editAddress">Edit</button>
+            <input [value]="user.address" type="text" class="userDetails" [(ngModel)]= "user.address"><br>
+            <input [value]="user.city" type="text" class="userDetails" [(ngModel)]= "user.city"><br>
+            <input [value]="user.zipCode" type="text" class="userDetails" [(ngModel)]= "user.zipCode"><br>
+            <button input="click" type="button" id="editA">Edit</button>
         </div>
 
         <div class="form-group">
                 <div>
                     <h2 class="changePassword">Change Password</h2>
-                    <input class="currPW" type="text"><br><br>
-                    <input class="newPW" type="password" placeholder="New Password"><br><br>
-                    <input class="verifyPW" type="password" placeholder="Verify New Password"><br>
+                    <input class="pw" type="text">
+                    <input class="pw" type="password" placeholder="New Password">
+                    <input class="pw" type="password" placeholder="Verify New Password">
                     <span class="pwRules" type="text">Your new password must be at least 8 characters & contain at least one special chracter</span>
                 </div>
 
                 <div class="saveNewPassword">
-                    <button input="click" type="button" id="savePassword">SAVE</button><br>
+                    <button input="click" type="button" id="update">SAVE</button><br>
                 </div>
         </div>
     </form>
@@ -79,5 +79,3 @@
 
 
     </div> -->
-</div>
-
