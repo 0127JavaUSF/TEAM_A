@@ -1,56 +1,56 @@
-<div>
-    <div>
-        <!--div class="accountIcon"></div-->
-        <!-- <div class="customerName">
-            <span type="text" class="firstN">{{user.firstName}}</span>
-            <span type="text" class="lastN">{{user.lastName}}</span>
-        </div> -->
+<div class="userAccntDiv">
+    <div id="userAccount">  
+        <div >
+            <div class="customerName">{{user.firstName }} {{ user.lastName}}</div>
+            <button class="changePhoto">
+                <span class= "picIconSpan">
+                    <div >
+                        <!-- if user has no ProfilePicture. Then that variable will be empty string (user.profilepicurl = "")
+                        -->
+                        <div *ngIf="user.profilePictureUrl.length > 0">
+                            <span>Nothing</span>
+                            <img src = "user.ppurl" alt="User profilepic"/>
+                        </div>
+                        <i id="personIcon"class="fa fa-user" aria-hidden="true"></i>
+                    </div>
+                    <div id="photoInput">
+                        <span id="changePhoto"> CHANGE PHOTO</span>
+                        <input type="file" id="photoUpload">
+                    </div>                                    
+                </span>               
+            </button>
+        </div>
 
-        <button class="changePhoto">
-
-            <span>
-                <div class= "picIcon">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                </div>
-                <span>+ CHANGE PHOTO</span>
-            </span>
-
-            <input type="file" accept="image/*" class="photoUpload">
-        </button>
-    </div>
-
-
-    <div class="editUserAccount">
+    <form class="editUserAccount">
         <div class="form-group">
-            <h2 class="AccountDetails">Account Details</h2>
+            <h2 class="AccountDetails">Account </h2>
         </div>
 
         <div class="form-group">
             <input [value]="user.firstName" type="text" class="firstName" [(ngModel)]="user.firstName">
-            <button input="click" type="button" class="editFirstN">Edit</button>
+            <button input="click" type="button" id="editFirstN">Edit</button>
         </div>
 
         <div class="form-group">
             <input [value]="user.lastName" type="text" class="lastName" [(ngModel)]="user.lastName">
-            <button input="click" type="button" class="editLastN">Edit</button>
+            <button input="click" type="button" id="editLastN">Edit</button>
         </div>
 
         <div class="form-group">
             <input [value]="user.phoneNumber" class="telephone" type="text" [(ngModel)]="user.phoneNumber">
-            <button input="click" type="button" class="editPhone">Edit</button>
+            <button input="click" type="button" id="editPhone">Edit</button>
         </div>
 
         <div class="form-group">
             <input [value]="user.email" type="text" class="email" [(ngModel)]= "user.email">
-            <button input="click" type="button" class="editEmail">Edit</button>
+            <button input="click" type="button" id="editEmail">Edit</button>
         </div>
-<!-- ESU merge issue start -->
         <div class="form-group">
-            <h4 class="Addresses">Addresses</h4>
-            <input [value]="user.address" type="text" class="address" [(ngModel)]= "user.address">
-            <input [value]="user.city" type="text" class="city" [(ngModel)]= "user.city">
-            <input [value]="user.zipCode" type="text" class="zipCode" [(ngModel)]= "user.zipCode">
-            <button input="click" type="button" class="editAddress">Edit</button>
+            <h5 class="Addresses">Address</h5>
+            <input [value]="user.address" type="text" class="address" [(ngModel)]= "user.address"><br>
+            <input [value]="user.city" type="text" class="city" [(ngModel)]= "user.city"><br>
+            <input [value]="user.zipCode" type="text" class="zipCode" [(ngModel)]= "user.zipCode"><br>
+            <button input="click" type="button" id="editAddress">Edit</button>
         </div>
 
         <div class="form-group">
@@ -68,9 +68,7 @@
                     <span class = "completed" *ngIf = "toggle === 1">Success!</span>
                 </div>
         </div>
-    </div>
-    <!-- ESU merge issue -->
-
+    </form>
 <div>
     <h2 class="Addresses">Address</h2>
     <span>
@@ -85,5 +83,4 @@
     <button (click) = fetchOrderHistory()>display</button>
 </div>
 </div>
-
 
