@@ -1,6 +1,7 @@
+
 <!-- <div class="cart">
 <div class="userInfo">
-  <p class="address">{{userAddress}} this is the page and the userInfo</p>
+  <p class="address">{{user.address}} this is the page and the userInfo</p>
 </div>
 <div class="order">
 <ol>
@@ -16,7 +17,7 @@
 <div class="shopping-cart-container">
 
   <div class="left-child-container">
-    
+
     <div class="checkout-container">
       <div class="checkout-header">
         Checkout
@@ -33,14 +34,14 @@
           <div class="option-selected">PICKUP</div>
           <div class="option-price">Free</div>
         </div>
-        
+
       </div>
 
 
     </div>
 
     <delivery-option *ngIf="deliverySelected"
-      
+
       [address]="user['address']"
       [estimatedArrTime]="time"
       [paymentType]="payment"
@@ -63,24 +64,24 @@
     <div class="google-map">
       <!-- <img src="https://i.stack.imgur.com/JwzK7.jpg" alt=""> -->
       <agm-map class="google-map"
-          [latitude]="lat" 
+          [latitude]="lat"
           [longitude]="long"
           [zoom]="14"
           >
           <!-- [styles]="mapStyles" -->
 
-              <agm-marker 
-                [latitude]="lat" 
+              <agm-marker
+                [latitude]="lat"
                 [longitude]="long"
                 >
               </agm-marker>
-              
+
               <agm-marker
                 [latitude]="userLocation.latitude"
                 [longitude]="userLocation.longitude"
                 >
               </agm-marker>
-            
+
       </agm-map>
     </div>
 
@@ -95,7 +96,7 @@
       </div>
 
       <div class="food-item" *ngFor="let key of objectKeys(cart)">
-        
+
         <div class="food-item-container">
           <div class="food-item-name-price">
             <div class="food-item-name">

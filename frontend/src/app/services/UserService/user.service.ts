@@ -24,8 +24,8 @@ export class UserService {
 
   checkUser(email: string, password: string): Observable < User > {
 
-    let url = 'http://localhost:9010/login';
-    let userData = { "email": email, "password": password };
+    const url = 'http://localhost:9010/login';
+    const userData = {email, password };
 
     // const httpOptions = {
     //   headers: new HttpHeaders({
@@ -34,7 +34,7 @@ export class UserService {
     //   })
     // };
 
-    return this.http.post<User>(url, userData, { withCredentials: true })
+    return this.http.post<User>(url, userData, { withCredentials: true });
 
   }
 

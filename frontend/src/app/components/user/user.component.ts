@@ -19,7 +19,7 @@ export class UserComponent implements OnInit {
 
   user: User;
 
-  //for password update
+  // for password update
   currentPass = '';
   newPass = '';
   verifyPass = '';
@@ -28,10 +28,10 @@ export class UserComponent implements OnInit {
   toggleSpecial = 0;
   toggleMatch = 0;
 
-  //for picture upload
+  // for picture upload
   file;
 
-  //these are for ngmodel values to update user info
+  // these are for ngmodel values to update user info
   firstName = '';
   lastName = '';
   email = '';
@@ -42,7 +42,7 @@ export class UserComponent implements OnInit {
 
   constructor(
 
-    private userService: UserService, 
+    private userService: UserService,
     private router: Router,
     private sessionService: SessionService,
     // Anvar test
@@ -67,12 +67,12 @@ export class UserComponent implements OnInit {
           error => console.log(error),
         );
     }
-    // this.userService.getUser().subscribe(
-    //   data =>  {
-    //     this.user = data; //assigns input from user to each attribute of the user object
-    //   }
-    // ,
-    // error => (console.log(error))) ;
+    this.userService.getUser().subscribe(
+      data =>  {
+        this.user = data; //assigns input from user to each attribute of the user object
+      }
+    ,
+    error => (console.log(error))) ;
   }
 
   updateUserPassword() {
@@ -123,18 +123,18 @@ export class UserComponent implements OnInit {
   // reloadUser() {
   //   this.userService.getUser().subscribe(
   //     data =>  {
-  //       this.user = data; //assigns input from user to each attribute of the user object
+  //       this.user = data; // assigns input from user to each attribute of the user object
   //     }
   //   ,
   //   error => (console.log(error))) ;
   // }
 
-  // onPictureSelect(picture) {
-  //   if (picture.target.file > 0)
-  //   {
-  //     this.file = picture.target.file;
-  //   }
-  // }
+  onPictureSelect(picture) {
+    if (picture.target.file > 0)
+    {
+      this.file = picture.target.file;
+    }
+  }
 
 }
 
