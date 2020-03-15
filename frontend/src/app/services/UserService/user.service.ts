@@ -44,7 +44,6 @@ export class UserService {
 
   setUserId(id) {
     this.id = id;
-    console.log(id);
   }
 
   getOrderHistory(): Observable<any>  {

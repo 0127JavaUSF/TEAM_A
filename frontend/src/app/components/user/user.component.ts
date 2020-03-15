@@ -102,12 +102,12 @@ export class UserComponent implements OnInit {
   //   error => (console.log(error))) ;
   // }
 
-  // onPictureSelect(picture) {
-  //   if (picture.target.file > 0)
-  //   {
-  //     this.file = picture.target.file;
-  //   }
-  // }
+  onPictureSelect(picture) {
+    if (picture.target.file > 0)
+    {
+      this.file = picture.target.file;
+    }
+  }
 
 }
 
