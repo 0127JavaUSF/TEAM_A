@@ -7,11 +7,11 @@
                     <div >
                         <!-- if user has no ProfilePicture. Then that variable will be empty string (user.profilepicurl = "")
                         -->
-                        <div *ngIf="user.profilePictureUrl.length > 0">
+                        <!-- <div *ngIf="user.profilePictureUrl.length > 0">
                             <span>Nothing</span>
                             <img src = "user.ppurl" alt="User profilepic"/>
-                        </div>
-                        <i id="personIcon"class="fa fa-user" aria-hidden="true"></i>
+                        </div> -->
+                        <i id="personIcon" class="fa fa-user" aria-hidden="true"></i>
                     </div>
                     <div id="photoInput">
                         <span id="changePhoto"> CHANGE PHOTO</span>
@@ -27,38 +27,38 @@
         </div>
 
         <div class="form-group">
-            <input [value]="user.firstName" type="text" class="firstName" [(ngModel)]="user.firstName">
+            <input [value]="user.firstName" type="text" class="firstName" [(ngModel)]="user.firstName" name="firstName">
             <button input="click" type="button" id="editFirstN">Edit</button>
         </div>
 
         <div class="form-group">
-            <input [value]="user.lastName" type="text" class="lastName" [(ngModel)]="user.lastName">
+            <input [value]="user.lastName" type="text" class="lastName" [(ngModel)]="user.lastName" name="lastName">
             <button input="click" type="button" id="editLastN">Edit</button>
         </div>
 
         <div class="form-group">
-            <input [value]="user.phoneNumber" class="telephone" type="text" [(ngModel)]="user.phoneNumber">
+            <input [value]="user.phoneNumber" class="telephone" type="text" [(ngModel)]="user.phoneNumber" name="phoneNumber">
             <button input="click" type="button" id="editPhone">Edit</button>
         </div>
 
         <div class="form-group">
-            <input [value]="user.email" type="text" class="email" [(ngModel)]= "user.email">
+            <input [value]="user.email" type="text" class="email" [(ngModel)]= "user.email" name="email">
             <button input="click" type="button" id="editEmail">Edit</button>
         </div>
         <div class="form-group">
             <h5 class="Addresses">Address</h5>
-            <input [value]="user.address" type="text" class="address" [(ngModel)]= "user.address"><br>
-            <input [value]="user.city" type="text" class="city" [(ngModel)]= "user.city"><br>
-            <input [value]="user.zipCode" type="text" class="zipCode" [(ngModel)]= "user.zipCode"><br>
+            <input [value]="user.address" type="text" class="address" [(ngModel)]= "user.address" name="address"><br>
+            <input [value]="user.city" type="text" class="city" [(ngModel)]= "user.city" name="city"><br>
+            <input [value]="user.zipCode" type="text" class="zipCode" [(ngModel)]= "user.zipCode" name="zipcode"><br>
             <button input="click" type="button" id="editAddress">Edit</button>
         </div>
 
         <div class="form-group">
                 <div>
                     <h2 class="changePassword">Change Password</h2>
-                    <input id = "currentPassword" class="currentPassword" type="text" [(ngModel)]= currentPass><br><br>
-                    <input id = "newPassword" class="newPassword" type="password" placeholder="New Password" [(ngModel)]=newPass><br><br>
-                    <input id = "verifyPassword" class="verifyPassword" type="password" placeholder="Verify New Password"[(ngModel)]=verifyPass><br>
+                    <input id = "currentPassword" class="currentPassword" type="text" [(ngModel)]= currentPass name="currentPass"><br><br>
+                    <input id = "newPassword" class="newPassword" type="password" placeholder="New Password" [(ngModel)]="newPass" name="newPass"><br><br>
+                    <input id = "verifyPassword" class="verifyPassword" type="password" placeholder="Verify New Password" [(ngModel)] = "verifyPass" name="verifyPass"><br>
                     <span class="Password Rules" type="text">Your new password must be at least 8 characters & contain at least one special chracter</span>
                 </div>
 

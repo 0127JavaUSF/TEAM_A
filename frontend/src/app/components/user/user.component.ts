@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/UserService/user.service';
 import { User } from 'src/app/models/user';
 import { orderHistory } from 'src/app/models/orderHistory';
 import { Router } from '@angular/router';
+import { SessionService } from 'src/app/services/sessionservices/session.service';
 
 
 @Component({
@@ -21,18 +22,35 @@ export class UserComponent implements OnInit {
   verifyPass = '';
   toggle = 0;
 
+  constructor(
 
+    private userService: UserService, 
+    private router: Router,
+    private sessionService: SessionService,
 
-  constructor(private userService: UserService, private router: Router) { }
+    ) {}
 
 
   ngOnInit() {
-    this.userService.getUser().subscribe(
-      data =>  {
-        this.user = data; //assigns input from user to each attribute of the user object
-      }
-    ,
-    error => (console.log(error))) ;
+    if(this.sessionService.currrentUser.email.length > 0) {
+      this.user = this.sessionService.currrentUser;
+    } else {
+      // make request to fetch data
+      this.sessionService.fetchCurrentUser()
+        .subscribe(
+          data => {
+            console.log(data)
+            this.user = data;
+          },
+          error => console.log(error),
+        );
+    }
+    // this.userService.getUser().subscribe(
+    //   data =>  {
+    //     this.user = data; //assigns input from user to each attribute of the user object
+    //   }
+    // ,
+    // error => (console.log(error))) ;
   }
 
   updateUserPassword() {
@@ -44,6 +62,7 @@ export class UserComponent implements OnInit {
       this.toggle = 1;
     }
   }
+
   fetchOrderHistory() {
     this.router.navigate(['order-history']);
   }
