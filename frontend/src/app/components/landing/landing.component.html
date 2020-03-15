@@ -4,7 +4,7 @@
        Foodie to Calm Your Moody
     </div>
     <div class="address">
-        <input (keydown.enter)= "finishTypingEvent()" type="text" [(ngModel)] = "address" placeholder="address">
+        <input (keydown.enter)= "finishTypingEvent()" type="text" [(ngModel)] = "address" placeholder=" address">
         <input (keydown.enter)= "finishTypingEvent()" type="text" id="distance" [(ngModel)] = "distance" placeholder="2">
         <button (click)= "search()" routerLink = "restaurants">Near by</button>
     </div>
