@@ -21,11 +21,16 @@ export class LocationService {
       )
   }
 
-  getUserLocation() {
-    this.userCurrentLocation().subscribe(
-      () => this.userLocation,
-      (error) => console.log(error), 
-    )
+  getUserLocation(): Observable<any> {
+    return this.userCurrentLocation();
+  }
+
+  getUserLongitude() {
+    return this.userLocation.longitude;
+  }
+  
+  getUserLatitude() {
+    return this.userLocation.latitude;
   }
 
 }

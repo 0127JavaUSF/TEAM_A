@@ -92,8 +92,12 @@ export class CartComponent implements OnInit {
       (error) => console.log(error),
     );
 
-    this.userLat = this.locationService.getUserLocation().latitude;
-    this.userLong = this.locationService.getUserLocation().longitude;
+    this.locationService.getUserLocation().subscribe(
+      () => {
+        this.userLat = this.locationService.getUserLatitude();
+        this.userLong = this.locationService.getUserLongitude();
+      }
+    )
       console.log("lat: " + this.userLat);
       console.log("long:" + this.userLong);
   }
