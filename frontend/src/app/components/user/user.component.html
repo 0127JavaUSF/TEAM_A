@@ -15,6 +15,7 @@
                 <input type="file" id="photoUpload" (change)="onFileUpload($event)" accept = "image/*" name = "fileInput">
               </div>
             <!-- <button class="changePhoto">
+
                 <span class= "picIconSpan">
                     <div > -->
                         <!-- if user has no ProfilePicture. Then that variable will be empty string (user.profilepicurl = "")
@@ -42,19 +43,8 @@
         <div class="form-group">
             <h2 class="AccountDetails">Account </h2>
         </div>
-        <!-- <div>
-            {{ user.firstName}}
-        </div>
-        <div>
-            {{ user.lastName }}
-        </div>
-        <div>
-            {{ user.phoneNumber}}
-        </div>
-        <div>
-            {{ user.email }}
-        </div> -->
         <div class="form-group">
+
             <input [value]="user?.firstName" type="text" class="firstName" [(ngModel)]="firstName">
             <button input="click" type="button" id="editFirstN">Edit</button>
         </div>
