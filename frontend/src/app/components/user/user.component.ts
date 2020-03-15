@@ -15,6 +15,7 @@ export class UserComponent implements OnInit {
   phoneNumber;
   user: User;
 
+
   constructor(private userService: UserService) { }
 
 

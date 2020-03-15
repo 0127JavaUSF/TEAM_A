@@ -8,7 +8,7 @@ a{
 .container{
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 25px;
-  margin: 7vw;
+  margin-left: 20vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,7 +22,6 @@ button{
 .signIn-container{
   margin-top: 5vh;
   font-size: 20px;
-  flex-direction: row;
 }
 
 #password{
@@ -31,5 +30,5 @@ button{
 }
 .userInput{
   align-self: center;
-
+  flex-direction: column;
 }

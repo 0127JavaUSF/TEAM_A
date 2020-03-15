@@ -1,5 +1,13 @@
+<div class="cart">
+<div class="userInfo">
+  <p class="address">{{userAddress}} this is the page and the userInfo</p>
+</div>
+<div class="order">
 <ol>
+  <h2>{{restaurant.name}}</h2>
     <li *ngFor="let key of objectKeys(cart)">
         {{cart[key]["foodItem"].name}} and {{cart[key].quantity}}
     </li>
 </ol>
+</div>
+</div>
