@@ -1,3 +1,6 @@
+.completed {
+    color: chartreuse;
+}
 .userAccntDiv{
     display: flex;
     margin-top: 15vh;

@@ -45,7 +45,6 @@
             <input [value]="user.email" type="text" class="email" [(ngModel)]= "user.email">
             <button input="click" type="button" id="editEmail">Edit</button>
         </div>
-    <!--merge issue start -->
         <div class="form-group">
             <h5 class="Addresses">Address</h5>
             <input [value]="user.address" type="text" class="address" [(ngModel)]= "user.address"><br>
@@ -57,27 +56,31 @@
         <div class="form-group">
                 <div>
                     <h2 class="changePassword">Change Password</h2>
-                    <input class="currPW" type="text"><br><br>
-                    <input class="newPW" type="password" placeholder="New Password"><br><br>
-                    <input class="verifyPW" type="password" placeholder="Verify New Password"><br>
-                    <span class="pwRules" type="text">Your new password must be at least 8 characters & contain at least one special chracter</span>
+                    <input id = "currentPassword" class="currentPassword" type="text" [(ngModel)]= currentPass><br><br>
+                    <input id = "newPassword" class="newPassword" type="password" placeholder="New Password" [(ngModel)]=newPass><br><br>
+                    <input id = "verifyPassword" class="verifyPassword" type="password" placeholder="Verify New Password"[(ngModel)]=verifyPass><br>
+                    <span class="Password Rules" type="text">Your new password must be at least 8 characters & contain at least one special chracter</span>
                 </div>
 
                 <div class="saveNewPassword">
-                    <button input="click" type="button" id="savePassword">SAVE</button><br>
+                    <!-- <button input="click" type="button" class="savePassword">SAVE</button><br> -->
+                    <button (click) = updateUserPassword() currentPassword.value = ''>Update Password</button>
+                    <span class = "completed" *ngIf = "toggle === 1">Success!</span>
                 </div>
         </div>
     </form>
-        <!-- merge issue -->
+<div>
+    <h2 class="Addresses">Address</h2>
+    <span>
+      {{ user.address }}, {{ user.city }}, {{user.state}} {{user.zipCode}}
+    </span>
+</div>
 
-    <!-- <div>
-        <h2 class="Addresses">Address</h2>
-        <span>
-        {{ user.address }}, {{ user.city }}, {{user.state}} {{user.zipCode}}
-        </span>
-
-
-
-    </div> -->
+<div> 
+    <h3>
+        Order History
+    </h3>
+    <button (click) = fetchOrderHistory()>display</button>
+</div>
 </div>
 
