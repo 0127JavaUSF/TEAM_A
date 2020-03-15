@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/UserService/user.service';
 import { User } from 'src/app/models/user';
 import { Router } from '@angular/router';
 import { SessionService } from 'src/app/services/sessionservices/session.service';
+import { LocationService } from 'src/app/services/locationservice/location.service';
 
 
 @Component({
@@ -26,11 +27,16 @@ export class UserComponent implements OnInit {
     private userService: UserService, 
     private router: Router,
     private sessionService: SessionService,
+    // Anvar test
+    private locationService: LocationService,
 
     ) {}
 
 
   ngOnInit() {
+
+    this.locationService.getUserLocation();
+
     if(this.sessionService.currrentUser.email.length > 0) {
       this.user = this.sessionService.currrentUser;
     } else {
