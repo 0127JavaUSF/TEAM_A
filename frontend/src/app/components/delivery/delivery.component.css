@@ -23,9 +23,15 @@
         /* border: 1px solid rgb(182, 186, 196); */
         border: 1px solid rgb(236, 237, 239);
         height: 40px;
+        font-size: 14px;
 }
 
 .address {
         color: rgb(87, 92, 104); 
         word-wrap: break-word;
+        font-size: 14px;
+}
+
+.payment-type {
+        font-size: 14px;
 }
