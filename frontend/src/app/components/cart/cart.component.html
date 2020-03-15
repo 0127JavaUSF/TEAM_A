@@ -24,14 +24,14 @@
 
       <div class="options-container">
 
-        <div class="delivery-option-container">
-          <div class="delivery-option"  (click)="displayDeliveryOption('delivery')">Delivery</div>
-          <div class="delivery-option-price">{{rest['delivery']}}</div>
+        <div [ngClass]="deliveryClass" (click)="displayDeliveryOption('delivery')">
+          <div class="option-selected">DELIVERY</div>
+          <div class="option-price">{{rest['delivery']}}</div>
         </div>
 
-        <div class="pickup-option-container">
-          <div class="pickup-option"  (click)="displayDeliveryOption('pickup')">Pickup</div>
-          <div class="pickup-option-price">Free</div>
+        <div [ngClass]="pickupClass" (click)="displayDeliveryOption('pickup')" >
+          <div class="option-selected">PICKUP</div>
+          <div class="option-price">Free</div>
         </div>
         
       </div>
@@ -39,7 +39,7 @@
 
     </div>
 
-    <delivery-option *ngIf="delivery"
+    <delivery-option *ngIf="deliverySelected"
       
       [address]="user['address']"
       [estimatedArrTime]="time"
@@ -47,7 +47,7 @@
 
       ></delivery-option>
 
-    <pickup-option *ngIf="!delivery"
+    <pickup-option *ngIf="!deliverySelected"
 
       [pickupAddress]="rest['address']"
       [estimatedTimePickup]="time"

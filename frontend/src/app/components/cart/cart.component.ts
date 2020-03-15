@@ -34,10 +34,16 @@ export class CartComponent implements OnInit {
 
   objectKeys = Object.keys;
 
-  delivery: boolean;
-
   deliverySelected = true;
-  pickupSelected = false;
+
+  pickupClass;
+  deliveryClass;
+
+  pickupDefaultClass = "option-container";
+  pickupActiveClass = "option-container delivery-active";
+  
+  deliveryDefaultClass = "delivery-option-container option-container";
+  deliveryActiveClass = "delivery-option-container option-container delivery-active";
 
   constructor(private cartService: CartService) {
 
@@ -50,7 +56,8 @@ export class CartComponent implements OnInit {
     this.rest['delivery'] = "$3.99";
     this.rest['address'] =  "120-21 71st Street, Brynt Park, NY, NY 11001"
 
-    this.delivery = true;
+    this.pickupClass = this.pickupDefaultClass;
+    this.deliveryClass = this.deliveryActiveClass;
 
    }
 
@@ -68,19 +75,15 @@ export class CartComponent implements OnInit {
 
   displayDeliveryOption(selection: string) {
     if(selection === 'delivery') {
-      if(this.delivery === true) {
-        return;
-      } else {
-        this.delivery = true;
-      }
+      this.deliverySelected = true;
+      this.deliveryClass = this.deliveryActiveClass;
+      this.pickupClass = this.pickupDefaultClass;
     }
 
     if(selection === 'pickup') {
-      if(this.delivery === false) {
-        return;
-      } else {
-        this.delivery = false;
-      }
+      this.deliverySelected = false;
+      this.pickupClass = this.pickupActiveClass;
+      this.deliveryClass = this.deliveryDefaultClass;
     }
   }
 
