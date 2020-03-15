@@ -61,7 +61,20 @@
   <div class="right-child-container">
 
     <div class="google-map">
-      <img src="https://i.stack.imgur.com/JwzK7.jpg" alt="">
+      <!-- <img src="https://i.stack.imgur.com/JwzK7.jpg" alt=""> -->
+      <agm-map class="google-map"
+          [latitude]="lat" 
+          [longitude]="long"
+          [zoom]="15"
+          >
+          <!-- [styles]="mapStyles" -->
+
+              <agm-marker 
+                [latitude]="lat" 
+                [longitude]="long">
+              </agm-marker>
+            
+      </agm-map>
     </div>
 
     <div class="items-container">

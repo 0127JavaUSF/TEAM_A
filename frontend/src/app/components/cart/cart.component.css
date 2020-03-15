@@ -131,7 +131,7 @@ li{
 
 }
 
-.google-map > img {
+.google-map {
   width: 100%;
   height: 190px;
 }

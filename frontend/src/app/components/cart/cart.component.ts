@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cartservices/cart.service';
 import { User } from 'src/app/models/user';
 import { Restraurant } from 'src/app/models/restaurant';
-
+import { AgmCoreModule } from '@agm/core';
+import { styles } from '../../models/googleMapStyle';
 /**
  * The Cart component relies on: 
  * 
@@ -13,7 +14,7 @@ import { Restraurant } from 'src/app/models/restaurant';
  */
 
 @Component({
-  selector: 'app-cart',
+  selector: 'cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
@@ -23,6 +24,8 @@ export class CartComponent implements OnInit {
   /**
    * These are dummies. Later, we populate these through apt services
    */
+
+  mapStyles = styles;
   
   user = {};
   rest = {};
@@ -49,6 +52,9 @@ export class CartComponent implements OnInit {
   
   deliveryDefaultClass = "delivery-option-container option-container";
   deliveryActiveClass = "delivery-option-container option-container delivery-active";
+
+  lat = 28.054940;
+  long = -82.440440;
 
   constructor(private cartService: CartService) {
 
