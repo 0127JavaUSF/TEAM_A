@@ -13,14 +13,26 @@ import { LocationService } from 'src/app/services/locationservice/location.servi
 })
 export class UserComponent implements OnInit {
 
-  email;
-  addresses;
-  phoneNumber;
-  user = new User();
+
+  user: User;
+
+  //for password update
   currentPass = '';
   newPass = '';
   verifyPass = '';
   toggle = 0;
+
+  //for picture upload
+  file;
+
+  //these are for ngmodel values to update user info
+  firstName = '';
+  lastName = '';
+  email = '';
+  phoneNumber = '';
+  address = '';
+  city = '';
+  zipCode = '';
 
   constructor(
 
@@ -71,12 +83,35 @@ export class UserComponent implements OnInit {
   fetchOrderHistory() {
     this.router.navigate(['order-history']);
   }
-  // submitProfilePicture(file){
-  //   this.user.hasProfilePicture = true;
-  //   this.userService.submitPicture(this.user, file);
+
+  submitProfilePicture() {
+    this.user.hasProfilePicture = true;
+    this.userService.submitPicture(this.user.id, this.user.hasProfilePicture, this.file);
+    this.reloadUser();
+  }
+
+  onFileUpload(event) {
+
+    if (event.target.files.length > 0) {
+      this.file = event.target.files[0];
+    }
+  }
+
+  reloadUser() {
+    this.userService.getUser().subscribe(
+      data =>  {
+        this.user = data; //assigns input from user to each attribute of the user object
+      }
+    ,
+    error => (console.log(error))) ;
+  }
+
+  // onPictureSelect(picture) {
+  //   if (picture.target.file > 0)
+  //   {
+  //     this.file = picture.target.file;
+  //   }
   // }
-
-
 
 }
 
