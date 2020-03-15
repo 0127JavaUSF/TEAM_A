@@ -18,16 +18,22 @@
   <div class="left-child-container">
     
     <div class="checkout-container">
-      <div class="checkout-header">Checkout</div>
+      <div class="checkout-header">
+        Checkout
+      </div>
+
       <div class="options-container">
+
         <div class="delivery-option-container">
           <div class="delivery-option"  (click)="displayDeliveryOption('delivery')">Delivery</div>
           <div class="delivery-option-price">{{rest['delivery']}}</div>
         </div>
+
         <div class="pickup-option-container">
-          <span class="pickup-option"  (click)="displayDeliveryOption('pickup')">Pickup</span>
-          <span class="pickup-option-price">Free</span>
+          <div class="pickup-option"  (click)="displayDeliveryOption('pickup')">Pickup</div>
+          <div class="pickup-option-price">Free</div>
         </div>
+        
       </div>
 
 

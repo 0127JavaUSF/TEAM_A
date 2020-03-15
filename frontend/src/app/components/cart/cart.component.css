@@ -26,4 +26,16 @@ li{
 .shopping-cart-container {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+
+  /* width: 65%; */
+}
+
+.options-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.left-child-container :nth-child(1n) {
+  margin: 5px;
 }
