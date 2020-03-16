@@ -118,43 +118,77 @@ public class UserService {
 		String city = clientUser.getCity(); // 4
 		String state = clientUser.getState(); // 2
 		String zipCode = clientUser.getZipCode(); // 5
-		
-		
-		//validates the length of each updated field
+		//validates input
 		if (user.get().getFirstName() != firstName && firstName.length() > 1)
-			{
-				user.get().setFirstName(firstName);
-			}
+		{
+			user.get().setFirstName(firstName);
+		}
 		if (user.get().getLastName() != lastName && lastName.length() > 2)
-			{
-				user.get().setLastName(lastName);
-			}
+		{
+			user.get().setLastName(lastName);
+		}
 		if (user.get().getEmail() != email && email.contains("@"))
-			{
-				user.get().setEmail(email);
-			}
+		{
+			user.get().setEmail(email);
+		}
 		if (user.get().getPhoneNumber() != phoneNumber && phoneNumber.length() == 12)
-			{
-				user.get().setPhoneNumber(phoneNumber);
-			}
+		{
+			user.get().setPhoneNumber(phoneNumber);
+		}
 		if (user.get().getAddress() != address && address.length() > 10)
-			{
-				user.get().setAddress(address);
-			}
+		{
+			user.get().setAddress(address);
+		}
 		if (user.get().getCity() != city && city.length() > 4)
-			{
-				user.get().setCity(city);
-			}
+		{
+			user.get().setCity(city);
+		}
 		if (user.get().getState() != state && state.length() == 2)
-			{
-				user.get().setState(state);
-			}
+		{
+			user.get().setState(state);
+		}
 		if (user.get().getZipCode() != zipCode && zipCode.length() == 5)
-			{
-				user.get().setZipCode(zipCode);
-			}
+		{
+			user.get().setZipCode(zipCode);
+		}
+		
+		
 		User resp = this.userRepo.save(user.get());
+		
 		return resp;
 	}
 	
+	public boolean checkValues(User clientUser)
+	{
+		String firstName = clientUser.getFirstName();
+		String lastName = clientUser.getLastName();
+		String email = clientUser.getEmail();
+		String address = clientUser.getAddress();
+		String city = clientUser.getCity();
+		String phoneNumber = clientUser.getPhoneNumber();
+		String zipCode = clientUser.getZipCode();
+		
+		System.out.println(firstName.length());
+		System.out.println(lastName.length());
+		System.out.println(email.length());
+		System.out.println(address.length());
+		System.out.println(city.length());
+		System.out.println(phoneNumber.length());
+		System.out.println(zipCode.length());
+		
+		if(firstName.length() <= 0 || lastName.length() <= 0 || email.length() <= 0 
+				|| address.length() <= 0 || city.length() <= 0 || phoneNumber.length() <= 0 || zipCode.length() <= 0)
+		{
+			return false;
+		}else return true;
+	}
+
+	public boolean checkUrl(User clientUser) {
+		
+		boolean hasUrl = clientUser.isHasProfilePic();
+		if(hasUrl) {
+			return true;
+		} else return false;
+	}
+
 }

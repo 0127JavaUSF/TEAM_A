@@ -80,6 +80,7 @@ export class UserService {
   uploadPicture(presignedUrl, file) {
     this.http.put(presignedUrl, file).subscribe(
       data => {
+        console.log(data)
       },
       error => console.log(error)
     );

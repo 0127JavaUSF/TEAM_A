@@ -304,5 +304,25 @@ public class User {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	public User(String firstName, String lastName, String email, String phoneNumber, String address, String city,
+			String zipCode) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.address = address;
+		this.city = city;
+		this.zipCode = zipCode;
+	}
+
+	public User(boolean hasProfilePic) {
+		super();
+		this.hasProfilePic = hasProfilePic;
+	}
+	
+	
+
 	
 }

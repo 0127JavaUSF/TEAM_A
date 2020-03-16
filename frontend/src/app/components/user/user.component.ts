@@ -109,8 +109,7 @@ export class UserComponent implements OnInit {
   submitProfilePicture() {
     this.user.hasProfilePicture = true;
     this.userService.submitPicture(this.user.id, this.user.hasProfilePicture, this.file);
-    this.myInputVariable.nativeElement.value = '';
-    // this.reloadUser();
+    this.router.navigate(['user']);
   }
 
   onFileUpload(event) {
