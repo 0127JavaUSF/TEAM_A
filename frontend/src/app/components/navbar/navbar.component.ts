@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
   userOrLogin = "sign-in";
   user: User = new User();
   sessionText: string = "Logout";
-  loggedin = false;
+  test = false;
 
   constructor(private router: Router, private sessionService: SessionService) {
     this.user = this.sessionService.getCurrentUser();
@@ -28,8 +28,8 @@ export class NavbarComponent implements OnInit {
           this.sessionService.receiveUserData(data);
           this.user = this.sessionService.getCurrentUser();
           if(this.sessionService.isLoggedIn()) {
-            console.log("WTF: " + this.sessionService.isLoggedIn())
-            this.sessionText = "Logout";
+            this.test = true;
+            // this.sessionText = "Logout";
           }
         },
         (error) => {
@@ -42,14 +42,15 @@ export class NavbarComponent implements OnInit {
   }
 
   showButtons() {
-    if(this.sessionService.isLoggedIn()) {
-      this.loggedin = true;
-      return true;
-    } else {
-      this.loggedin = false;
-      this.sessionText = "Login";
-      return false;
-    }
+    // if(this.sessionService.isLoggedIn()) {
+    //   this.loggedin = true;
+    //   return true;
+    // } else {
+    //   this.loggedin = false;
+    //   this.sessionText = "Login";
+    //   return false;
+    // }
+    this.test = !this.test;
   }
 
   handleProfile() {
@@ -60,13 +61,19 @@ export class NavbarComponent implements OnInit {
   }
 
   handleSession() {
-    // this.sessionService.ensureLoggedIn();
-    if(this.sessionService.isLoggedIn()) {
+    if(this.test === true) {
+      this.showButtons();
       this.sessionService.logout();
-      this.sessionText = "Login";
-    } else {
-     this.sessionService.ensureLoggedIn(); 
     }
+    // this.test = !this.test;
+
+    // // this.sessionService.ensureLoggedIn();
+    // if(this.sessionService.isLoggedIn()) {
+    //   this.sessionService.logout();
+    //   this.sessionText = "Login";
+    // } else {
+    //  this.sessionService.ensureLoggedIn(); 
+    // }
   }
 
 }
