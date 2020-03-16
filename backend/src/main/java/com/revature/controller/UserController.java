@@ -1,4 +1,4 @@
-package com.revature.controller;
+	package com.revature.controller;
 
 import java.util.Optional;
 
@@ -83,6 +83,12 @@ public class UserController {
 			return new ResponseEntity<User>(user, HttpStatus.OK);
 		}else return new ResponseEntity<User>(new User(), HttpStatus.PARTIAL_CONTENT);
 		
+	}
+	
+	@PostMapping(value="/updateUser", consumes = "application/json", produces = "application/json")
+	public ResponseEntity<User> updateUserInformation(@RequestBody User clientUser) {
+		User user = userServ.updateUser(clientUser);
+		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 	
 	@PostMapping(value="/updateUser", consumes = "application/json", produces = "application/json")

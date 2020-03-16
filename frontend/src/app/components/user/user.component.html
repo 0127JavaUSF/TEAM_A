@@ -1,83 +1,82 @@
 <div class ="container main"> 
-<div class="col-5" id="profileStuff">
-    <div class="customerName">{{ user?.firstName }} {{ user?.lastName }}</div>
-    <div class="card" style="width: 18rem">
-        <div class="card-body">
-            <h5 class="card-title">Profile Picture</h5>
+    <div id="profileStuff" class="col-2">
+        <div>
+            <h4 class="customerName">{{ user?.firstName }} {{ user?.lastName }}</h4>
         </div>
-        <div *ngIf="user?.profilePictureUrl === null">
-            <span>You may upload a profile picture</span>
-        </div>
-        <div *ngIf= "user?.profilePictureUrl != null">
-            <img [src]= "user?.profilePictureUrl" class="card-img-top" alt="no profile picture uploaded">
-        </div>
-        <input type="file" id="photoUpload" (change)="onFileUpload($event)" accept = "image/*" name = "fileInput">
+        <div class="card">
+            <div *ngIf="user?.profilePictureUrl === null">
+                <span>You may upload a profile picture</span>
+            </div>
+            <div *ngIf= "user?.profilePictureUrl != null">
+                <img [src]= "user?.profilePictureUrl" id="profilepic" class="card-img-top" alt="no profile picture uploaded">
+            </div>
+            <input type="file" id="photoUpload" (change)="onFileUpload($event)" accept = "image/*" name = "fileInput">
+            <button (click) = "submitProfilePicture()">Upload Profile Picture</button>
         </div>   
-        <button (click) = "submitProfilePicture()">Upload profile picture</button>        
-</div>
+                    
+    </div>
         
+    <div class="col-9 userAccount" id="userAccount">  
+        <form class="editUserAccount">
+            <div class="form-group">
+                <h2 class="AccountDetails">Account </h2>
+            </div>
 
-<div class="col-5" id="userAccount">  
-    <form class="editUserAccount">
-        <div class="form-group">
-            <h2 class="AccountDetails">Account </h2>
-        </div>
+            <div class="form-group">
+                <input [value]="user?.firstName" type="text" class="col-8 personalDetails" name="firstName" [(ngModel)]="firstName">
+                <!-- <button input="click" type="button" id="editFirstN">Edit</button> -->
+            </div>
 
-        <div class="form-group">
-            <input [value]="user?.firstName" type="text" class="personalDetails" name="firstName" [(ngModel)]="firstName">          
-        </div>
+            <div class="form-group">
+                <input [value]="user?.lastName" type="text" class="col-8 personalDetails" name="lastName"[(ngModel)]="lastName">
+            </div>
 
-        <div class="form-group">
-            <input [value]="user?.lastName" type="text" class="personalDetails" name="lastName"[(ngModel)]="lastName">
-        </div>
+            <div class="form-group">
+                <input [value]="user?.phoneNumber" class=" col-8 personalDetails" type="text" name="phone" [(ngModel)]="phoneNumber">
+            </div>
 
-        <div class="form-group">
-            <input [value]="user?.phoneNumber" class="personalDetails" type="text" name="phone" [(ngModel)]="phoneNumber">
-        </div>
+            <div class="form-group">
+                <input [value]="user?.email" type="text" class="col-8 personalDetails" name="email" [(ngModel)]= "email">
+            </div>
 
-        <div class="form-group">
-            <input [value]="user?.email" type="text" class="personalDetails" name="email" [(ngModel)]= "email">
-        </div>
-
-        <div class="form-group">
-            <h5 class="Addresses">Address</h5>
-            <input [value]="user?.address" type="text" class="personalDetails" name="address" [(ngModel)]= "address"><br>
-            <input [value]="user?.city" type="text" class="personalDetails" name="city" [(ngModel)]= "city"><br>
-            <input [value]="user?.zipCode" type="text" class="personalDetails" name="zipCode" [(ngModel)]= "zipCode"><br>
-            <button input="click" type="button" id="editAddress">Edit</button>
-        </div>
-        <div class="form-group">
-            <div>
-                <h2 class="changePassword">Change Password</h2>
-                <input id = "currentPassword" class="personalDetails" type="text" name="currPW"[(ngModel)]= currentPass name="currentPass"><br><br>
-                <input id = "newPassword" class="personalDetails" type="password" placeholder="New Password" name="newPW" [(ngModel)]="newPass" name="newPass"><br><br>
-                <input id = "verifyPassword" class="personalDetails" type="password" placeholder="Verify New Password" name="verifyPW" [(ngModel)] = "verifyPass" name="verifyPass"><br>
+            <div class="form-group Address">
+                <h5 class="Addresses">Address</h5>
+                <input [value]="user?.address" type="text" class="col-8 personalDetails" name="address" [(ngModel)]= "address"><br>
+                <input [value]="user?.state" type="text" class="col-8 personalDetails" name="state" [(ngModel)]= "state"><br>
+                <input [value]="user?.zipCode" type="text" class="col-8 personalDetails" name="zipCode" [(ngModel)]= "zipCode"><br>
+            </div>
+            <div class="form-group PW">
+                <button class="col-7" (click) = "saveAllChanges()" id="updateUser">Save All Changes</button>
+            </div>
+            <div class="form-group">
+                <h4 class="changePassword">Change Password</h4>
+                <input id = "currentPassword" class="col-8 personalDetails" type="text" name="currPW"[(ngModel)]= currentPass name="currentPass"><br>
+                <input id = "newPassword" class="col-8 personalDetails" type="password" placeholder="New Password" name="newPW" [(ngModel)]="newPass" name="newPass"><br>
+                <input id = "verifyPassword" class="col-8 personalDetails" type="password" placeholder="Verify New Password" name="verifyPW" [(ngModel)] = "verifyPass" name="verifyPass"><br>
                 <span class="passwordRules" type="text">Your new password must be at least 8 characters & contain at least one special chracter</span>
             </div>
-            <div class = "form-group">
-                <div class="saveNewPassword">
-                    <!-- <button input="click" type="button" class="savePassword">SAVE</button><br> -->
-                    <button (click) = updateUserPassword()>Update Password</button>
+
+            <div class="form-group col-6">
+                <button id="updatePW" (click) = updateUserPassword()>Update Password</button>
                     <span class = "completed" *ngIf = "toggle === 1">Success!</span>
                     <span class = "error" *ngIf = "toggleShort === 1">Password is too short!</span>
                     <span class = "error" *ngIf = "toggleSpecial === 1">Password does not contain any speical characters</span>
                     <span class = "error" *ngIf = "toggleMatch === 1">Passwords do not match</span>
-                </div>
-        </div>
-    
+            </div>
 
-        <div class="form-group">
-            <h2 class="Address">Address</h2>
-            <span>
-            {{ user?.address }}, {{ user?.city }}, {{user?.state}} {{user?.zipCode}}
-            </span>
-        </div>
+            <div class="form-group col-9">
+                <h4 class="Address">Address</h4>
+                <span>
+                {{ user?.address }}, {{ user?.city }}, {{user?.state}} {{user?.zipCode}}
+                </span>
+            </div>
 
-    <div class="pastOrders"> 
-        <h3>
-            Order History
-        </h3>
-        <button (click) = fetchOrderHistory()>display</button>
+        </form>
+
+        <div class="col-7 pastOrders"> 
+            <h4 class="col-8">Order History</h4>
+            <button class="col-10 display" (click) = fetchOrderHistory()>Display Order History</button>
+        </div>
     </div>
 </div>
 
