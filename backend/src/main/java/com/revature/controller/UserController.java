@@ -1,4 +1,4 @@
-package com.revature.controller;
+	package com.revature.controller;
 
 import java.util.Optional;
 
@@ -33,14 +33,20 @@ public class UserController {
 	@PostMapping(consumes = "application/json", produces = "application/json")
 	public ResponseEntity<User> createUser(@RequestBody @Valid User user) {
 		
-		user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
+		boolean validationCheck = userServ.checkValues(user);
 		
-		User createdUser = userServ.createUser(user);
-		/**
-		 * Hash password using BCrypt library
-		 */
-		
-		return new ResponseEntity<User>(createdUser ,HttpStatus.OK);
+		if (validationCheck) {
+			user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
+			
+			User createdUser = userServ.createUser(user);
+			/**
+			 * Hash password using BCrypt library
+			 */
+			
+			return new ResponseEntity<User>(createdUser ,HttpStatus.OK);
+		}
+		else return new ResponseEntity<User>(new User(), HttpStatus.PARTIAL_CONTENT);
+
 	}
 	
 //	@GetMapping("/{email}")
@@ -70,9 +76,21 @@ public class UserController {
 	
 	@PostMapping(value="/uploadProfilePic", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<User> uploadProfilePic(@RequestBody User clientUser) {
-		User user = userServ.uploadPicture(clientUser);
+		boolean validationCheck = userServ.checkUrl(clientUser);
+		if(validationCheck)
+		{
+			User user = userServ.uploadPicture(clientUser);
+			return new ResponseEntity<User>(user, HttpStatus.OK);
+		}else return new ResponseEntity<User>(new User(), HttpStatus.PARTIAL_CONTENT);
+		
+	}
+	
+	@PostMapping(value="/updateUser", consumes = "application/json", produces = "application/json")
+	public ResponseEntity<User> updateUserInformation(@RequestBody User clientUser) {
+		User user = userServ.updateUser(clientUser);
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
+	
 
 //	@GetMapping("/{id}")
 //	public ResponseEntity<User> getUser(@PathVariable(value="id") long id)
