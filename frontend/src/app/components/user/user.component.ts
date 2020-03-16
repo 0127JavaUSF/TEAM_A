@@ -103,6 +103,7 @@ export class UserComponent implements OnInit {
   }
 
   fetchOrderHistory() {
+    this.userService.setUserId(this.user.id);
     this.router.navigate(['order-history']);
   }
 
