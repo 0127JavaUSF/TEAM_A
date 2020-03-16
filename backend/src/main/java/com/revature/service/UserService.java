@@ -102,6 +102,59 @@ public class UserService {
 		
 		
 		return presignedUrlUser;
+			
 	}
-
+	
+	@Transactional
+	public User updateUser(User clientUser) {
+		//finds the suer  by id in the database
+		Optional <User> user = this.userRepo.findById(clientUser.getId());
+		//we get each of these attributes from the database and set them to these variables that we validaqte below
+		String firstName = clientUser.getFirstName(); //2
+		String lastName = clientUser.getLastName(); //2
+		String email = clientUser.getEmail();
+		String phoneNumber = clientUser.getPhoneNumber(); // 12
+		String address = clientUser.getAddress(); // 10
+		String city = clientUser.getCity(); // 4
+		String state = clientUser.getState(); // 2
+		String zipCode = clientUser.getZipCode(); // 5
+		
+		
+		//validates the length of each updated field
+		if (user.get().getFirstName() != firstName && firstName.length() > 1)
+			{
+				user.get().setFirstName(firstName);
+			}
+		if (user.get().getLastName() != lastName && lastName.length() > 2)
+			{
+				user.get().setLastName(lastName);
+			}
+		if (user.get().getEmail() != email && email.contains("@"))
+			{
+				user.get().setEmail(email);
+			}
+		if (user.get().getPhoneNumber() != phoneNumber && phoneNumber.length() == 12)
+			{
+				user.get().setPhoneNumber(phoneNumber);
+			}
+		if (user.get().getAddress() != address && address.length() > 10)
+			{
+				user.get().setAddress(address);
+			}
+		if (user.get().getCity() != city && city.length() > 4)
+			{
+				user.get().setCity(city);
+			}
+		if (user.get().getState() != state && state.length() == 2)
+			{
+				user.get().setState(state);
+			}
+		if (user.get().getZipCode() != zipCode && zipCode.length() == 5)
+			{
+				user.get().setZipCode(zipCode);
+			}
+		User resp = this.userRepo.save(user.get());
+		return resp;
+	}
+	
 }

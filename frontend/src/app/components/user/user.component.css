@@ -1,58 +1,75 @@
 .completed {
     color: chartreuse;
 }
-.userAccnount{
+.col-9userAccnount{
     display: flex;
     margin-top: 15vh;
-    margin-left: 30px; 
+    margin-left: 30vw; 
     flex-direction: row;
     justify-self: left;
     font-family: sans-serif;
-} */
+    /* width:  */
+} 
 
+.customerName{
+    text-emphasis: bold;
+    /* text-align: center; */
+    margin: 8%;
+}
+
+#profileStuff{
+    /* display: flex; */
+    /* flex-direction: row; */
+    align-self: left;
+    margin-right: 5vw;
+    width: 100vw;
+    
+}
+
+.card-img-top{
+    width: 100%;
+}
+.card{
+    width: 100%;
+    padding: -20px;
+}
+
+.personalDetails{
+    border-radius: 10px;
+}
+
+.form-group{
+    padding: 0px;
+}
+
+.form-groupAddress{
+    padding: 0px;
+    margin: 35vh;
+}
+.form-groupPW{
+    padding: 0px;
+    margin: 35vh;
+}
+
+#updatePW{
+    border-radius: 10px;
+}
+
+.col-10.display{
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-bottom: 15px;
+}
+
+/* .passwordRules{
+    word-wrap: break-word;
+} */
 
 /* #userAccount{
     display: flex !important;
     flex-direction: column !important;
     align-self: left !important;
 
-} */
-/* #userProfile{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-family: sans-serif;
-} */
-
-/* #changePhoto{
-    margin: 40px;
-    justify-content: center;
-    color: #f8cf55;
-    font-weight: bold;
-} */
-
-/* .picIconSpan{
-    display:flex;
-    flex-direction: column;
-    height: 25vh;
-    width: 21vw;
-    margin-bottom: 60px;
-    align-self: center;
-    align-self: flex-start;
-    
-} */
-
-/* #personIcon{
-    font-size: 70px;
-    margin-bottom: -65px;
-    margin-top: 10px;
-    color: #9e0a0a;
-} */
-
-
-/* #photoInput{
-    margin: 20px;
-    justify-content: center;
 } */
 
 .editUserAccount{
@@ -71,23 +88,16 @@
       
 }
 
-/* .pw{
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 20px;
-    margin-left: 4px;
-
-} */
-/* #editA{
-
-} */
-
-/* #update{
-    margin-top: 20px; 
-
-} */
 
 .container.main{
     display: flex;
     flex-direction: row;
+    align-content: left;
+    margin:0px;
+    width: 100%;
+}
+
+.col-7pastOrders{
+    margin-top: 20vh;
+    padding: 0px;
 }

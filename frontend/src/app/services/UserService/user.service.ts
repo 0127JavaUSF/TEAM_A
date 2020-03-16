@@ -14,6 +14,7 @@ export class UserService {
   newUser = new NewUser();
   picUser = new PicUser();
   presignedUrlUser = new User();
+  updateUser = new User();
 
 
   constructor(private http: HttpClient) { }
@@ -86,6 +87,24 @@ export class UserService {
       error => console.log(error)
     );
   }
+
+  saveAllChanges(id,firstName,lastName,email,phoneNumber,address, state, city,zipCode){
+    
+    this.updateUser.id = id;
+    this.updateUser.firstName = firstName;
+    this.updateUser.lastName = lastName;
+    this.updateUser.email = email;
+    this.updateUser.phoneNumber = phoneNumber;
+    this.updateUser.address = address;
+    this.updateUser.city = city;
+    this.updateUser.state = state;
+    this.updateUser.zipCode = zipCode;
+
+    this.http.post<User>('http://localhost:9010/user/updateUser', this.updateUser).subscribe(
+      (error) => console.log(error)
+    );
+
+  }
 }
 
 class NewUser {
@@ -97,4 +116,16 @@ class PicUser {
   id: '';
   hasProfilePic: boolean;
   presignedUrl: '';
+}
+
+class updateUser {
+  id = 0;
+  firstName = '';
+  lastName = '';
+  email = '';
+  phoneNumber = '';
+  address = '';
+  state = '';
+  city = '';
+  zipCode = '';
 }
