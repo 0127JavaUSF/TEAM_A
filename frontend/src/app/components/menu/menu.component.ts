@@ -51,7 +51,7 @@ export class MenuComponent implements OnInit {
 
     // get current restaurant api key
     this.menuService.currentRestKey = this.router.snapshot.params['id'];
-    // fetch its manu (food items)
+    // fetch its menu (food items)
     this.menuService.getMenu().subscribe(
       (foodArr) => {
         // this is list of food we are looking at
@@ -87,6 +87,8 @@ export class MenuComponent implements OnInit {
             if(qFromStorage > 0) {
               q = qFromStorage;
             }
+
+            console.log(this.FoodQuant);
             
             this.FoodQuant[food.apiKey] = [q, false];
             

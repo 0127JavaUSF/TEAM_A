@@ -31,8 +31,10 @@ export class CartComponent implements OnInit {
 
   mapStyles = styles;
 
-  user = {};
+  user: User = new User();
   rest = {};
+
+  sendOrder = {}
 
   time = "Approximately 30 minutes";
   payment = "PayPal";
@@ -41,10 +43,13 @@ export class CartComponent implements OnInit {
   objectKeys = Object.keys;
   restaurant;
 
-  deliveryFee = 3.99;
-  subtotal = parseFloat((100 + this.deliveryFee).toFixed(2));
-  taxAndFees = parseFloat((0.08 * this.subtotal).toFixed(2));
-  totalAmount = this.taxAndFees + this.subtotal + this.deliveryFee;
+  subtotal = 0.0;
+  
+  taxAndFees;
+  
+  totalAmount = 0.0;
+
+  total;
 
   deliverySelected = true;
 
@@ -68,14 +73,7 @@ export class CartComponent implements OnInit {
     private sessionService: SessionService,
     ) {
 
-    this.user['firstName'] = "Abby";
-    this.user['lastName'] = "Adams";
-    this.user['address'] = "12702 Bruce B Downs Blvd, 1420, Tampa, FL 33612";
     this.user['payment'] = "Paypal";
-
-    this.rest['name'] = "Denny's";
-    this.rest['delivery'] = "$3.99";
-    this.rest['address'] =  "120-21 71st Street, Brynt Park, NY, NY 11001"
 
     this.pickupClass = this.pickupDefaultClass;
     this.deliveryClass = this.deliveryActiveClass;
@@ -99,11 +97,29 @@ export class CartComponent implements OnInit {
 
     this.cartService.loadCart().subscribe(
       (cart) => {
+        
         cart = Object.values(cart);
         // localStorage will have food with quantity 0 when
         // customer removes it
-        this.cart = cart.filter(ele => ele.quantity > 0);
-        console.log(this.cart);
+        this.cart = cart.filter(ele => { 
+          if(ele.quantity > 0) {
+            this.subtotal = this.subtotal + (ele['foodItem'].basePrice * ele.quantity);
+            return true;
+          }
+          return false;
+        });
+
+        this.rest['name'] = localStorage.getItem('restName');
+        this.rest['address'] = localStorage.getItem('restAddress');
+        this.rest['delivery'] = localStorage.getItem('deliveryPrice');
+        if(this.rest['delivery'] === "undefined") {
+            this.rest['delivery'] = "0";
+        }
+      
+        this.taxAndFees = 0.08 * this.subtotal;
+        this.total = (parseFloat(this.taxAndFees + this.subtotal + this.rest['delivery'])).toFixed(2);
+        this.taxAndFees = this.taxAndFees.toFixed(2);
+        this.subtotal = parseFloat(this.subtotal.toFixed(2));
       },
       (error) => console.log(error),
     );

@@ -27,7 +27,7 @@
 
         <div [ngClass]="deliveryClass" (click)="displayDeliveryOption('delivery')">
           <div class="option-selected">DELIVERY</div>
-          <div class="option-price">{{rest['delivery']}}</div>
+          <div class="option-price">${{rest['delivery']}}</div>
         </div>
 
         <div [ngClass]="pickupClass" (click)="displayDeliveryOption('pickup')" >
@@ -103,7 +103,7 @@
               {{cart[key]["quantity"]}} × {{cart[key]["foodItem"].name}}.
             </div>
             <div class="price">
-              ${{cart[key]["foodItem"].basePrice}}
+              ${{(cart[key]["foodItem"].basePrice * cart[key].quantity).toFixed(2)}}
             </div>
           </div>
           <div class="food-item-description">
@@ -140,7 +140,7 @@
           Delivery
         </div>
         <div class="price">
-          ${{deliveryFee}}
+          ${{rest['delivery']}}
         </div>
       </div>
 
@@ -150,7 +150,7 @@
           Total
         </div>
         <div class="total-price">
-          ${{totalAmount}}
+          ${{total}}
         </div>
 
       </div>
