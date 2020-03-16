@@ -16,7 +16,6 @@
                     
     </div>
         
-
     <div class="col-9 userAccount" id="userAccount">  
         <form class="editUserAccount">
             <div class="form-group">
@@ -43,7 +42,6 @@
             <div class="form-group Address">
                 <h5 class="Addresses">Address</h5>
                 <input [value]="user?.address" type="text" class="col-8 personalDetails" name="address" [(ngModel)]= "address"><br>
-               
                 <input [value]="user?.state" type="text" class="col-8 personalDetails" name="state" [(ngModel)]= "state"><br>
                 <input [value]="user?.zipCode" type="text" class="col-8 personalDetails" name="zipCode" [(ngModel)]= "zipCode"><br>
             </div>
@@ -70,8 +68,6 @@
                 {{ user?.address }}, {{ user?.city }}, {{user?.state}} {{user?.zipCode}}
                 </span>
             </div>
-
-            
 
         </form>
 
