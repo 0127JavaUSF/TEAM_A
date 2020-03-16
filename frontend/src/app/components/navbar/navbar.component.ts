@@ -10,7 +10,6 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
   userOrLogin = "sign-in";
   user: User = new User();
   sessionText: string = "Logout";
@@ -76,5 +75,4 @@ export class NavbarComponent implements OnInit {
     //  this.sessionService.ensureLoggedIn(); 
     // }
   }
-
 }
