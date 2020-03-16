@@ -1,5 +1,5 @@
 .openAddress{
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 25px;
   margin: 0;
   display: flex;
@@ -10,6 +10,11 @@
   color: #f8cf55;
   background-color: #9e0a0a;
   border-color: #f8cf55;
+
+  /* TODO Why is this happening */
+  /* Anvar test */
+  /* width: 2000px;
+  height: 500px; */
   width: 100vw;
 }
 

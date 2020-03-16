@@ -1,7 +1,8 @@
 .completed {
     color: chartreuse;
 }
-.col-9userAccnount{
+
+.col-9.userAccnount{
     display: flex;
     margin-top: 15vh;
     margin-left: 30vw; 
@@ -9,7 +10,12 @@
     justify-self: left;
     font-family: sans-serif;
     /* width:  */
-} 
+}
+
+.error {
+    color: red;
+}
+
 
 .customerName{
     text-emphasis: bold;

@@ -58,9 +58,11 @@
 
             <div class="form-group col-6">
                 <button id="updatePW" (click) = updateUserPassword()>Update Password</button>
-                <span class = "completed" *ngIf = "toggle === 1">Success!</span>
+                    <span class = "completed" *ngIf = "toggle === 1">Success!</span>
+                    <span class = "error" *ngIf = "toggleShort === 1">Password is too short!</span>
+                    <span class = "error" *ngIf = "toggleSpecial === 1">Password does not contain any speical characters</span>
+                    <span class = "error" *ngIf = "toggleMatch === 1">Passwords do not match</span>
             </div>
-            
 
             <div class="form-group col-9">
                 <h4 class="Address">Address</h4>
@@ -77,4 +79,5 @@
         </div>
     </div>
 </div>
+
 

@@ -17,6 +17,9 @@
     <label for="confirmPassword">Confirm Password</label>
     <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" [(ngModel)]="confirmPassword">
   </div>
+  <span class = "error" *ngIf = "toggleShort === 1">Password is too short!</span>
+  <span class = "error" *ngIf = "toggleSpecial === 1">Password does not contain any speical characters</span>
+  <span class = "error" *ngIf = "toggleMatch === 1">Passwords do not match</span>
   <div class="form-group1">
     <label for="email">Email</label>
     <input type="email" class="form-control" name="user.email" id="email" placeholder="Email" [(ngModel)]="user.email">

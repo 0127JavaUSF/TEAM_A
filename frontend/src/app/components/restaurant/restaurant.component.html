@@ -38,9 +38,9 @@
                 </div>
             </div>
         </div>
-        <div *ngIf = "allRestaurants[0] === undefined " class="alert alert-warning" role="alert">
+        <div *ngIf = "allRestaurants == null " class="alert alert-warning" role="alert">
             There are currently no restaurants available for your location <a href="#" class="alert-link">Try another address</a>.
-          </div>
+        </div>
     </div>
 </body>
 <router-outlet></router-outlet>

@@ -12,21 +12,27 @@ import { User } from 'src/app/models/user';
 })
 export class LandingComponent implements OnInit {
 
-  user = new User();
+  user: User = new User();
   address = '';
   distance = 2;
   constructor(private httpClient: HttpClient, private restaurantService: RestaurantService, private router: Router,
-    private sessionService: SessionService) { }
+              private sessionService: SessionService) { }
 
   ngOnInit(): void {
 
-    this.sessionService.fetchCurrentUser().subscribe(
-      data => {
-        this.user = data;
-        this.sessionService.currrentUser = this.user;
-      },
-      error => console.log(error),
-    )
+
+    if (!this.sessionService.isLoggedIn()) {
+      this.sessionService.fetchCurrentUser().subscribe(
+        (data) => {
+          this.sessionService.receiveUserData(data);
+          this.user = this.sessionService.getCurrentUser();
+        },
+        (error) => {
+          console.log(error);
+          this.sessionService.ensureLoggedIn();
+        }
+      )
+    }
 
     localStorage.removeItem('address');
     localStorage.removeItem('method');
