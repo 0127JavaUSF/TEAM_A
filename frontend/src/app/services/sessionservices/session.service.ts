@@ -70,7 +70,7 @@ export class SessionService {
       this.http.get(url, { withCredentials: true }).subscribe(
         () => {
           console.log("Logged out")
-          this.router.navigate(['/'])
+          this.router.navigate(['sign-in'])
         },
         (error) => console.log("ERROR: " + error)
       );

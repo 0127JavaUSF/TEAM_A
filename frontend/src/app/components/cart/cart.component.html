@@ -1,4 +1,3 @@
-
 <!-- <div class="cart">
 <div class="userInfo">
   <p class="address">{{user.address}} this is the page and the userInfo</p>
@@ -27,7 +26,7 @@
 
         <div [ngClass]="deliveryClass" (click)="displayDeliveryOption('delivery')">
           <div class="option-selected">DELIVERY</div>
-          <div class="option-price">{{rest['delivery']}}</div>
+          <div class="option-price">${{rest['delivery']}}</div>
         </div>
 
         <div [ngClass]="pickupClass" (click)="displayDeliveryOption('pickup')" >
@@ -37,7 +36,20 @@
 
       </div>
 
-
+<!-- <div class="cart">
+<div class="userInfo">
+  <p class="address">{{user.address}} this is the page and the userInfo</p>
+</div>
+<div class="order">
+<ol>
+  <h2>{{restaurant.name}}</h2>
+    <li *ngFor="let key of objectKeys(cart)">
+        {{cart[key]["foodItem"].name}} and {{cart[key].quantity}}
+    </li>
+</ol>
+</div>
+</div> 
+-->
     </div>
 
     <delivery-option *ngIf="deliverySelected"
@@ -56,6 +68,10 @@
 
     >
     </pickup-option>
+
+    <div class="send-order-button" (click)="letsSendOrder()">
+      SEND ORDER
+    </div>
 
   </div>
 
@@ -103,7 +119,7 @@
               {{cart[key]["quantity"]}} × {{cart[key]["foodItem"].name}}.
             </div>
             <div class="price">
-              ${{cart[key]["foodItem"].basePrice}}
+              ${{(cart[key]["foodItem"].basePrice * cart[key].quantity).toFixed(2)}}
             </div>
           </div>
           <div class="food-item-description">
@@ -140,7 +156,7 @@
           Delivery
         </div>
         <div class="price">
-          ${{deliveryFee}}
+          ${{rest['delivery']}}
         </div>
       </div>
 
@@ -150,7 +166,7 @@
           Total
         </div>
         <div class="total-price">
-          ${{totalAmount}}
+          ${{total}}
         </div>
 
       </div>

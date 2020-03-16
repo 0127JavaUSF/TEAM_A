@@ -64,6 +64,11 @@ export class RestaurantComponent implements OnInit {
      */
     onRestaurantClick(clickedRestaurant: any) {
         this.menuService.currentRestKey = clickedRestaurant.apiKey;
+
+        localStorage.setItem("restAddress", clickedRestaurant.streetAddress);
+        localStorage.setItem("restName", clickedRestaurant.name);
+        localStorage.setItem("deliveryPrice", clickedRestaurant.deliveryPrice);
+
         this.router.navigate([`/restaurants/${this.menuService.currentRestKey}`]);
         let dummyFood = {};
         this.food.apiKey = "123";
@@ -73,7 +78,7 @@ export class RestaurantComponent implements OnInit {
 
         dummyFood["123"] = {
           "foodItem": this.food,
-          "quantity": 2,
+          "quantity": 1,
         }
 
         localStorage.setItem("cart", JSON.stringify(dummyFood))

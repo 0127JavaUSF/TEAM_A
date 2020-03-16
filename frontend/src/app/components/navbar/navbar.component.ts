@@ -12,8 +12,8 @@ import { HttpClient } from '@angular/common/http';
 export class NavbarComponent implements OnInit {
   userOrLogin = "sign-in";
   user: User = new User();
-  sessionText: string = "Login";
-  loggedin = false;
+  sessionText: string = "Logout";
+  test = false;
 
   constructor(private router: Router, private sessionService: SessionService) {
     this.user = this.sessionService.getCurrentUser();
@@ -27,8 +27,8 @@ export class NavbarComponent implements OnInit {
           this.sessionService.receiveUserData(data);
           this.user = this.sessionService.getCurrentUser();
           if(this.sessionService.isLoggedIn()) {
-            this.sessionText = "Logout";
-            this.loggedin = true;
+            this.test = true;
+            // this.sessionText = "Logout";
           }
         },
         (error) => {
@@ -40,20 +40,39 @@ export class NavbarComponent implements OnInit {
     
   }
 
+  showButtons() {
+    // if(this.sessionService.isLoggedIn()) {
+    //   this.loggedin = true;
+    //   return true;
+    // } else {
+    //   this.loggedin = false;
+    //   this.sessionText = "Login";
+    //   return false;
+    // }
+    this.test = !this.test;
+  }
+
   handleProfile() {
     
     this.sessionService.ensureLoggedIn();
-    this.router.navigate([`user-details/${this.user.id}`]);
+    this.router.navigateByUrl(`user-details/${this.user.id}`);
 
   }
 
   handleSession() {
-    // this.sessionService.ensureLoggedIn();
-    if(this.sessionService.isLoggedIn()) {
+    if(this.test === true) {
+      this.sessionText = "Logout";
+      this.showButtons();
       this.sessionService.logout();
-      this.sessionText = "Login";
-    } else {
-     this.sessionService.ensureLoggedIn(); 
     }
+    // this.test = !this.test;
+
+    // // this.sessionService.ensureLoggedIn();
+    // if(this.sessionService.isLoggedIn()) {
+    //   this.sessionService.logout();
+    //   this.sessionText = "Login";
+    // } else {
+    //  this.sessionService.ensureLoggedIn(); 
+    // }
   }
 }

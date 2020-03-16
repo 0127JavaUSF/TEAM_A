@@ -30,9 +30,12 @@ public class OrderController {
 	private OrderService oServ;
 	
 	@PostMapping(consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Order> createOrder(@RequestBody @Valid Order order, User user, Item item) {
-		Order createdOrder = oServ.createOrder(order, item, user);
+	public ResponseEntity<Order> createOrder(@RequestBody @Valid Order order) {
+		System.out.println("WTF MAN");
+		Order createdOrder = oServ.createOrder(order);
+		System.out.println(createdOrder);
 		return new ResponseEntity<Order>(createdOrder ,HttpStatus.OK);
+		
 	}
 	
 //	@PostMapping(consumes = "application/json", produces = "application/json")
