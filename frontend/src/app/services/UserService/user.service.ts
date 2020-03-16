@@ -44,7 +44,6 @@ export class UserService {
 
   setUserId(id) {
     this.id = id;
-    console.log(id);
   }
 
   getOrderHistory(): Observable<any>  {
@@ -78,7 +77,6 @@ export class UserService {
   }
 
   uploadPicture(presignedUrl, file) {
-    console.log(presignedUrl);
     this.http.put(presignedUrl, file).subscribe(
       data => {
       },

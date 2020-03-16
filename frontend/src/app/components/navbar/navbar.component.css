@@ -1,6 +1,8 @@
 body {
     display: flex;
     align-items: center;
+    width: 2000px;
+    height: auto;
 }
 
 .navbar {
@@ -39,19 +41,19 @@ body {
     outline: 0;
 }
 
-.right-section {
+.right-section > div {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.right-section span {
+.right-section > div span {
     margin: 0px 5px 0px 5px;
     font-family: sans-serif;
     font-size: 20px;
 }
 
-.right-section span:hover {
+.right-section > div span:hover {
     cursor: pointer;
 }
 
@@ -74,6 +76,6 @@ body {
   color:#4b9ac4;
 }
 
-.logout-button:hover {
+.session-button:hover {
     cursor: pointer;
 }

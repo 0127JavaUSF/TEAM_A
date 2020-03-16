@@ -89,14 +89,10 @@ public class SessionController {
 							.sign(algo);
 	
 					Cookie cookie = new Cookie("auth_token", token);
-//						response.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict");
 					cookie.setMaxAge(10*60*200);
 					cookie.setPath("/");
 					response.addCookie(cookie);
-					// Cookie cook = new Cookie("hey", "lol");
-					//	response.addCookie(cook);
 					response.addHeader("custom_success", "user is authenticated. Cookie is returned.");
-//					System.out.println("Success. Authenticated. Cookie Returned.");
 					return new ResponseEntity<User>(userObj, HttpStatus.OK);
 
 				}
@@ -119,8 +115,6 @@ public class SessionController {
 			HttpServletRequest request
 			) {
 
-//		System.out.println("token: " + authToken);
-//		System.out.println(request.getCookies());
 
 		// if proper token is received
 		if(authToken.length() > 0) {
@@ -173,7 +167,6 @@ public class SessionController {
 			response.setStatus(201);
 			
 		} else {
-			System.out.println("Did not get cookie man");
 			response.setStatus(422);
 		}
 		
