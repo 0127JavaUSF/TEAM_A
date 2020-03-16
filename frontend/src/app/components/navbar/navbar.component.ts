@@ -62,6 +62,7 @@ export class NavbarComponent implements OnInit {
 
   handleSession() {
     if(this.test === true) {
+      this.sessionText = "Logout";
       this.showButtons();
       this.sessionService.logout();
     }
