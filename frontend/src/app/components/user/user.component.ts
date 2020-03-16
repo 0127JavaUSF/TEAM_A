@@ -37,6 +37,7 @@ export class UserComponent implements OnInit {
   email = '';
   phoneNumber = '';
   address = '';
+  state = '';
   city = '';
   zipCode = '';
 
@@ -133,6 +134,12 @@ export class UserComponent implements OnInit {
     {
       this.file = picture.target.file;
     }
+  }
+
+  saveAllChanges(){
+    // if (this.user.firstName != this.firstName)
+    this.userService.saveAllChanges(this.user.id, this.firstName, this.lastName, this.email, this.phoneNumber,this.address,this.city,this.state,this.zipCode);
+
   }
 
 }
