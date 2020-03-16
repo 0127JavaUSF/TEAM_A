@@ -4,6 +4,8 @@ import { RestaurantService } from 'src/app/services/RestaurantService/Restaurant
 import { MenuService } from 'src/app/services/menuservices/menu.service';
 import { Router } from '@angular/router';
 import { Food } from 'src/app/models/food';
+import { SessionService } from 'src/app/services/sessionservices/session.service';
+import { User } from 'src/app/models/user';
 
 
 
@@ -17,10 +19,28 @@ export class RestaurantComponent implements OnInit {
     allRestaurants: any [];
     location: string;
     food = new Food();
+    user: User = new User();
 
-  constructor(private restaurantService: RestaurantService, private menuService: MenuService, private router: Router) { }
+  constructor(private restaurantService: RestaurantService, 
+    private menuService: MenuService, 
+    private router: Router,
+    private sessionService: SessionService) {}
 
     ngOnInit(): void {
+
+      if (!this.sessionService.isLoggedIn()) {
+        this.sessionService.fetchCurrentUser().subscribe(
+          (data) => {
+            this.sessionService.receiveUserData(data);
+            this.user = this.sessionService.getCurrentUser();
+          },
+          (error) => {
+            console.log(error);
+            this.sessionService.ensureLoggedIn();
+          }
+        )
+      }
+
       if (localStorage.getItem('address') === null) {
         this.restaurantService.setRestaurantAddress();
             }
