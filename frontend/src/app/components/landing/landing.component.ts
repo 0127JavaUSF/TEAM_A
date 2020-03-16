@@ -16,9 +16,10 @@ export class LandingComponent implements OnInit {
   address = '';
   distance = 2;
   constructor(private httpClient: HttpClient, private restaurantService: RestaurantService, private router: Router,
-    private sessionService: SessionService) { }
+              private sessionService: SessionService) { }
 
   ngOnInit(): void {
+
 
     if (!this.sessionService.isLoggedIn()) {
       this.sessionService.fetchCurrentUser().subscribe(

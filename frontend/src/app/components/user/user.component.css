@@ -1,7 +1,11 @@
 .completed {
     color: chartreuse;
 }
-.userAccnount{
+
+.error {
+    color: red;
+}
+.userAccntDiv{
     display: flex;
     margin-top: 15vh;
     margin-left: 30px; 
