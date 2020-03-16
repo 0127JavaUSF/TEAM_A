@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cartservices/cart.service';
 import { User } from 'src/app/models/user';
 // import { Restraurant } from 'src/app/models/restaurant';
-import { AgmCoreModule } from '@agm/core';
+import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { styles } from '../../models/googleMapStyle';
 import { LocationService } from 'src/app/services/locationservice/location.service';
 import { UserLocation } from 'src/app/models/UserLocation';
 import { SessionService } from 'src/app/services/sessionservices/session.service';
 import { foodItem, Order, myUser} from 'src/app/models/orderHistory';
 import { HttpClient } from '@angular/common/http';
+// import { google } from '@agm/core/services/google-maps-types';
 /**
  * The Cart component relies on:
  *
@@ -157,6 +158,9 @@ export class CartComponent implements OnInit {
       (error) => console.log(error)
     );
 
+
+    // navigator.geolocation.watchPosition
+
   }
 
   letsSendOrder() {
@@ -167,6 +171,18 @@ export class CartComponent implements OnInit {
       (error) => console.log(error)
     )
   }
+
+  // getAddress(address) {
+  //   let geocoder = new google.maps.Geocode();
+  //   geocoder.geocode({ 'address': address }, function (results, status) {
+  //     if (status == 'OK') {
+  //       console.log(results[0].geometry.location);
+  //     } else {
+  //       alert('Geocode was not successful for the following reason: ' + status);
+  //     }
+  //   });
+    
+  // }
 
   deliveryChosen() {
     this.deliverySelected = true;

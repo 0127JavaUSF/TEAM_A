@@ -17,6 +17,7 @@ import { OrderHistoryComponent } from './components/order-history/order-history.
 import { DeliveryComponent } from './components/delivery/delivery.component';
 import { PickupComponent } from './components/pickup/pickup.component';
 import { AgmCoreModule } from '@agm/core';
+import { google } from '@agm/core/services/google-maps-types';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { AgmCoreModule } from '@agm/core';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCFCwp_Ef8hDVvIEsqXcnowl78_iI7kRU4'
     }),
+    // google,
 
   ],
   providers: [UserService],
