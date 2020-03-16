@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from 'src/app/models/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-user',
@@ -30,7 +31,7 @@ export class CreateUserComponent implements OnInit {
   toggleMatch = 0;
 
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -46,7 +47,7 @@ export class CreateUserComponent implements OnInit {
         // sends user to database
         this.httpClient.post<User>('http://localhost:9010/user', this.user)
         .subscribe(
-          data => (console.log(data)),
+          data => this.router.navigate(['sign-in']),
           error => (console.log(error))
         );
         this.user.password = '';
