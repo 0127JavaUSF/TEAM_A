@@ -12,36 +12,34 @@ import { HttpClient } from '@angular/common/http';
 export class NavbarComponent implements OnInit {
 
   user = new User();
-  userOrLogin = "sign-in";
+  userOrLogin = 'sign-in';
+  currentUser = this.sessionService.currrentUser;
 
-  constructor(private router: Router,
-    private sessionService: SessionService,
-    private http: HttpClient,
-    ) { }
+
+  constructor(private router: Router, private sessionService: SessionService, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.sessionService.fetchCurrentUser().subscribe(
       data => this.user = data,
       error => console.log(error),
-    )
-  }
-
-  ensureLoggedIn() {
-    if(this.user.email.length > 0) {
-      this.userOrLogin = "user";
-    }
-    this.router.navigate([`${this.userOrLogin}`])
-  }
-
-  logout() {
-    const url = "http://localhost:9010/logout";
-    this.http.get(url, {withCredentials: true}).subscribe(
-      () => {
-        console.log("Logged out")
-        this.router.navigate(['/'])
-      },
-      (error) => console.log("ERROR: " + error)
     );
   }
 
+  ensureLoggedIn() {
+    if (this.user.email.length > 0) {
+      this.userOrLogin = 'user';
+    }
+    this.router.navigate([`${this.userOrLogin}`]);
+  }
+
+  logout() {
+    const url = 'http://localhost:9010/logout';
+    this.http.get(url, {withCredentials: true}).subscribe(
+      () => {
+        console.log('Logged out');
+        this.router.navigate(['/']);
+      },
+      (error) => console.log('ERROR: ' + error)
+    );
+  }
 }

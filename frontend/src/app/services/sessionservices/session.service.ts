@@ -16,10 +16,9 @@ export class SessionService {
 
   fetchCurrentUser(): Observable<User> {
 
-    let url = 'http://localhost:9010/fetchCurrentUser';
+    const url = 'http://localhost:9010/fetchCurrentUser';
 
     return this.http.get<any>(url, {withCredentials: true});
-     
   }
 
 }
