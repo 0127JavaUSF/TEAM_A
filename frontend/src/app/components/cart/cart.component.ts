@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cartservices/cart.service';
 import { User } from 'src/app/models/user';
-import { Restraurant } from 'src/app/models/restaurant';
+// import { Restraurant } from 'src/app/models/restaurant';
 import { AgmCoreModule } from '@agm/core';
 import { styles } from '../../models/googleMapStyle';
 import { LocationService } from 'src/app/services/locationservice/location.service';
-import { async } from '@angular/core/testing';
 import { UserLocation } from 'src/app/models/UserLocation';
 import { SessionService } from 'src/app/services/sessionservices/session.service';
+import { foodItem, Order, myUser} from 'src/app/models/orderHistory';
+import { HttpClient } from '@angular/common/http';
 /**
  * The Cart component relies on:
  *
@@ -34,7 +35,7 @@ export class CartComponent implements OnInit {
   user: User = new User();
   rest = {};
 
-  sendOrder = {}
+  sendOrder: Order = new Order();
 
   time = "Approximately 30 minutes";
   payment = "PayPal";
@@ -71,6 +72,7 @@ export class CartComponent implements OnInit {
     private cartService: CartService,
     private locationService: LocationService,
     private sessionService: SessionService,
+    private http: HttpClient,
     ) {
 
     this.user['payment'] = "Paypal";
@@ -120,6 +122,27 @@ export class CartComponent implements OnInit {
         this.total = (parseFloat(this.taxAndFees + this.subtotal + this.rest['delivery'])).toFixed(2);
         this.taxAndFees = this.taxAndFees.toFixed(2);
         this.subtotal = parseFloat(this.subtotal.toFixed(2));
+        
+        console.log(Object.keys(this.cart));
+        // // console.log("user: " + this.sessionService.getCurrentUser);
+        this.sendOrder.userId = new myUser();
+        this.sendOrder.userId.id = 1;
+        // this.user.id;
+        this.sendOrder.restApiKey = this.rest['name'];
+        for(let i = 0; i < Object.keys(this.cart).length; i++) {
+          let item = new foodItem()
+          item.name = this.cart[i]['foodItem'].name;
+          item.itemQuantity = this.cart[i].quantity;
+          item.apiKey = this.cart[i]['foodItem'].apiKey;
+          this.sendOrder.orderItems.push(item);
+        }
+
+        this.sendOrder.method = localStorage.getItem('method');
+        this.sendOrder.timestamp = "2019-01-01";
+        // Date.now();
+
+        console.log(this.sendOrder);
+
       },
       (error) => console.log(error),
     );
@@ -134,6 +157,15 @@ export class CartComponent implements OnInit {
       (error) => console.log(error)
     );
 
+  }
+
+  letsSendOrder() {
+    console.log(this.sendOrder);
+    const url = "http://localhost:9010/order"
+    this.http.post<any>(url, this.sendOrder).subscribe(
+      (res) => console.log(res),
+      (error) => console.log(error)
+    )
   }
 
   deliveryChosen() {

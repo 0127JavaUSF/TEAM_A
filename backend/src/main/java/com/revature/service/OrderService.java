@@ -21,7 +21,7 @@ public class OrderService {
 	@Autowired
 	private OrderRepository oRepo;
 	
-	public Order createOrder(Order order, Item item, User user)
+	public Order createOrder(Order order)
 	{
 		return this.oRepo.save(order);
 	}
