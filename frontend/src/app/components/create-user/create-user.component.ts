@@ -12,17 +12,17 @@ import { Router } from '@angular/router';
 export class CreateUserComponent implements OnInit {
 
   user = {
-  id: 0,
-  firstName: '',
-  lastName: '',
-  email: '',
-  password: '',
-  phoneNumber: '',
-  address: '',
-  city: '',
-  state: '',
-  zipCode: ''
-};
+    id: 0,
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    phoneNumber: '',
+    address: '',
+    city: '',
+    state: '',
+    zipCode: ''
+  };
 
   confirmPassword = '';
 
@@ -33,8 +33,7 @@ export class CreateUserComponent implements OnInit {
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   submit() {
       // special characters to match against user input
       const specialChar = /[!@#$%^&*(),.?":{}|<>]/g;

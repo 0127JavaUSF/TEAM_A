@@ -33,8 +33,21 @@ export class SignInComponent implements OnInit {
 
     ) {}
 
-  ngOnInit(): void {}
-
+  ngOnInit(): void {
+    if (!this.sessionService.isLoggedIn()) {
+      this.sessionService.fetchCurrentUser().subscribe(
+        (data) => {
+          this.sessionService.receiveUserData(data);
+          this.user = this.sessionService.getCurrentUser();
+        },
+        (error) => {
+          console.log(error);
+          this.sessionService.ensureLoggedIn();
+        }
+      )
+    }
+  }
+  
   signIn() {
     /**
      * logs in user given user email and password
@@ -43,11 +56,11 @@ export class SignInComponent implements OnInit {
       .subscribe(
         data => {
           this.user = data;
-          this.sessionService.currrentUser = data;
+          this.sessionService.currentUser = data;
           console.log(this.user);
           if (this.user.email != null) {
             // this.successfulLogin();
-            this.router.navigate(['user']);
+            this.router.navigate([`user-details/${this.user.id}`]);
           }
         },
         error => this.wrongpass = true

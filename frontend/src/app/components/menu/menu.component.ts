@@ -3,6 +3,8 @@ import { MenuService } from 'src/app/services/menuservices/menu.service';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from 'src/app/services/cartservices/cart.service';
 import { Food } from 'src/app/models/food';
+import { SessionService } from 'src/app/services/sessionservices/session.service';
+import { User } from 'src/app/models/user';
 
 
 @Component({
@@ -20,20 +22,33 @@ export class MenuComponent implements OnInit {
   showButton: boolean;
   FoodQuant = {};
   myCart = JSON.parse(localStorage.getItem("cart"));
-
+  user: User = new User();
   constructor(
     private menuService: MenuService,
     private router: ActivatedRoute,
     private cartService: CartService,
+    private sessionService: SessionService,
     ) {
 
       this.showButton = false;
-      // this.food = 0;
-    // this is called first. Then ngOnInit is called.
-
+  
   }
 
   ngOnInit(): void {
+
+    if (!this.sessionService.isLoggedIn()) {
+      this.sessionService.fetchCurrentUser().subscribe(
+        (data) => {
+          this.sessionService.receiveUserData(data);
+          this.user = this.sessionService.getCurrentUser();
+        },
+        (error) => {
+          console.log(error);
+          this.sessionService.ensureLoggedIn();
+        }
+      )
+    }
+
     // get current restaurant api key
     this.menuService.currentRestKey = this.router.snapshot.params['id'];
     // fetch its manu (food items)
