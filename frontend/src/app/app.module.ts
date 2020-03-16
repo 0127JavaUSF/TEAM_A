@@ -43,7 +43,6 @@ import { google } from '@agm/core/services/google-maps-types';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCFCwp_Ef8hDVvIEsqXcnowl78_iI7kRU4'
     }),
-    // google,
 
   ],
   providers: [UserService],

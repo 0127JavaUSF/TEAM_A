@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cartservices/cart.service';
 import { User } from 'src/app/models/user';
-// import { Restraurant } from 'src/app/models/restaurant';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { styles } from '../../models/googleMapStyle';
 import { LocationService } from 'src/app/services/locationservice/location.service';
@@ -9,6 +8,7 @@ import { UserLocation } from 'src/app/models/UserLocation';
 import { SessionService } from 'src/app/services/sessionservices/session.service';
 import { foodItem, Order, myUser} from 'src/app/models/orderHistory';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 // import { google } from '@agm/core/services/google-maps-types';
 /**
  * The Cart component relies on:
@@ -45,12 +45,9 @@ export class CartComponent implements OnInit {
   objectKeys = Object.keys;
   restaurant;
 
-  subtotal = 0.0;
-  
-  taxAndFees;
-  
+  subtotal = 0.0;  
+  taxAndFees;  
   totalAmount = 0.0;
-
   total;
 
   deliverySelected = true;
@@ -74,6 +71,7 @@ export class CartComponent implements OnInit {
     private locationService: LocationService,
     private sessionService: SessionService,
     private http: HttpClient,
+    private router: Router,
     ) {
 
     this.user['payment'] = "Paypal";
@@ -140,7 +138,6 @@ export class CartComponent implements OnInit {
 
         this.sendOrder.method = localStorage.getItem('method');
         this.sendOrder.timestamp = "2019-01-01";
-        // Date.now();
 
         console.log(this.sendOrder);
 
@@ -170,6 +167,7 @@ export class CartComponent implements OnInit {
       (res) => console.log(res),
       (error) => console.log(error)
     )
+    this.router.navigate(['order-history']);
   }
 
   // getAddress(address) {
@@ -181,9 +179,23 @@ export class CartComponent implements OnInit {
   //       alert('Geocode was not successful for the following reason: ' + status);
   //     }
   //   });
-    
   // }
-
+  // geocode() {
+    
+  //   this.geocoder.geocode({ 'address': location }, (results, status) => {
+  //     if (status == google.maps.GeocoderStatus.OK) {
+  //       console.log('Geocoding complete!');
+  //       observer.next({
+  //         lat: results[0].geometry.location.lat(),
+  //         lng: results[0].geometry.location.lng()
+  //       });
+  //     } else {
+  //       console.log('Error - ', results, ' & Status - ', status);
+  //       observer.next({ lat: 0, lng: 0 });
+  //     }
+  //     observer.complete();
+  //   }
+  // }
   deliveryChosen() {
     this.deliverySelected = true;
     this.deliveryClass = this.deliveryActiveClass;
