@@ -41,7 +41,7 @@ import { google } from '@agm/core/services/google-maps-types';
     FormsModule,
     HttpClientModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCFCwp_Ef8hDVvIEsqXcnowl78_iI7kRU4'
+      apiKey: 'abc'
     }),
 
   ],
